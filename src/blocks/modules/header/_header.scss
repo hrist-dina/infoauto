@@ -1,7 +1,9 @@
 .header {
-  background-color: $header-bg;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  &__inner {
+    background-color: $header-bg;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
   &__top {
     @include row-flex();
@@ -55,4 +57,41 @@
     align-items: center;
     margin-top: 15px;
   }
+
+  // Menu
+
+  &__menu {
+    background-color: $header-menu-bg;
+
+    &-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 15px 0;
+      color: $header-menu-color;
+
+      & img {
+        max-width: 40px;
+        max-height: 26px;
+        width: 100%;
+      }
+
+      & span {
+        margin-left: 10px;
+        display: block;
+        white-space: nowrap;
+      }
+    }
+  }
+
+
+
 }

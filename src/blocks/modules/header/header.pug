@@ -1,19 +1,39 @@
 include ../../components/personal-auto/personal-auto
 
 header.header
-    .container
-        .header__top
-            .header__logo
-                a(href="/")
-                    include ../../components/logo/logo
-            .header__center
-                include ../../components/sub-menu/sub-menu
-                include ../../components/search/search
-            .header__right
-                .header__personal-area
-                    include ../../components/personal-area/personal-area
-                    a(href="#").button-black.header__ask-question Задать вопрос
-                +personal-area('Mazda 323 III (BF) 1985 - 1989')
+    .header__inner
+        .container
+            .header__top
+                .header__logo
+                    a(href="/")
+                        include ../../components/logo/logo
+                .header__center
+                    include ../../components/sub-menu/sub-menu
+                    include ../../components/search/search
+                .header__right
+                    .header__personal-area
+                        include ../../components/personal-area/personal-area
+                        a(href="#").button-black.header__ask-question Задать вопрос
+                    +personal-area('Mazda 323 III (BF) 1985 - 1989')
+    .header__menu
+        .container
+            nav.header__menu-list
+                a(href="#").header__menu-item
+                    img(src="img/sprites/intermediate-svg/icon-engine.svg", alt="")
+                    span  Двигатель
+                a(href="#").header__menu-item
+                    img(src="img/sprites/intermediate-svg/icon-transmission.svg", alt="")
+                    span  Трансмиссия
+                a(href="#").header__menu-item
+                    img(src="img/sprites/intermediate-svg/icon-car-body.svg", alt="")
+                    span  Кузов
+                a(href="#").header__menu-item
+                    img(src="img/sprites/intermediate-svg/icon-electric.svg", alt="")
+                    span  Электрика
+                a(href="#").header__menu-item
+                    img(src="img/sprites/intermediate-svg/icon-running-system.svg", alt="")
+                    span  Ходовая система
+
 
 
 
