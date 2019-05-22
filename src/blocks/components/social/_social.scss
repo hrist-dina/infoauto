@@ -1,0 +1,46 @@
+.social {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+
+    :first-child {
+      margin-left: 0;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+    }
+  }
+
+  &__icon-vk {
+    background: url("../img/sprites/intermediate-svg/icon-vk.svg");
+    width: 18px;
+    height: 10px;
+  }
+
+  &__icon-fb {
+    background: url("../img/sprites/intermediate-svg/icon-fb.svg");
+    width: 9px;
+    height: 16px;
+  }
+
+  &__icon-ok {
+    background: url("../img/sprites/intermediate-svg/icon-ok.svg");
+    width: 10px;
+    height: 16px;
+  }
+
+  &__icon-insta {
+    background: url("../img/sprites/intermediate-svg/icon-insta.svg");
+    width: 15px;
+    height: 14px;
+  }
+}

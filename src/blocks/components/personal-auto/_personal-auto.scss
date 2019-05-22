@@ -1,0 +1,21 @@
+.personal-auto {
+  position: relative;
+  text-decoration: none;
+  color: $personal-auto;
+  border-bottom: 0.5px solid #ABABAB;
+  padding-bottom: 3px;
+  margin-left: 42px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url("../img/sprites/intermediate-svg/personal-auto.svg") no-repeat;
+    width: 32px;
+    height: 14px;
+    left: -42px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}

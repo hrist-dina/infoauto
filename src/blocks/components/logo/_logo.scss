@@ -1,0 +1,19 @@
+.logo {
+  max-width: 255px;
+  &__img {
+    width: 255px;
+    height: 49px;
+  }
+
+
+  & img {
+    width: 100%;
+  }
+
+  &__text {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $logo-text;
+  }
+}

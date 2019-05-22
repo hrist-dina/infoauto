@@ -1,0 +1,14 @@
+extends layouts/pages
+block variables
+	- var title = "Инфоавто  - Список страниц"
+
+block content
+	.container
+		include ../blocks/modules/main/main
+
+		h1=title
+		ul
+			li
+				a(href="/ui-kit.html") Ui-kit
+			li
+				a(href="/home.html") Главная

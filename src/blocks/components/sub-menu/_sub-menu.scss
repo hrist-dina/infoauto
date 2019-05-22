@@ -1,0 +1,23 @@
+.sub-menu {
+
+  &__list {
+    list-style-type: none;
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 60px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    & a {
+      text-decoration: none;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      color: $sub-menu-item;
+    }
+  }
+}
