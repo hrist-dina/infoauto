@@ -1,0 +1,32 @@
+.banner-ask-question {
+  background: url("../img/banner-ask-question.svg") no-repeat center;
+  border-radius: 8px;
+  width: 305px;
+  height: 482px;
+  text-align: center;
+  padding: 45px 20px;
+  box-sizing: border-box;
+
+  &__text,
+  &__text p {
+    font-size: 15px;
+    line-height: 21px;
+    text-align: center;
+    color: $white;
+  }
+  &__text {
+    margin-bottom: 30px;
+
+    p {
+      margin-bottom: 25px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  & .button {
+    border: none;
+  }
+}

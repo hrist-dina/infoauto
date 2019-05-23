@@ -1,5 +1,5 @@
 include ../../components/personal-auto/personal-auto
-
+include ../../components/search/search
 header.header
     .header__inner
         .container
@@ -9,7 +9,7 @@ header.header
                         include ../../components/logo/logo
                 .header__center
                     include ../../components/sub-menu/sub-menu
-                    include ../../components/search/search
+                    +search('Поиск по сайту', true)
                 .header__right
                     .header__personal-area
                         include ../../components/personal-area/personal-area

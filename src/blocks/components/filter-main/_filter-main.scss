@@ -1,0 +1,59 @@
+.filter-main {
+  min-height: 479px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  padding-top: 44px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+
+  &__title {
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 59px;
+    text-align: center;
+    color: $white;
+    padding: 0 25px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 55px;
+
+    & .car-selection {
+      display: inline-block;
+    }
+  }
+
+  &__search {
+    position: relative;
+    max-width: 570px;
+    max-height: 185px;
+    width: 100%;
+    background: linear-gradient(180deg, #FFDE5C 3.7%, #FFD223 68.9%);
+    border: 2px solid #FFD223;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 30px 40px 60px;
+    margin-left: 85px;
+
+    &:before {
+      content: 'или';
+      position: absolute;
+      left: -60px;
+      font-weight: 500;
+      font-size: 18px;
+      color: $white;
+
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 18px;
+      color: $filter-main-title;
+      margin-bottom: 30px;
+    }
+  }
+}

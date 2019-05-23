@@ -1,0 +1,44 @@
+.card {
+  max-width: 400px;
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+
+  &__img {
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+  }
+
+  &__title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #16162d;
+    font-weight: normal;
+    font-size: 18px;
+  }
+
+  &__mark {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+
+  &__mark-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-list {
+    @include row-flex();
+    justify-content: space-between;
+
+    & .card {
+      @include col();
+      @include size(4);
+      margin-bottom: 35px;
+    }
+  }
+}

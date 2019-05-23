@@ -1,5 +1,5 @@
-.search
-    form._form(action="", method="get")
-        .search__icon
-        input(type="text", name="q", placeholder="Поиск по сайту")
-        button(type="submit") Найти
+mixin search(placeholder, hasIcon=false)
+    .search
+        form._form(action="", method="get", class=hasIcon ? 'search__icon' : '')
+            input(type="text", name="q", placeholder=placeholder)
+            button(type="submit") Найти

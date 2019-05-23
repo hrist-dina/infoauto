@@ -1,42 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	font-family: Roboto, sans-serif;
-	font-size: 18px;
-	color: $base-color-text;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  color: $base-color-text;
 }
 
 h1, h2, h3, h4, h5, h6, ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+.h1 {
+  font-weight: 500;
+  font-size: 40px;
+  color: #16162d;
+}
+
+h2,
+.h2 {
+  font-weight: 500;
+  font-size: 30px;
+  color: #16162d;
+}
+
+h3,
+.h3 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #16162d;
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-}
-.content {
-	flex: 1 0 auto;
-}
-.footer {
-	flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
 
 .container {
-	@include container();
-	@include sm(max-width, 510px);
-	@include md(max-width, 690px);
-	@include lg(max-width, 930px);
-	@include xl(max-width, 1280px);
+  @include container();
+  @include sm(max-width, 510px);
+  @include md(max-width, 690px);
+  @include lg(max-width, 930px);
+  @include xl(max-width, 1280px);
 }
 
 .img-responsive {
-	max-width: 500px;
-	width: 100%;
-	height: auto;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+.section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  & h3, .h3 {
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    @include row-flex();
+  }
+}
+
+.section-white {
+  background-color: $section-white;
+}
+
+.section-gray {
+  background-color: $section-gray;
 }

@@ -1,0 +1,9 @@
+mixin card-question(auto, title, hasAnswer=false)
+    a(href="#").card-question
+        .card-question__inner
+            .card-question__auto=auto
+            .card-question__title=title
+            if hasAnswer
+                .card-question__status.card-question__has-answer Есть ответ
+            else
+                .card-question__status Ответ ожидается
