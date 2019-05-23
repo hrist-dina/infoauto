@@ -1,0 +1,27 @@
+.breadcrumbs {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    &__link {
+        text-decoration: none;
+    }
+
+    &__item,
+    &__item &__link {
+        display: inline-block;
+        position: relative;
+        font-weight: normal;
+        font-size: 14px;
+        color: #a0a0af;
+        line-height: 20px;
+    }
+
+    &__item:not(:last-child):after {
+        content: "/";
+        padding: 0 15px;
+    }
+}
+
+.h1-breadcrumbs {
+    padding-bottom: 35px;
+}

@@ -1,0 +1,10 @@
+extends ../views/layouts/default
+block variables
+    - var title = "Статьи";
+
+block content
+    .container
+        include ../blocks/components/breadcrumbs/breadcrumbs
+        include ../blocks/components/articles-detail/articles-detail
+        include ../blocks/components/pagination/pagination
+    
