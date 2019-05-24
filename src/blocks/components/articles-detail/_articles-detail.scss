@@ -4,5 +4,27 @@
         margin: auto;
         max-width: 844px;
         text-align: left;
+
+        & p {
+            margin-top: 30px;
+        }
+    }
+
+    &__h2 {
+        padding-top: 10px;
+        padding-bottom: 27px;
+    }
+
+    &__img {
+        display: flex;
+        margin-top: 60px;
+        & img {
+            margin-right: 28px;
+            width: 100%;
+
+            & img:last-child {
+                margin-right: 0;
+            }
+        }
     }
 }
