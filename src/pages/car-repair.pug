@@ -1,0 +1,12 @@
+extends ../views/layouts/default
+block variables
+    - var title = 'Ремонт автомобиля';
+    - var breadcrumbs = ['Главная', 'Материалы']
+
+block content
+    include ../blocks/components/breadcrumbs/breadcrumbs
+    main
+        .container
+            +breadcrumbs(breadcrumbs)
+            h1=title
+            include ../blocks/components/filter/filter

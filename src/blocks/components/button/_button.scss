@@ -1,10 +1,14 @@
-button {
-    cursor: pointer;
-
+button,
+select,
+span {
     &:active,
     &:focus {
         outline: none;
     }
+}
+
+button {
+    cursor: pointer;
 }
 
 .button-black {

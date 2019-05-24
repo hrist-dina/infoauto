@@ -1,3 +1,6 @@
+-
+    let options = ['Работы по техобслуживанию', 'test']
+
 .car-selection
     .car-selection__top
         .car-selection__title
@@ -20,7 +23,5 @@
             li Двигатель
                 a(href='javascript:void(0)').close
         .car-selection__text Выберите область
-        select
-            option(value=" Работы по техобслуживанию") Работы по техобслуживанию
-            option(value=" Работы по техобслуживанию") Работы по техобслуживанию
-            option(value=" Работы по техобслуживанию") Работы по техобслуживанию
+        include ../select/select
+        +select(options)

@@ -1,6 +1,6 @@
 .breadcrumbs {
     margin-top: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 25px;
     list-style-type: none;
     &__link {
         text-decoration: none;
@@ -20,8 +20,4 @@
         content: "/";
         padding: 0 15px;
     }
-}
-
-.h1-breadcrumbs {
-    padding-bottom: 35px;
 }
