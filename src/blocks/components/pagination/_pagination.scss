@@ -1,5 +1,6 @@
 .pagination {
     margin-top: 25px;
+    @include row-flex();
 
     &__wrap {
         display: flex;
@@ -15,14 +16,24 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        margin-right: 4px;
         font-weight: normal;
         font-size: 16px;
         text-align: center;
         color: #16162d;
         text-decoration: none;
+    }
+
+    &__prev {
+        margin-right: 15px;
+    }
+
+    &__next {
+        margin-left: 15px;
+    }
+
+    &__item {
+        width: 40px;
+        height: 40px;
     }
 
     &__item.active {

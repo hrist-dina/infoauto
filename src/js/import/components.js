@@ -1,5 +1,8 @@
 import Select from "%components%/select/select";
+import {FilterSearch} from "%components%/filter-search/filter-search";
+import $ from "jquery";
 
-let select = new Select('.js-select');
-// eslint-disable-next-line no-console
-console.log(select);
+$(document).ready(function () {
+    new Select();
+    new FilterSearch();
+});

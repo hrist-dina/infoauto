@@ -1,0 +1,55 @@
+include ../select/select
+include ../personal-auto/personal-auto
+-
+    var optionsMark = [
+        'Марка',
+        'Toyota',
+        'Лада',
+        'Mazda'
+    ];
+
+-
+    var optionsModel = [
+        'Модель',
+        'Camry',
+        'Vesta',
+        '323'
+    ];
+
+-
+    var optionsGeneration = [
+        'Поколение',
+        '2018',
+        '2016',
+        'III (BF), 1985 — 1989'
+    ];
+-
+    var optionsQuestion = [
+        'Выберите область',
+        'Техобслуживание',
+        'Не техобслуживание',
+        'Ремонт'
+    ];
+
+.filter-search
+    .filter-search__result.js-filter-search-result
+        .filter-search__left
+            +personal-auto('Mazda 323 III (BF) 1985 - 1989', true)
+        .filter-search__right
+            a(href="javascript:void(0)").filter-search__edit.js-filter-search-edit Изменить параметры поиска
+
+    form.filter-search__form.js-filter-search-form.hide
+        .filter-search__form-top
+            .filter-search__form-title Ваш автомобиль:
+            .filter-search__item-full
+                .filter-search__item
+                    +select(optionsMark, 'mark')
+                .filter-search__item
+                    +select(optionsModel, 'model')
+                .filter-search__item
+                    +select(optionsGeneration, 'generation')
+        .filter-search__form-bottom
+            .filter-search__form-title Ваш вопрос:
+            .filter-search__item-full
+                +select(optionsQuestion, 'question')
+            button.button.button-black Применить

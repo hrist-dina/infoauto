@@ -1,0 +1,24 @@
+.filter {
+  background-color: $yellow;
+  padding: 19px 26px;
+  box-sizing: border-box;
+  margin-bottom: 34px;
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: #{calc(100% / 4 - 13px)};
+
+    &:last-child {
+      width: #{calc(100% / 4 - 9px)};
+    }
+  }
+
+  & .button {
+    width: 100%;
+    padding: 11px 35px;
+  }
+}

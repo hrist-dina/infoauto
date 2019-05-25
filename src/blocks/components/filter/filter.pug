@@ -1,0 +1,38 @@
+include ../select/select
+
+-
+    var optionsMark = [
+        'Марка',
+        'Toyota',
+        'Лада',
+        'Mazda'
+    ];
+
+-
+    var optionsModel = [
+        'Модель',
+        'Camry',
+        'Vesta',
+        '323'
+    ];
+
+-
+    var optionsGeneration = [
+        'Поколение',
+        '2018',
+        '2016',
+        'III (BF), 1985 — 1989'
+    ];
+
+
+.filter
+    form.filter__form
+        .filter__item
+            +select(optionsMark)
+        .filter__item
+            +select(optionsModel)
+        .filter__item
+            // Поколение
+            +select(optionsGeneration)
+        .filter__item
+            button.button.button-black Применить

@@ -10,18 +10,19 @@ block content
 	include ../blocks/components/filter-main/filter-main
 	section.section.section-white
 		.container
-			h3.h3 Популярное
+			h2.h2 Популярное
 			.card-list
 				for card in cards
 					+card(card.img, card.title, card.marks)
 	section.section.section-gray
 		.container
-			h3.h3 Вопросы и ответы
+			h2.h2 Вопросы и ответы
 			.section__container
 				.card-question-list.card-question-list__col-9
 					for question in questions
 						+card-question(question.auto, question.title, question.hasAnswer)
-				include ../blocks/components/banner-ask-question/banner-ask-question
+				.card-question-list__col-3
+					include ../blocks/components/banner-ask-question/banner-ask-question
 
 	include ../blocks/components/note/note
 	include ../blocks/components/banners/banners

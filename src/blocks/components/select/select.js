@@ -4,7 +4,7 @@ import select2 from "select2";
 $.fn.iziModal = select2;
 
 export default class Select {
-    constructor(selector){
+    constructor(selector = '.js-select'){
         this.selector = selector;
 
         this.init();

@@ -1,11 +1,9 @@
 .card-question {
   display: inline-block;
-  max-width: 448px;
-  width: 100%;
+  width: #{calc(50% - 8px)};
   min-height: 185px;
   border-radius: 8px;
   background-color: $white;
-  margin-right: 16px;
   text-decoration: none;
 
   &__inner {
@@ -60,15 +58,22 @@
   }
 
   &-list {
-    @include row-flex();
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     & .card-question {
       margin-bottom: 16px;
     }
 
     &__col-9 {
-      @include col();
-      @include size(9);
+      width: #{calc(100% - 368px)};
+      margin-right: 63px;
     }
+    &__col-3 {
+      max-width: 305px;
+      width: 100%;
+    }
+
   }
 }

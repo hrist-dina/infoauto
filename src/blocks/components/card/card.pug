@@ -2,6 +2,7 @@ mixin card(img, title, marks)
     a(href="#").card
         .card__img(style=`background-image: url(${img})`)
         .card__title=title
-        .card__mark-list
-            for mark in marks
-                .mark.card__mark=mark
+        if (marks)
+            .card__mark-list
+                for mark in marks
+                    .mark.card__mark=mark

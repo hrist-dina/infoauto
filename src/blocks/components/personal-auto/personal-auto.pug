@@ -1,2 +1,5 @@
-mixin personal-area(title)
-    a(href="#").personal-auto=title
+mixin personal-auto(value, hasTitle=false)
+    .personal-auto
+        if (hasTitle)
+            p Ваш автомобиль:
+        a(href="#")=value

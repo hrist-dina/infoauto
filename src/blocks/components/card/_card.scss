@@ -5,12 +5,22 @@
   text-decoration: none;
 
   &__img {
+    position: relative;
     border-radius: 8px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 100%;
     height: 200px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
   }
 
   &__title {
@@ -19,6 +29,7 @@
     color: #16162d;
     font-weight: normal;
     font-size: 18px;
+    line-height: 25px;
   }
 
   &__mark {
@@ -37,8 +48,16 @@
 
     & .card {
       @include col();
-      @include size(4);
       margin-bottom: 35px;
+
+      & img {
+        border-radius: 8px;
+      }
+    }
+
+    &__border-line {
+      border-bottom: 3px solid #E7E7E7;
+      margin-bottom: 25px;
     }
   }
 }

@@ -1,0 +1,27 @@
+extends ../views/layouts/default
+block variables
+    - var title = 'Результаты поиска';
+    - var breadcrumbs = ['Главная'];
+
+block content
+    include ../blocks/components/breadcrumbs/breadcrumbs
+    include ../blocks/components/card/card
+    include ../blocks/components/card-question/card-question
+    include ../data/searching-results
+    main.section-gray
+        .container
+            +breadcrumbs(breadcrumbs)
+            h1=title
+            include ../blocks/components/filter-search/filter-search
+        section.section__list
+            .container
+                h2.h2 Статьи
+                .card-list
+                    for card in cards
+                        +card(card.img, card.title, card.marks)
+        section.section__list
+            .container
+                h2.h2 Вопросы и ответы
+                .card-question-list
+                    for question in questions
+                        +card-question(question.auto, question.title, question.hasAnswer)

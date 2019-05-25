@@ -1,0 +1,85 @@
+.filter-search {
+  background-color: $yellow;
+  padding: 19px 26px;
+  box-sizing: border-box;
+  margin-bottom: 34px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &-top,
+    &-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &-top {
+      margin-bottom: 15px;
+    }
+
+    &-title {
+      min-width: 125px;
+      margin-right: 20px;
+      font-size: 15px;
+      color: $dark-gray;
+    }
+  }
+
+  &__item {
+    width: #{calc(100% / 3 - 10px)};
+
+    &-full {
+      display: flex;
+      max-width: 812px;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  & .button {
+    max-width: 252px;
+    width: 100%;
+    padding: 11px 35px;
+    margin-left: 16px;
+  }
+
+  &__result {
+    display: flex;
+  }
+
+  &__left,
+  &__right {
+    width: 50%;
+  }
+
+  &__right {
+    text-align: right;
+    align-self: flex-end;
+  }
+
+  &__edit {
+    font-weight: 900;
+    font-size: 15px;
+    position: relative;
+    text-decoration: none;
+    color: $personal-auto;
+    margin-left: 25px;
+    border-bottom: 0.5px solid #ABABAB;
+    padding-bottom: 3px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: url("../img/sprites/intermediate-svg/filter-edit.svg") no-repeat;
+      width: 19px;
+      height: 19px;
+      left: -25px;
+      right: auto;
+      top: -7px;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
