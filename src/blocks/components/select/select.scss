@@ -2,9 +2,8 @@
   width: 100%;
 }
 
-.select2-container--infoauto {
-
-  width: 100% !important;
+.select2-container--infoauto,
+.select2-container--infoauto-gray {
 
   & .select2-selection--single {
     background: $white;
@@ -77,6 +76,13 @@
       background: #EFF1F4;
       color: #127AEF;
     }
+  }
+}
+
+.select2-container--infoauto-gray {
+
+  & .select2-selection--single {
+    background: $gray-theme;
   }
 }
 

@@ -1,0 +1,28 @@
+section.personal-area
+    .container
+        include ../../components/personal-area-head/personal-area-head
+        .personal-area__conteiner.js-tabs
+            .personal-area__tabs
+                ul
+                    li
+                        a(href="#" data-tab-menu='info' class='active') Личные данные
+                    li
+                        a(href="#" data-tab-menu='autos') Автомобили
+                    li
+                        a(href="#") Книга учета ТО
+                    li
+                        a(href="#") Избранное
+                    li
+                        a(href="#") Мои вопросы
+                a(href="#").personal-area__logout Выйти
+            .personal-area__content
+                .personal-area__tab-item.active(data-tab-item='info')
+                    form.personal-area__info(action='' method='POST')
+                        input(name='name' type='text' placeholder='Как к вам обращаться?')
+                        input(name='email' type='email' placeholder='Электронная почта')
+                        h3.personal-area__h3 Сменить пароль
+                        input(name='old_password' type='password' placeholder='Старый пароль')
+                        input(name='new_password' type='password' placeholder='Новый пароль')
+                        button(type='submit').button.button-yellow Сохранить
+                .personal-area__tab-item(data-tab-item='autos')
+                    | Авто

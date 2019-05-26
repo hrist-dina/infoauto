@@ -1,0 +1,104 @@
+.hint {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: $hint-bgc;
+  font-weight: 500;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $hint-color;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+
+  &:hover >  &__message {
+    display: block;
+  }
+
+  &__message {
+    position: absolute;
+    left: 45px;
+    top: -40px;
+    width: 400px;
+    height: auto;
+    color: $base-color-text;
+    background-color: $white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 30px;
+    z-index: 100;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 35px;
+      left: -14px;
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-right: 14px solid $white;
+      border-bottom: 12px solid transparent;
+    }
+
+    &,
+    & p,
+    & ul {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 18px;
+      color: $hint-color-message;
+    }
+
+    & p {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & span {
+      color: $hint-color-required;
+    }
+
+    & i {
+      font-style: italic;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 18px;
+      color: $hint-color-italic;
+    }
+
+    & ul {
+      margin-bottom: 20px;
+
+        li {
+          position: relative;
+          margin-bottom: 15px;
+          padding-left: 15px;
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: auto;
+            margin: auto;
+            border-radius: 50%;
+            background: $hint-color-message;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+    }
+  }
+}

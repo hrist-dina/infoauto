@@ -4,8 +4,9 @@ import select2 from "select2";
 $.fn.iziModal = select2;
 
 export default class Select {
-    constructor(selector = '.js-select'){
+    constructor(selector = '.js-select', theme = 'infoauto'){
         this.selector = selector;
+        this.theme = theme;
 
         this.init();
     }
@@ -13,7 +14,7 @@ export default class Select {
     init() {
         $(this.selector).select2({
             minimumResultsForSearch: Infinity,
-            theme: 'infoauto',
+            theme: this.theme,
             width: 'resolve'
         });
     }

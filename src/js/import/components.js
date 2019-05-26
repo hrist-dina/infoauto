@@ -4,5 +4,6 @@ import $ from "jquery";
 
 $(document).ready(function () {
     new Select();
+    new Select('.js-select-gray', 'infoauto-gray');
     new FilterSearch();
 });

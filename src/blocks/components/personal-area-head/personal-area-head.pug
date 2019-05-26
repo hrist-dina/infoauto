@@ -1,0 +1,25 @@
+include ../select/select
+include ../hint/hint
+
+-
+    var options = ['Mazda 323 III (BF) 1985 - 1989', 'Mercedes-Benz G-Class 2019', 'Lada Vesta 2015']
+
+
+.personal-area-head
+    ._title
+        |Добро пожаловать,
+        span  Александр
+        |!
+    ._auto
+        .personal-auto Ваш автомобиль
+        +hint('<p>Если у вас несколько автомобилей - вы можете добавить их в соответствующем разделе на сайте.</p>' +
+        '<p>Для каждого автомобиля:</p>' +
+        '<ul>' +
+        '<li>Индивидуальная Книга учета ТО</li>' +
+        '<li>Материалы из избранного <span>*</span></li>' +
+        '<li>Вопросы и ответы из избранного <span>*</span></li>' +
+        '</ul>' +
+        '<p><span>*</span> <i>если относятся к конкретной марке/модели</i></p>')
+        from._select
+            +select(options, 'personal-auto', 'js-select-gray')
+

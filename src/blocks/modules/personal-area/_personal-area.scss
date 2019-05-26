@@ -1,0 +1,80 @@
+@mixin personal-area-link {
+  display: inline-block;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: $gray;
+}
+
+.personal-area {
+
+  &__logout {
+    @include personal-area-link;
+  }
+
+  &__tabs {
+    border-bottom: 1px solid $personal-area-border;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    & ul {
+      display: flex;
+      & li {
+        & a {
+          @include personal-area-link;
+          box-sizing: border-box;
+          height: 100%;
+          border-bottom: 4px solid transparent;
+          padding-bottom: 11px;
+
+          &.active {
+            border-bottom: 4px solid $yellow;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    background-color: $white;
+    padding: 45px 40px;
+    box-sizing: border-box;
+  }
+
+  &__tab-item {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__h3 {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    font-size: 21px;
+  }
+
+  &__info {
+    max-width: 396px;
+    width: 100%;
+    box-sizing: border-box;
+
+    & input {
+      margin-bottom: 15px;
+      width: 100%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & button {
+      max-width: 170px;
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}

@@ -106,3 +106,32 @@ main {
 body .hide {
   display: none;
 }
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  background: $input-bg;
+  border-radius: 4px;
+  padding: 15px 14px;
+  font-size: 15px;
+  color: $input-color;
+  border: none;
+  box-sizing: border-box;
+
+  &::placeholder { /* Firefox, Chrome, Opera */
+    color: $input-placeholder;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $input-placeholder;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $input-placeholder;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+}

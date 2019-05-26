@@ -1,10 +1,10 @@
-.personal-area {
+.personal-area-icon{
   position: relative;
   display: inline-block;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: $personal-area-bg;
+  background-color: $personal-area-icon-bg;
 
   &:before {
     content: '';

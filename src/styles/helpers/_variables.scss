@@ -6,10 +6,15 @@ $gray: #333333;
 $dark-gray: #16162D;
 $white: #FFFFFF;
 $dirty-white: #EBEBEB; //TODO: дать нормальное имя
+$blue: #127AEF;
 
 // Text
 $base-color-text: $gray;
 
+// Input
+$input-bg: #EFF1F4;
+$input-color: #333333;
+$input-placeholder: #ABABAB;
 
 // Header
 $header-bg: $yellow;
@@ -34,7 +39,10 @@ $logo-text: $gray;
 $sub-menu-item: $gray;
 
 // Personal area
-$personal-area-bg: $dirty-white;
+$personal-area-border: #E0E0E0;
+
+// Personal icon area
+$personal-area-icon-bg: $dirty-white;
 
 // Personal auto
 $personal-auto: $gray;
@@ -46,6 +54,16 @@ $filter-main-title: $dark-gray;
 $section-white: $white;
 $section-gray: #F3F3F3;
 
+// Select
+$gray-theme: #EFF1F4;
+
 // Marks and models
 $model-title: #BDBDBD;
+
+// Hint
+$hint-bgc: $blue;
+$hint-color: $white;
+$hint-color-message: #625F5F;
+$hint-color-required: #EB5757;
+$hint-color-italic: #919191;
 

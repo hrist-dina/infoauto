@@ -1,8 +1,7 @@
-mixin select(options, nameSelect)
-    select(name=nameSelect).select.js-select
+mixin select(options, nameSelect, jsSelector = "js-select")
+    select(name=nameSelect class=['select', jsSelector])
         for option, key in options
             - var attributes = {};
             if key === 0
                 - var attributes = {'disabled': true, 'selected': true, 'hidden': true};
-
             option(value=option)&attributes(attributes)=option

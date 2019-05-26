@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Select from "%components%/select/select";
 
 export class FilterSearch {
     constructor(
@@ -22,6 +23,7 @@ export class FilterSearch {
         $(this.edit).on('click', function () {
             $(_this.form).removeClass('hide');
             $(_this.result).addClass('hide');
+            new Select();
         });
     }
 }
