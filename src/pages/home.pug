@@ -11,9 +11,10 @@ block content
 	section.section.section-white
 		.container
 			h2.h2 Популярное
-			.card-list
-				for card in cards
-					+card(card.img, card.title, card.marks)
+			.section__container
+				.card-list
+					for card in cards
+						+card(card.img, card.title, card.marks)
 	section.section.section-gray
 		.container
 			h2.h2 Вопросы и ответы
