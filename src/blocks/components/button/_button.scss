@@ -48,13 +48,13 @@ button {
     color: $base-color-text;
 
     &:hover {
-        background: #F2C208;
+        background: #f2c208;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
     }
 
     &:active {
-        background: #F2C208;
+        background: #f2c208;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: none;
     }
@@ -79,14 +79,14 @@ button {
     }
 
     &:active {
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.8);
     }
 
     &:before,
     &:after {
-        content: '';
+        content: "";
         position: absolute;
-        background-color: #16162D;
+        background-color: #16162d;
         border-radius: 2px;
         top: 0;
         bottom: 0;
@@ -111,10 +111,9 @@ button {
         background: #ffffff;
     }
 
-
     &:active:before,
     &:active:after {
-        background: rgba(255, 255, 255, .8);
+        background: rgba(255, 255, 255, 0.8);
     }
 }
 
@@ -129,5 +128,69 @@ button {
     padding: 7px;
 }
 
+.personal-area__auto {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 19px 19px 15px 16px;
 
+    &__info {
+        font-weight: normal;
+        font-size: 15px;
+        color: #333333;
+    }
 
+    &__remove {
+        position: relative;
+        color: #919191;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+.ledger {
+    margin-top: 40px;
+    padding-bottom: 20px;
+
+    &__head {
+        font-weight: normal;
+        font-size: 15px;
+        color: #919191;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        border-radius: 3px;
+        padding: 19px 19px 15px 16px;
+        margin-bottom: 10px;
+    }
+
+    &__head &__item {
+        font-weight: normal;
+        font-size: 15px;
+        color: #919191;
+    }
+
+    &__body &__item {
+        font-weight: normal;
+        font-size: 15px;
+        color: #333333;
+    }
+
+    &__remove {
+        font-weight: normal;
+        font-size: 15px;
+        color: #333333;
+    }
+}

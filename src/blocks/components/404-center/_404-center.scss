@@ -1,0 +1,29 @@
+.error {
+    margin-top: 50px;
+    text-align: center;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-left {
+        max-width: 304px;
+        margin: auto;
+    }
+    &-right {
+        max-width: 602px;
+        margin: auto;
+
+        &__h1 {
+            padding-bottom: 40px;
+        }
+    }
+
+    &__text {
+        width: 525px;
+        font-weight: normal;
+        font-size: 15px;
+        color: #333333;
+    }
+}
