@@ -72,6 +72,7 @@ button {
     border-radius: 3px;
     cursor: pointer;
     text-decoration: none;
+    background-color: $white;
 
     &:hover {
         background: #16162d;
@@ -128,69 +129,39 @@ button {
     padding: 7px;
 }
 
-.personal-area__auto {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
-    border-radius: 3px;
-    padding: 19px 19px 15px 16px;
+.remove {
+    position: relative;
+    font-size: 15px;
+    color: #919191;
+    padding-left: 28px;
+    text-decoration: none;
+    cursor: pointer;
 
-    &__info {
-        font-weight: normal;
-        font-size: 15px;
-        color: #333333;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: auto;
+        margin: auto;
+        background-color: $gray;
+        border-radius: 50%;
     }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 4px;
+        right: auto;
+        margin: auto;
+        width: 10px;
+        height: 2px;
+        background: $white;
+        border-radius: 4px;
 
-    &__remove {
-        position: relative;
-        color: #919191;
-
-        &::before {
-            position: absolute;
-            content: "";
-            width: 22px;
-            height: 22px;
-        }
-    }
-}
-
-.ledger {
-    margin-top: 40px;
-    padding-bottom: 20px;
-
-    &__head {
-        font-weight: normal;
-        font-size: 15px;
-        color: #919191;
-    }
-
-    &__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid #e0e0e0;
-        box-sizing: border-box;
-        border-radius: 3px;
-        padding: 19px 19px 15px 16px;
-        margin-bottom: 10px;
-    }
-
-    &__head &__item {
-        font-weight: normal;
-        font-size: 15px;
-        color: #919191;
-    }
-
-    &__body &__item {
-        font-weight: normal;
-        font-size: 15px;
-        color: #333333;
-    }
-
-    &__remove {
-        font-weight: normal;
-        font-size: 15px;
-        color: #333333;
     }
 }

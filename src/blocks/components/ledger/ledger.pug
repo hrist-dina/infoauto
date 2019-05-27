@@ -1,0 +1,63 @@
+include ../select/select
+
+.ledger
+    .ledger__head
+        .ledger__row
+            .ledger__item.ledger__date Дата
+            .ledger__item.ledger__length Пробег
+            .ledger__item Тип обслуживания
+            .ledger__item Комментарии
+            .ledger__item.ledger__date Следующее ТО
+            .ledger__item
+    .ledger__body
+        .ledger__row
+            .ledger__item.ledger__date(data-th="Дата") 15 окт 2018
+            .ledger__item.ledger__length(data-th="Пробег") 20 000 км
+            .ledger__item.ledger__text(data-th="Тип обслуживания") Замена топливного фильтра
+            .ledger__item.ledger__text(data-th="Комментарии") Замена после покупки авто
+            .ledger__item.ledger__date(data-th="Следующее ТО") 15 окт 2019
+            .ledger__item.ledger__remove
+                a(href='javascript:void(0)').remove Удалить
+        .ledger__row
+            .ledger__item.ledger__date(data-th="Дата") 15 окт 2018
+            .ledger__item.ledger__length(data-th="Пробег") 20 000 км
+            .ledger__item.ledger__text(data-th="Тип обслуживания") Замена топливного фильтра
+            .ledger__item.ledger__text(data-th="Комментарии") Замена после покупки авто
+            .ledger__item.ledger__date(data-th="Следующее ТО") 15 окт 2019
+            .ledger__item.ledger__remove
+                a(href='javascript:void(0)').remove Удалить
+        .ledger__row
+            .ledger__item.ledger__date(data-th="Дата") 15 окт 2018
+            .ledger__item.ledger__length(data-th="Пробег") 20 000 км
+            .ledger__item.ledger__text(data-th="Тип обслуживания") Замена топливного фильтра
+            .ledger__item.ledger__text(data-th="Комментарии") Замена после покупки авто
+            .ledger__item.ledger__date(data-th="Следующее ТО") 15 окт 2019
+            .ledger__item.ledger__remove
+                a(href='javascript:void(0)').remove Удалить
+        .ledger__row
+            .ledger__item.ledger__date(data-th="Дата") 15 окт 2018
+            .ledger__item.ledger__length(data-th="Пробег") 20 000 км
+            .ledger__item.ledger__text(data-th="Тип обслуживания") Замена топливного фильтра
+            .ledger__item.ledger__text(data-th="Комментарии") Замена после покупки авто
+            .ledger__item.ledger__date(data-th="Следующее ТО") 15 окт 2019
+            .ledger__item.ledger__remove
+                a(href='javascript:void(0)').remove Удалить
+form.ledger__form
+    .ledger__form-row
+        .ledger__form-inner
+            .ledger__date
+                input(type='text', placeholder='15 окт 2018')
+            .ledger__length
+                input(type='text', placeholder='20 000 км')
+            .ledger__text
+                +select(['Замена топливного фильтра', 'test'], 'test', 'js-select-gray')
+            .ledger__text
+                input(type='text', placeholder='Замена после покупки авто')
+            .ledger__date
+                input(type='text', placeholder='15 окт 2019')
+            .ledger__remove
+                a(href='javascript:void(0)').remove Удалить
+        a(href='javascript:void(0)').button-add Добавить
+    button(type='submit').button-yellow Сохранить
+
+

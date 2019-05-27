@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Select from "%components%/select/select";
 
 export class Tabs {
     constructor(selector = '.js-tabs') {
@@ -34,6 +35,7 @@ export class Tabs {
 
             _this.items.removeClass('active');
             $(_this.selector).find(`[data-${_this.dataItems}=${type}]`).addClass('active');
+            new Select('.js-select-gray', 'infoauto-gray');
         });
     }
 }
