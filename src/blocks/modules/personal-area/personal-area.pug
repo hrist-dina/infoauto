@@ -1,28 +1,7 @@
 include ../../components/select/select
-
--
-    var optionsMark = [
-        'Марка',
-        'Toyota',
-        'Лада',
-        'Mazda'
-    ];
-
--
-    var optionsModel = [
-        'Модель',
-        'Camry',
-        'Vesta',
-        '323'
-    ];
-
--
-    var optionsGeneration = [
-        'Поколение',
-        '2018',
-        '2016',
-        'III (BF), 1985 — 1989'
-    ];
+include ../../components/card/card
+include ../../../data/personal-area
+include ../../components/card-question/card-question
 
 section.personal-area
     .container
@@ -31,15 +10,15 @@ section.personal-area
             .personal-area__tabs
                 ul
                     li
-                        a(href="#" data-tab-menu='info' class='active') Личные данные
+                        a(class='active' data-tab-menu='info' href="#") Личные данные
                     li
-                        a(href="#" data-tab-menu='autos') Автомобили
+                        a(data-tab-menu='autos' href="#") Автомобили
                     li
-                        a(href="#" data-tab-menu='ledger') Книга учета ТО
+                        a(data-tab-menu='ledger' href="#") Книга учета ТО
                     li
-                        a(href="#" data-tab-menu='favorite') Избранное
+                        a(data-tab-menu='favorite' href="#") Избранное
                     li
-                        a(href="#") Мои вопросы
+                        a(data-tab-menu='questions' href="#") Мои вопросы
                 a(href="#").personal-area__logout Выйти
             .personal-area__content
                 .personal-area__tab-item.active(data-tab-item='info')
@@ -88,3 +67,12 @@ section.personal-area
                 .personal-area__tab-item(data-tab-item='ledger')
                     include ../../components/ledger/ledger
                 .personal-area__tab-item(data-tab-item='favorite')
+                    .card-list
+                        for card in cards
+                            +card(card.img, card.title, card.marks)
+                    include ../../components/pagination/pagination        
+
+                .personal-area__tab-item(data-tab-item='questions')
+                    .card-question-list
+                        for question in questions
+                            +card-question(question.auto, question.title, question.hasAnswer)
