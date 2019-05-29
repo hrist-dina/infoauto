@@ -1,0 +1,22 @@
+.share {
+  display: inline-block;
+  position: relative;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: $base-color-text;
+  padding-right: 35px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url("../img/sprites/intermediate-svg/icon-share.svg");
+    width: 23px;
+    height: 26px;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    margin: auto;
+  }
+}

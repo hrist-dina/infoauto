@@ -5,6 +5,7 @@ block variables
 block content
 	include ../blocks/components/card/card
 	include ../blocks/components/card-question/card-question
+	include ../blocks/components/banners/banners
 	include ../data/home
 
 	include ../blocks/components/filter-main/filter-main
@@ -19,14 +20,14 @@ block content
 		.container
 			h2.h2 Вопросы и ответы
 			.section__container
-				.card-question-list.card-question-list__col-9
+				.card-question-list.section__main
 					for question in questions
 						+card-question(question.auto, question.title, question.hasAnswer)
-				.card-question-list__col-3
+				.section__sidebar
 					include ../blocks/components/banner-ask-question/banner-ask-question
 
 	include ../blocks/components/note/note
-	include ../blocks/components/banners/banners
+	+banners(true)
 
 
 

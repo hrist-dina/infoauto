@@ -65,15 +65,5 @@
     & .card-question {
       margin-bottom: 16px;
     }
-
-    &__col-9 {
-      width: #{calc(100% - 368px)};
-      margin-right: 63px;
-    }
-    &__col-3 {
-      max-width: 305px;
-      width: 100%;
-    }
-
   }
 }

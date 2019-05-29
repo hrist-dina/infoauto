@@ -93,6 +93,22 @@ main {
       margin-bottom: 25px;
     }
   }
+
+  &__border-line {
+    border-bottom: 3px solid #E7E7E7;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+  }
+
+  &__main {
+    width: #{calc(100% - 368px)};
+    margin-right: 63px;
+  }
+
+  &__sidebar {
+    max-width: 305px;
+    width: 100%;
+  }
 }
 
 .section-white {
@@ -132,6 +148,25 @@ input[type='password'] {
 
   &:focus {
     outline: none;
+  }
+}
+
+.auto-front {
+  position: relative;
+  padding-left: 50px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url("../img/sprites/intermediate-svg/auto-front.svg") no-repeat center;
+    background-size: 100%;
+    width: 36px;
+    height: 36px;
+    top: 0;
+    bottom: 0;
+    right: auto;
+    left: 0;
+    margin: auto;
   }
 
 }

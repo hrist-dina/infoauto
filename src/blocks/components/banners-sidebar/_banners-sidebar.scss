@@ -1,0 +1,12 @@
+.banners-sidebar {
+  margin-top: 40px;
+
+  &__item {
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: inline-block;
+    & img {
+      width: 100%;
+    }
+  }
+}
