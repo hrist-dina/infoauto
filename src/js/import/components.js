@@ -1,3 +1,5 @@
+import "%components%/article-detail/article-detail";
+
 import Select from "%components%/select/select";
 import {FilterSearch} from "%components%/filter-search/filter-search";
 import $ from "jquery";
