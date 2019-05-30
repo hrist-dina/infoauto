@@ -1,69 +1,76 @@
 .card-question {
-  display: inline-block;
-  width: #{calc(50% - 8px)};
-  min-height: 185px;
-  border-radius: 8px;
-  background-color: $white;
-  text-decoration: none;
-
-  &__inner {
-    padding: 19px 15px 16px 24px;
-  }
-
-  &__auto {
-    position: relative;
-    font-weight: 300;
-    font-size: 15px;
-    color: #16162d;
-    padding-left: 25px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      background: url("../img/sprites/intermediate-svg/auto-front.svg") no-repeat;
-      width: 16px;
-      height: 12px;
-      top: 0;
-      bottom: 0;
-      right: auto;
-      left: 0;
-      margin: auto;
-    }
-
-  }
-
-  &__title {
-    font-weight: normal;
-    font-size: 20px;
-    color: #16162d;
-    margin-top: 15px;
-    margin-bottom: 45px;
-  }
-
-  &__status {
     display: inline-block;
-    min-width: 128px;
-    max-height: 30px;
-    padding: 5px 10px;
-    background: #E0E0E0;
-    border-radius: 3px;
-    text-align: center;
-    color: #000000;
-    font-weight: 300;
-    box-sizing: border-box;
-  }
+    width: #{calc(50% - 8px)};
+    min-height: 185px;
+    border-radius: 8px;
+    background-color: $white;
+    text-decoration: none;
 
-  &__has-answer {
-    background: #b2edce;
-  }
-
-  &-list {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    & .card-question {
-      margin-bottom: 16px;
+    &__inner {
+        padding: 19px 15px 16px 24px;
     }
-  }
+
+    &__auto {
+        position: relative;
+        font-weight: 300;
+        font-size: 15px;
+        color: #16162d;
+        padding-left: 25px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: url("../img/sprites/intermediate-svg/auto-front.svg")
+                no-repeat;
+            width: 16px;
+            height: 12px;
+            top: 0;
+            bottom: 0;
+            right: auto;
+            left: 0;
+            margin: auto;
+        }
+    }
+
+    &__title {
+        font-weight: normal;
+        font-size: 20px;
+        color: #16162d;
+        margin-top: 15px;
+        margin-bottom: 45px;
+    }
+
+    &__status {
+        display: inline-block;
+        min-width: 128px;
+        max-height: 30px;
+        padding: 5px 10px;
+        background: #e0e0e0;
+        border-radius: 3px;
+        text-align: center;
+        color: #000000;
+        font-weight: 300;
+        box-sizing: border-box;
+    }
+
+    &__has-answer {
+        background: #b2edce;
+    }
+
+    &-list {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        & .card-question {
+            margin-bottom: 16px;
+        }
+        &_3-col .card-question {
+            max-width: 400px;
+            margin-right: 40px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
 }

@@ -138,7 +138,7 @@ button {
     cursor: pointer;
 
     &:before {
-        content: '';
+        content: "";
         position: absolute;
         width: 18px;
         height: 18px;
@@ -151,7 +151,7 @@ button {
         border-radius: 50%;
     }
     &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         bottom: 0;
@@ -162,6 +162,36 @@ button {
         height: 2px;
         background: $white;
         border-radius: 4px;
-
     }
+}
+
+.modal {
+    padding: 30px 40px 50px 45px;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 100%;
+    background-color: beige;
+
+    &__text {
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 25px;
+        color: #333333;
+    }
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+    box-sizing: border-box;
+}
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+    box-sizing: border-box;
 }

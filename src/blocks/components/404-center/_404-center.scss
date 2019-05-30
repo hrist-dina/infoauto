@@ -18,6 +18,14 @@
         &__h1 {
             padding-bottom: 40px;
         }
+
+        &-services {
+            margin-top: 40px;
+            &__img {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
 
     &__text {
