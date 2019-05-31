@@ -5,12 +5,34 @@
   font-size: 15px;
   font-weight: 500;
   margin-left: 42px;
+  @include lg-block {
+    margin-left: 6px;
+    height: 47px;
+  };
+
+  @include sm-block {
+    margin-right: -12px;
+    margin-top: -8px;
+  }
 
   & a {
     text-decoration: none;
     color: $personal-auto;
     border-bottom: 0.5px solid #ABABAB;
     padding-bottom: 3px;
+    @include lg-block {
+      display: inline-block;
+      border-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 47px solid $white;
+      border-left: 15px solid transparent;
+      height: 0;
+      width: 37px;
+
+      & span {
+        display: none;
+      }
+    }
   }
 
   &:before {
@@ -24,5 +46,16 @@
     top: 0;
     bottom: 0;
     margin: auto;
+    cursor: pointer;
+
+    @include lg-block {
+      left: 0;
+      right: -5px;
+      top: 0;
+    };
+
+    @include sm-block {
+      top: 4px;
+    }
   }
 }

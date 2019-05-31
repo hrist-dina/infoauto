@@ -3,16 +3,31 @@
     background-color: $header-bg;
     padding-top: 20px;
     padding-bottom: 20px;
+    @include sm-block {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
   }
 
   &__top {
     @include row-flex();
+    @include sm-block {
+      flex-wrap: wrap;
+    }
   }
 
   &__logo {
-
     @include col();
     @include size(3);
+    @include size-xl(2);
+    @include size-lg(3);
+    @include size-sm(7);
+
+    @include lg-block {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
     & a {
       text-decoration: none;
     }
@@ -25,6 +40,14 @@
     justify-content: space-between;
     @include col();
     @include size(6);
+    @include size-xl(6.5);
+    @include size-lg(7);
+    @include size-sm(12);
+    @include xl(align-items, center);
+    @include sm-block {
+      order: 1;
+      margin-top: 7px;
+    }
   }
 
   &__right {
@@ -34,21 +57,36 @@
     justify-content: space-between;
     @include col();
     @include size(3);
+    @include size-xl(3.5);
+    @include size-lg(2);
+    @include size-sm(5);
+
+    @include lg-block {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
   }
 
   & .sub-menu {
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   & .search {
     max-width: 520px;
     width: 100%;
+    @include sm-block {
+      max-width: 100%;
+    };
   }
 
   &__ask-question {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 12px;
+    @include lg(display, none);
   }
 
   &__personal-area-icon{
@@ -56,9 +94,14 @@
     justify-content: flex-end;
     align-items: center;
     margin-top: 15px;
+    @include lg(margin-top, 0)
   }
 
   // Menu
+  &__mobile-menu-icon {
+    display: none;
+    @include lg(display, inline-block)
+  }
 
   &__menu {
     background-color: $header-menu-bg;
@@ -77,6 +120,7 @@
       font-size: 18px;
       padding: 15px 0;
       color: $header-menu-color;
+      @include lg(font-size, 15px);
 
       & img {
         max-width: 40px;
@@ -88,6 +132,7 @@
         margin-left: 10px;
         display: block;
         white-space: nowrap;
+        @include sm(display, none);
       }
     }
   }

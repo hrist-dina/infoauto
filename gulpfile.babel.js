@@ -139,13 +139,13 @@ export const smartGrid = cb => {
                 width: "320px"
             },
             sm: {
-                width: "576px"
+                width: "680px"
             },
             md: {
                 width: "768px"
             },
             lg: {
-                width: "992px"
+                width: "1024px"
             },
             xl: {
                 width: "1280px"

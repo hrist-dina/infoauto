@@ -2,4 +2,5 @@ mixin personal-auto(value, hasTitle=false)
     .personal-auto
         if (hasTitle)
             p Ваш автомобиль:
-        a(href="#")=value
+        a(href="#")
+            span=value

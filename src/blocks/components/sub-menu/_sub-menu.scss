@@ -1,4 +1,5 @@
 .sub-menu {
+  @include lg(display, none);
 
   &__list {
     list-style-type: none;

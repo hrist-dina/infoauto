@@ -1,8 +1,11 @@
 .logo {
   max-width: 255px;
   &__img {
-    width: 255px;
-    height: 49px;
+    max-width: 255px;
+    width: 100%;
+    @include lg-block {
+      max-width: 110px;
+    }
   }
 
 
@@ -15,5 +18,7 @@
     font-size: 14px;
     line-height: 20px;
     color: $logo-text;
+    @include xl(font-size, 12px);
+    @include lg(display, none);
   }
 }

@@ -62,10 +62,14 @@ main {
 
 .container {
   @include container();
-  @include sm(max-width, 510px);
-  @include md(max-width, 690px);
-  @include lg(max-width, 930px);
+  //@include sm(max-width, 510px);
+  //@include md(max-width, 690px);
+  //@include lg(max-width, 930px);
   @include xl(max-width, 1280px);
+  @include sm-block {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 
 .img-responsive {

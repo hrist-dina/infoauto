@@ -5,6 +5,10 @@ header.header
         .container
             .header__top
                 .header__logo
+                    .header__mobile-menu-icon
+                        button.hamburger.hamburger--collapse.js-mobile-menu-icon(type="button" aria-label="Меню" aria-controls="navigation")
+                            span.hamburger-box
+                                span.hamburger-inner
                     a(href="/")
                         include ../../components/logo/logo
                 .header__center
