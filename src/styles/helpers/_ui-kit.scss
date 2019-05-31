@@ -1,20 +1,49 @@
 .add-to-favorite {
-  position: relative;
-  padding-left: 35px;
+    position: relative;
+    padding-left: 35px;
 
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 22px;
-    height: 21px;
-    background-image: url(icon-favorite());
-    background-repeat: no-repeat;
-  }
-
-  &.active {
     &:before {
-      background-image: url(icon-favorite(true));
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        margin: auto;
+        width: 22px;
+        height: 21px;
+        background-image: url(icon-favorite());
+        background-repeat: no-repeat;
     }
-  }
+
+    &.active {
+        &:before {
+            background-image: url(icon-favorite(true));
+        }
+    }
+}
+
+.remind-me {
+    position: relative;
+    padding-left: 35px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        margin: auto;
+        width: 22px;
+        height: 26px;
+        background-image: url(icon-remind());
+        background-repeat: no-repeat;
+    }
+
+    &.active {
+        &:before {
+            background-image: url(icon-remind(true));
+        }
+    }
 }
