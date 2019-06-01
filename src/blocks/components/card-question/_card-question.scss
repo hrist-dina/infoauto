@@ -69,16 +69,24 @@
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-bottom: 20px;
 
-        @include md-block {
-            margin-bottom: 15px;
+        & ~ .link {
+            display: inline-block;
+            margin-top: 20px;
         }
 
         & .card-question {
             margin-bottom: 16px;
 
+            &:nth-last-child(2),
+            &:last-child {
+                margin-bottom: 0;
+            }
+
             @include sm-block {
+                &:nth-last-child(2) {
+                    margin-bottom: 16px;
+                }
                 &:last-child {
                     margin-bottom: 0;
                 }
