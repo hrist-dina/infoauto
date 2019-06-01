@@ -1,5 +1,5 @@
 mixin search(placeholder, hasIcon=false)
-    .search
+    .search.js-search
         form._form(action="", method="get", class=hasIcon ? 'search__icon' : '')
             input(type="text", name="q", placeholder=placeholder)
             button(type="submit") Найти

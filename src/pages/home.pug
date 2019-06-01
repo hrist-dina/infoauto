@@ -3,31 +3,33 @@ block variables
 	- var title = "Главная";
 
 block content
-	//include ../blocks/components/card/card
-	//include ../blocks/components/card-question/card-question
-	//include ../blocks/components/banners/banners
-	//include ../data/home
-	//
-	//include ../blocks/components/filter-main/filter-main
-	//section.section.section-white
-	//	.container
-	//		h2.h2 Популярное
-	//		.section__container
-	//			.card-list
-	//				for card in cards
-	//					+card(card.img, card.title, card.marks)
-	//section.section.section-gray
-	//	.container
-	//		h2.h2 Вопросы и ответы
-	//		.section__container
-	//			.card-question-list.section__main
-	//				for question in questions
-	//					+card-question(question.auto, question.title, question.hasAnswer)
-	//			.section__sidebar
-	//				include ../blocks/components/banner-ask-question/banner-ask-question
-	//
-	//include ../blocks/components/note/note
-	//+banners(true)
-	//
+	include ../blocks/components/card/card
+	include ../blocks/components/card-question/card-question
+	include ../blocks/components/banners/banners
+	include ../data/home
+
+	include ../blocks/components/filter-main/filter-main
+	section.section.section-white
+		.container
+			h2.h2 Популярное
+			.section__container
+				.card-list
+					for card in cards
+						+card(card.img, card.title, card.marks)
+	section.section.section-gray
+		.container
+			h2.h2 Вопросы и ответы
+			.section__container
+				.section__main
+					.card-question-list
+						for question in questions
+							+card-question(question.auto, question.title, question.hasAnswer)
+					a(href="#").link Перейти в раздел
+				.section__sidebar
+					include ../blocks/components/banner-ask-question/banner-ask-question
+
+	include ../blocks/components/note/note
+	+banners(true)
+
 
 

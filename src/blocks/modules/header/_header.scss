@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   &__inner {
     background-color: $header-bg;
     padding-top: 20px;
@@ -46,7 +47,6 @@
     @include xl(align-items, center);
     @include sm-block {
       order: 1;
-      margin-top: 7px;
     }
   }
 
@@ -79,6 +79,7 @@
     width: 100%;
     @include sm-block {
       max-width: 100%;
+      margin-top: 7px
     };
   }
 
@@ -105,35 +106,5 @@
 
   &__menu {
     background-color: $header-menu-bg;
-
-    &-list {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &-item {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      text-decoration: none;
-      font-size: 18px;
-      padding: 15px 0;
-      color: $header-menu-color;
-      @include lg(font-size, 15px);
-
-      & img {
-        max-width: 40px;
-        max-height: 26px;
-        width: 100%;
-      }
-
-      & span {
-        margin-left: 10px;
-        display: block;
-        white-space: nowrap;
-        @include sm(display, none);
-      }
-    }
   }
 }

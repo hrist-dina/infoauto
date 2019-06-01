@@ -6,6 +6,14 @@
     background-color: $white;
     text-decoration: none;
 
+    @include sm-block {
+        width: 100%;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
+    }
+
     &__inner {
         padding: 19px 15px 16px 24px;
     }
@@ -61,10 +69,22 @@
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        margin-bottom: 20px;
+
+        @include md-block {
+            margin-bottom: 15px;
+        }
 
         & .card-question {
             margin-bottom: 16px;
+
+            @include sm-block {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
+
         &_3-col .card-question {
             max-width: 400px;
             margin-right: 40px;

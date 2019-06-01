@@ -1,5 +1,5 @@
 import $ from "jquery";
-import Select from "%components%/select/select";
+import {Select} from "%components%/select/select";
 
 export class FilterSearch {
     constructor(

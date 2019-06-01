@@ -10,6 +10,10 @@
     height: 47px;
   };
 
+  & p {
+    margin-bottom: 5px;
+  }
+
   @include sm-block {
     margin-right: -12px;
     margin-top: -8px;

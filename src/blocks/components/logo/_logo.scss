@@ -18,7 +18,7 @@
     font-size: 14px;
     line-height: 20px;
     color: $logo-text;
-    @include xl(font-size, 12px);
+    @include xl(font-size, 11px);
     @include lg(display, none);
   }
 }

@@ -93,8 +93,11 @@ section.article-detail
 
         .article-content
             .article-bottom
-                a(href="javascript:void(0)").add-to-favorite.js-add-to-favorite Добавить в избранное
-                a(href="javascript:void(0)").remind-me.js-remind-me Напомнить мне
-                include ../../components/share-list/share-list
+                .article-bottom__item
+                    a(href="javascript:void(0)").add-to-favorite.js-add-to-favorite Добавить в избранное
+                .article-bottom__item
+                    a(href="javascript:void(0)").remind-me.js-remind-me Напомнить мне
+                .article-bottom__item
+                    include ../../components/share-list/share-list
 
 

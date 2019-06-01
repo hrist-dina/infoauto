@@ -1,3 +1,3 @@
-import {Tabs} from "../../../js/classes/Tabs";
+import {Tabs} from "../../../js/scripts/classes/Tabs";
 
 new Tabs();

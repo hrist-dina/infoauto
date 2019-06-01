@@ -10,6 +10,11 @@
     padding-top: 45px;
     padding-bottom: 35px;
     padding-right: 30px;
+    @include sm-block {
+      padding-right: 0;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
   }
 
   &__img {
@@ -22,17 +27,22 @@
     margin: auto;
   }
 
+  &__inner {
+    @include row-flex();
+  }
+
   &__left {
     @include col();
     @include size(8);
-  }
-
-  &__inner {
-    @include row-flex();
+    @include size-sm(12);
   }
 
   &__right {
     @include col();
     @include size(4);
+    @include size-sm(12);
+    @include sm-block {
+      order: -1;
+    }
   }
 }

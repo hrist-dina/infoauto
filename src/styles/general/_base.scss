@@ -8,7 +8,12 @@ body {
 body {
   font-family: Roboto, sans-serif;
   font-size: 18px;
+  line-height: 30px;
   color: $base-color-text;
+  @include md-block {
+    font-size: 15px;
+    line-height: 25px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, ul {
@@ -20,29 +25,46 @@ h1,
 .h1 {
   font-weight: 500;
   font-size: 40px;
-  color: #16162d;
+  color: $dark-gray;
+  line-height: 140%;
+  @include md-block {
+    font-size: 28px;
+  }
 }
 
 h2,
 .h2 {
   font-weight: 500;
   font-size: 30px;
-  color: #16162d;
+  color: $dark-gray;
+  line-height: 140%;
+  @include md-block {
+    font-size: 24px;
+  }
 }
 
 h3,
 .h3 {
   font-weight: 500;
   font-size: 24px;
-  color: #16162d;
+  color: $dark-gray;
+  line-height: 140%;
 }
 
 main {
   padding-bottom: 60px;
   height: 100%;
+  box-sizing: border-box;
+
+  @include md-block {
+    padding-bottom: 14px;
+  }
 
   h1 {
     margin-bottom: 45px;
+    @include md-block {
+      margin-bottom: 20px;
+    }
   }
 }
 
@@ -58,6 +80,10 @@ main {
 
 .footer {
   flex: 0 0 auto;
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 .container {
@@ -82,19 +108,35 @@ main {
   padding-top: 40px;
   padding-bottom: 40px;
 
+  @include md-block {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
   &__container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 40px;
+
+    @include md-block {
+      margin-top: 20px;
+    }
   }
 
   &__list {
     margin-bottom: 50px;
 
+    @include sm-block {
+      margin-bottom: 30px;
+    }
+
     & h2,
     & .h2 {
       margin-bottom: 25px;
+      @include sm-block {
+        margin-bottom: 20px;
+      }
     }
   }
 
@@ -107,11 +149,23 @@ main {
   &__main {
     width: #{calc(100% - 368px)};
     margin-right: 63px;
+    @include xl-block {
+      width: #{calc(100% - 335px)};
+      margin-right: 30px;
+    }
+    @include lg-block {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
   }
 
   &__sidebar {
     max-width: 305px;
     width: 100%;
+    @include lg-block {
+      max-width: 100%;
+    }
   }
 }
 
@@ -172,5 +226,4 @@ input[type='password'] {
     left: 0;
     margin: auto;
   }
-
 }
