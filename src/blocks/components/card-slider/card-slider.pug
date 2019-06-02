@@ -1,0 +1,7 @@
+include ../card/card
+
+mixin card-slider(cards)
+    .card-slider.js-card-slider
+        for card in cards
+            +card(card.img, card.title, card.marks)
+

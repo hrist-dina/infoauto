@@ -1,7 +1,7 @@
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 55px;
+  top: 87px;
   left: 0;
   background-color: $dark-gray;
   width: 100%;
@@ -9,6 +9,14 @@
   min-height: 100%;
   z-index: 1000;
   padding-bottom: 20px;
+
+  @include sm-block {
+    top: 55px;
+  }
+
+  @include from(1025px) {
+    display: none !important;
+  }
 
   &__main {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);

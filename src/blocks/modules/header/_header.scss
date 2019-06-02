@@ -93,6 +93,9 @@
       max-width: 100%;
       margin-top: 7px
     };
+    @include from(1025px) {
+      display: block !important;
+    }
   }
 
   &__ask-question {

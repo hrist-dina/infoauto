@@ -6,14 +6,33 @@
         margin-top: 60px;
         justify-content: space-between;
 
+
+        & .slick-list {
+            height: 100% !important;
+        }
+
         @include  md-block {
-            margin-top: 45px;
+            margin-top: 40px;
+        }
+
+        & .slick-slide {
+            padding-right: 28px;
+            &:last-child {
+                padding-right: 0;
+            }
+
+            @include sm-block {
+                padding-right: 12px;
+            }
         }
 
         & img {
             max-width: 626px;
-            margin: 0 28px 0 0;
+            margin: 0;
             width: 100%;
+            @include  md-block {
+                max-width: 100%;
+            }
 
             &:last-child {
                 margin-right: 0;

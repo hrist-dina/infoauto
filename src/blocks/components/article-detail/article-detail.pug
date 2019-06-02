@@ -1,3 +1,6 @@
+include ../../components/card-slider/card-slider
+include ../../../data/article-detail
+
 section.article-detail
     .container
         img.articles-img(src="img/articles.jpg", alt="")
@@ -90,7 +93,8 @@ section.article-detail
                 li постепенное заполнение системы ТЖ вместе с параллельной ее прокачкой.
 
                 li Как было упомянуто выше, такой способ также имеет право на существование, однако в силу его малого удобства и трудовых и временных затрат его редко используют.
-
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7iGFH5HbWGM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://player.vimeo.com/video/25924530?portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         .article-content
             .article-bottom
                 .article-bottom__item
@@ -99,5 +103,12 @@ section.article-detail
                     a(href="javascript:void(0)").remind-me.js-remind-me Напомнить мне
                 .article-bottom__item
                     include ../../components/share-list/share-list
+section.pay-attension
+    .container
+        .article-content
+            h2.h2 Обратите внимание
+        +card-slider(cards)
+
+
 
 
