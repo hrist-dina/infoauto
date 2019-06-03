@@ -19,10 +19,10 @@ export class FilterSearch {
     }
 
     listenClick() {
-        let _this = this;
+        let self = this;
         $(this.edit).on('click', function () {
-            $(_this.form).removeClass('hide');
-            $(_this.result).addClass('hide');
+            $(self.form).removeClass('hide');
+            $(self.result).addClass('hide');
             new Select();
         });
     }

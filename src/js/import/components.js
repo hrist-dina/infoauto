@@ -5,6 +5,7 @@ import {Select} from "%components%/select/select";
 import {FilterSearch} from "%components%/filter-search/filter-search";
 import {MobileMenu} from "%components%/mobile-menu/mobile-menu";
 import {Video} from "../scripts/classes/Video";
+import {PeronalAreaSubMenu} from "%components%/personal-area-icon/PeronalAreaSubMenu";
 
 $(document).ready(function () {
     new Select();
@@ -12,4 +13,5 @@ $(document).ready(function () {
     new FilterSearch();
     new MobileMenu();
     new Video();
+    new PeronalAreaSubMenu();
 });

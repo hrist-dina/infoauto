@@ -1,0 +1,32 @@
+include ../../components/select/select
+
+-
+    var optionsMark = [
+        'Марка',
+        'Toyota',
+        'Лада',
+        'Mazda'
+    ];
+
+-
+    var optionsModel = [
+        'Модель',
+        'Camry',
+        'Vesta',
+        '323'
+    ];
+
+-
+    var optionsGeneration = [
+        'Поколение',
+        '2018',
+        '2016',
+        'III (BF), 1985 — 1989'
+    ];
+
+.modal.mask-question
+
+    form
+        +select(optionsMark)
+        +select(optionsModel)
+        +select(optionsGeneration)

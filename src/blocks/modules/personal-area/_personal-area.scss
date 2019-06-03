@@ -37,6 +37,15 @@
         background-color: $white;
         display: flex;
         justify-content: space-between;
+
+        &-content {
+            width: 100%;
+            white-space: nowrap;
+            display: flex;
+            justify-content: space-between;
+            overflow-x: auto;
+        }
+
         & ul {
             display: flex;
             & li {

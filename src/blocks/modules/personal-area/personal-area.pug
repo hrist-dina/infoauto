@@ -7,19 +7,20 @@ section.personal-area
     .container
         include ../../components/personal-area-head/personal-area-head
         .personal-area__conteiner.js-tabs
-            .personal-area__tabs
-                ul
-                    li
-                        a(class='active' data-tab-menu='info' href="#") Личные данные
-                    li
-                        a(data-tab-menu='autos' href="#") Автомобили
-                    li
-                        a(data-tab-menu='ledger' href="#") Книга учета ТО
-                    li
-                        a(data-tab-menu='favorite' href="#") Избранное
-                    li
-                        a(data-tab-menu='questions' href="#") Мои вопросы
-                a(href="#").personal-area__logout Выйти
+            .personal-area__tabs.js-tabs-content
+                .personal-area__tabs-content
+                    ul
+                        li
+                            a(class='active' data-tab-menu='info' href="#") Личные данные
+                        li
+                            a(data-tab-menu='autos' href="#") Автомобили
+                        li
+                            a(data-tab-menu='ledger' href="#") Книга учета ТО
+                        li
+                            a(data-tab-menu='favorite' href="#") Избранное
+                        li
+                            a(data-tab-menu='questions' href="#") Мои вопросы
+                    a(href="#").personal-area__logout Выйти
             .personal-area__content
                 .personal-area__tab-item.active(data-tab-item='info')
                     form.personal-area__info(action='' method='POST')

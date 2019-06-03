@@ -26,6 +26,9 @@ class Video {
 
     resize() {
         const self = this;
+        if (!self.allVideos.length) {
+            return;
+        }
         $(window).resize(function() {
             self.allVideos.each(function() {
                 let newWidth = $(this).parent().width();
