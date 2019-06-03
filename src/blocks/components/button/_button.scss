@@ -195,3 +195,34 @@ button {
     border: 2px solid rgba(18, 122, 239, 0.75);
     box-sizing: border-box;
 }
+
+.comments {
+    display: inline-block;
+    background-color: #919191;
+    position: relative;
+
+    &__inner {
+        padding: 40px 90px;
+        max-width: 844px;
+        margin: 0 auto;
+    }
+
+    textarea {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        resize: none;
+        padding: 22px;
+        font-weight: normal;
+        font-size: 18px;
+        color: #828282;
+    }
+
+    &__quantity-text {
+        color: #16162d;
+        font-weight: 500;
+        font-size: 21px;
+    }
+}

@@ -32,12 +32,9 @@ h3.h3  Популярное
 
 
 
-
-input.checkbox(name="agree" type="checkbox")
-span.checkbox-custom
-
-
-
 section.comments
     .comments__inner
-    
+        .comments__quantity-text 4 комментария
+        .form.comments__posting-form
+        textarea(name="textarea", placeholder="Оставить комментарий...")
+            input(type="submit" value="Отправить") 
