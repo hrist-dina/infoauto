@@ -1,3 +1,4 @@
 mixin hint(message)
     .hint ?
-        .hint__message.hide !{message}
+        .hint__message.hide
+            .hint__message-inner !{message}

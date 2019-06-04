@@ -49,7 +49,7 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
   min-width: 210px;
   border-radius: 4px;
-  z-index: 1000;
+  z-index: -1;
   -webkit-transition: opacity .7s ease;
   -moz-transition: opacity .7s ease;
   -ms-transition: opacity .7s ease;
@@ -63,7 +63,7 @@
 
   &.active {
     opacity: 1;
-
+    z-index: 1000
   }
 
 

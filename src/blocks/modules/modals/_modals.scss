@@ -37,19 +37,21 @@
         font-size: 15px;
         color: #ababab;
     }
+
+    & p {
+        font-weight: normal;
+        font-size: 14px;
+        color: #919191;
+    }
+
+    & a {
+        color: #919191;
+        text-decoration: none;
+    }
+
 }
 
 .button__send {
     width: 310px;
 }
 
-& p {
-    font-weight: normal;
-    font-size: 14px;
-    color: #919191;
-}
-
-& a {
-    color: #919191;
-    text-decoration: none;
-}
