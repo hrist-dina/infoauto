@@ -1,0 +1,55 @@
+.modal {
+    // background-color: #fff;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 100%;
+
+    &__title {
+        font-weight: 500;
+        font-size: 30px;
+        color: #16162d;
+        padding-bottom: 30px;
+    }
+
+    &__text {
+        font-weight: normal;
+        font-size: 15px;
+        color: #333333;
+    }
+}
+
+.form-dispatch {
+    & label {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    & input {
+        width: 100%;
+    }
+
+    & textarea {
+        width: 100%;
+        background: #eff1f4;
+        border-radius: 4px;
+        border: none;
+        font-weight: normal;
+        font-size: 15px;
+        color: #ababab;
+    }
+}
+
+.button__send {
+    width: 310px;
+}
+
+& p {
+    font-weight: normal;
+    font-size: 14px;
+    color: #919191;
+}
+
+& a {
+    color: #919191;
+    text-decoration: none;
+}

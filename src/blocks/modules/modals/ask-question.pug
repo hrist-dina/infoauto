@@ -1,5 +1,9 @@
 include ../../components/select/select
-
+.modal
+    .modal__close
+    .modal__title Задать вопрос
+    .modal__text Не нашлось нужной публикации? Специалисты готовы поделиться своими знаниями. Спрашивай!
+    .modal__text Ваш автомобиль
 -
     var optionsMark = [
         'Марка',
@@ -30,3 +34,13 @@ include ../../components/select/select
         +select(optionsMark)
         +select(optionsModel)
         +select(optionsGeneration)
+
+    .modal__text Ваш вопрос
+    form.form-dispatch
+        label
+            input(name='question', type='text', placeholder='Заголовок вопроса')
+        label    
+            textarea(name="textarea", placeholder="Текст вопроса")
+    button.button-yellow.button__send Отправить
+    p='Нажимая на кнопку, Вы соглашаетесь на обработку'
+    a(href='#')='персональных данных'         
