@@ -18,7 +18,12 @@
 
 .personal-area {
     & .card {
-        width: 380px;
+        max-width: 380px;
+        width: #{calc(33% - 20px)};
+
+        @include lg-block {
+            width: 100%;
+        }
     }
 
     & .card-question {
@@ -152,8 +157,17 @@
         padding: 19px 19px 15px 16px;
         margin-bottom: 10px;
 
+        @include sm-block {
+            position: relative;
+            padding: 12px;
+        }
+
         &-wrap {
             margin-bottom: 40px;
+
+            @include sm-block {
+                margin-bottom: 20px;
+            }
         }
 
         &__info {
@@ -161,17 +175,16 @@
             font-size: 15px;
             color: #333333;
         }
+        @include sm-block {
+            padding-bottom: 38px;
+        }
+    }
 
-        &__remove {
-            position: relative;
-            color: #919191;
-
-            &::before {
-                position: absolute;
-                content: "";
-                width: 22px;
-                height: 22px;
-            }
+    &__remove {
+        @include sm-block {
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
     }
 }

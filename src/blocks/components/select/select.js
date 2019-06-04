@@ -5,18 +5,22 @@ $.fn.iziModal = select2;
 $.fn.select2.defaults.set("width", "100%");
 
 export class Select {
-    constructor(selector = '.js-select', theme = 'infoauto'){
+    constructor(selector = '.js-select', theme = 'infoauto', options = {}){
         this.selector = selector;
         this.theme = theme;
+
+        this.baseOptions = {
+            minimumResultsForSearch: Infinity,
+            theme: this.theme
+        };
+
+        this.options = Object.assign(this.baseOptions, options);
 
         this.init();
     }
 
     init() {
-        $(this.selector).select2({
-            minimumResultsForSearch: Infinity,
-            theme: this.theme,
-        });
+        $(this.selector).select2(this.options);
     }
 
 }
