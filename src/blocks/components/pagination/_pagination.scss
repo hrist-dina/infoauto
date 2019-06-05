@@ -1,6 +1,6 @@
 .pagination {
     margin-top: 25px;
-    @include row-flex();
+    display: flex;
 
     &__wrap {
         display: flex;

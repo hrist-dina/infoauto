@@ -1,4 +1,5 @@
 .card-question {
+    position: relative;
     display: inline-block;
     width: #{calc(50% - 8px)};
     min-height: 185px;
@@ -11,7 +12,26 @@
     }
 
     &:hover {
-        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+    }
+
+
+    &__remove {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        z-index: 100;
+        border-radius: 0 8px 0 8px;
+        background-color: $white;
+        padding: 4px 6px 6px 32px;
+        cursor: pointer;
+
+        &:before {
+            left: 6px;
+        }
+        &:after {
+            left: 10px;
+        }
     }
 
     &__inner {
@@ -78,15 +98,8 @@
         & .card-question {
             margin-bottom: 16px;
 
-            &:nth-last-child(2),
-            &:last-child {
-                margin-bottom: 0;
-            }
 
             @include sm-block {
-                &:nth-last-child(2) {
-                    margin-bottom: 16px;
-                }
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -94,10 +107,14 @@
         }
 
         &_3-col .card-question {
-            max-width: 400px;
-            margin-right: 40px;
-            &:last-child {
-                margin-right: 0;
+            max-width: #{calc(33% - 20px)};
+
+            @include lg-block {
+                max-width: #{calc(50% - 8px)};
+            }
+
+            @include sm-block {
+                max-width: 100%;
             }
         }
     }

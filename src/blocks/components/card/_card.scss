@@ -1,8 +1,29 @@
 .card {
+  position: relative;
   max-width: 400px;
   width: 100%;
   display: inline-block;
   text-decoration: none;
+
+  &__remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    border-radius: 0 0 0 8px;
+    background-color: $white;
+    padding-top: 3px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+    cursor: pointer;
+
+    &:before {
+      left: 5px;
+    }
+    &:after {
+      left: 9px;
+    }
+  }
 
 
   &__img {
@@ -78,6 +99,13 @@
         margin-bottom: 30px;
 
 
+
+
+      }
+
+      @include sm-block {
+        max-width: 100%;
+
         &:nth-last-child(3),
         &:nth-last-child(2) {
           margin-bottom: 30px;
@@ -86,11 +114,6 @@
         &:last-child {
           margin-bottom: 0;
         }
-
-      }
-
-      @include sm-block {
-        max-width: 100%;
       }
 
 

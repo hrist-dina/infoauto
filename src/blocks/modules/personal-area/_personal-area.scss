@@ -24,12 +24,44 @@
         @include lg-block {
             width: 100%;
         }
+
+        & .card__remove {
+            background-color: $white;
+            border-radius: 0 6px 0 8px;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+
+    & .pagination {
+        border-top: 3px solid #E7E7E7;
+        padding: 25px 40px 0;
+        margin: 45px -40px 0;
+
+        @include md-block {
+            padding: 25px 12px 0;
+            margin: 25px -12px 0;
+        }
     }
 
     & .card-question {
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         border-radius: 8px;
+
+        & .card-question__auto {
+            padding-right: 100px;
+        }
+
+
+        & .card-question__remove {
+            border-bottom: 1px solid #E0E0E0;
+            border-left: 1px solid #E0E0E0;
+            background-color: $white;
+            border-radius: 0 8px 0 8px;
+        }
     }
 
     & button {

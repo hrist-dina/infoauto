@@ -44,7 +44,10 @@
 
   &__inner {
     display: flex;
-    margin-bottom: 12px;
+
+    @include lg-block {
+      margin-bottom: 12px;
+    }
   }
 
   &__select {

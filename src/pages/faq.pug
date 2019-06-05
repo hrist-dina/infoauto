@@ -13,14 +13,17 @@ block content
 			+breadcrumbs(breadcrumbs)
 			h1=title
 			include ../blocks/components/filter/filter
-			.section__container.section__border-line
-				.card-question-list.section__main
-					for question in questions
-						+card-question(question.auto, question.title, question.hasAnswer)
+			.section__container
+				.section__main
+					.card-question-list.section__border-line
+						for question in questions
+							+card-question(question.auto, question.title, question.hasAnswer)
+
+					include ../blocks/components/pagination/pagination
 				.section__sidebar
 					include ../blocks/components/banner-ask-question/banner-ask-question
 					include ../blocks/components/banners-sidebar/banners-sidebar
-			include ../blocks/components/pagination/pagination
+
 
 
 

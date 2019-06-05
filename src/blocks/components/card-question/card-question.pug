@@ -1,5 +1,7 @@
-mixin card-question(auto, title, hasAnswer=false)
+mixin card-question(auto, title, hasAnswer=false, hasRemove = false)
     a(href="#").card-question
+        if (hasRemove)
+            span.remove.card-question__remove Удалить
         .card-question__inner
             .card-question__auto=auto
             .card-question__title=title

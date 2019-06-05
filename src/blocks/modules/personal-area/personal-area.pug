@@ -66,10 +66,11 @@ section.personal-area
                 .personal-area__tab-item(data-tab-item='favorite')
                     .card-list
                         for card in cards
-                            +card(card.img, card.title, card.marks)
+                            +card(card.img, card.title, card.marks, true)
                     include ../../components/pagination/pagination        
 
                 .personal-area__tab-item(data-tab-item='questions')
                     .card-question-list
                         for question in questions
-                            +card-question(question.auto, question.title, question.hasAnswer)
+                            +card-question(question.auto, question.title, question.hasAnswer, true)
+                    include ../../components/pagination/pagination

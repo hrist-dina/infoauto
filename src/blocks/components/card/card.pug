@@ -1,5 +1,7 @@
-mixin card(img, title, marks)
+mixin card(img, title, marks, hasRemove = false)
     a(href="#").card
+        if (hasRemove)
+            span.remove.card__remove Удалить
         .card__img(style=`background-image: url(${img})`)
         .card__title=title
         if (marks)

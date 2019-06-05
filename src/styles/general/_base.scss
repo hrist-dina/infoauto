@@ -145,7 +145,11 @@ main {
   &__border-line {
     border-bottom: 3px solid #E7E7E7;
     margin-bottom: 25px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
+    @include sm-block {
+      margin-bottom: 15px;
+      padding-bottom: 20px;
+    }
   }
 
   &__main {
@@ -215,6 +219,10 @@ input[type='password'] {
   position: relative;
   padding-left: 50px;
 
+  @include sm-block {
+    padding-left: 35px;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -227,5 +235,10 @@ input[type='password'] {
     right: auto;
     left: 0;
     margin: auto;
+
+    @include sm-block {
+      width: 26px;
+      height: 26px;
+    }
   }
 }

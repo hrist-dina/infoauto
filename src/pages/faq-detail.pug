@@ -13,15 +13,16 @@ block content
         .container
             +breadcrumbs(breadcrumbs)
             h1=title
-            .section__container
+            .section__container.question__section
                 .section__main
                     include ../blocks/components/question/question
                 .section__sidebar
                     include ../blocks/components/banner-ask-question/banner-ask-question
-            h2.h2 Другие вопросы пользователей Honda HR-V 
-            .card-question-list.card-question-list_3-col
-                for question in questions
-                    +card-question(question.auto, question.title, question.hasAnswer)               
+            section.section__list
+                h2.h2 Другие вопросы пользователей Honda HR-V
+                .card-question-list.card-question-list_3-col
+                    for question in questions
+                        +card-question(question.auto, question.title, question.hasAnswer)
             +banners()
 
 
