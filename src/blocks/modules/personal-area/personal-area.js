@@ -1,3 +1,3 @@
-import {Tabs} from "../../../js/scripts/classes/Tabs";
+import {TabPersonalArea} from "../../../js/scripts/tab/TabPersonalArea";
 
-new Tabs();
+new TabPersonalArea();
