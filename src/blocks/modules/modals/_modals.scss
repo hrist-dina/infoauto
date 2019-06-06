@@ -1,5 +1,5 @@
 body {
-    background-color: #5F9EA0;
+    background-color: #5f9ea0;
 }
 .modal {
     position: relative;
@@ -37,12 +37,10 @@ body {
         }
     }
 
-
     &__auth-registr {
         max-width: 500px;
         text-align: center;
     }
-
 
     &__title {
         font-weight: 500;
@@ -64,7 +62,6 @@ body {
     }
 
     &__button {
-
         &-sign-in {
             width: 170px;
             height: 42px;
@@ -83,7 +80,6 @@ body {
             margin-left: auto;
         }
     }
-
 
     &__tab {
         &-menu {
@@ -109,7 +105,6 @@ body {
                     color: $white;
                 }
             }
-
         }
 
         &-list {
@@ -163,10 +158,21 @@ body {
         color: #919191;
         text-decoration: none;
     }
-
 }
 
 .button__send {
     width: 310px;
 }
 
+.checkbox {
+    display: none;
+}
+
+/* Задаем внешний вид для нашего кастомного чекбокса. Все обязательные свойства прокомментированы, остальные же свойства меняйте по вашему усмотрению */
+.checkbox-custom {
+    position: relative; /* Обязательно задаем, чтобы мы могли абсолютным образом позиционировать псевдоэлемент внютри нашего кастомного чекбокса */
+    width: 20px; /* Обязательно задаем ширину */
+    height: 20px; /* Обязательно задаем высоту */
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
