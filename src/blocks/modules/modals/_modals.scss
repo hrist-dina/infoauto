@@ -1,6 +1,3 @@
-body {
-    background-color: #5f9ea0;
-}
 .modal {
     position: relative;
     padding: 45px 50px 55px;
@@ -47,12 +44,44 @@ body {
         font-size: 30px;
         color: $dark-gray;
         padding-bottom: 30px;
+
+        &-line {
+            position: relative;
+            margin-top: 30px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                width: 100%;
+                background-color: #F3F3F3;
+                height: 1px;
+                z-index: 0;
+            }
+        }
+
+        &-center {
+            position: relative;
+            display: inline-block;
+            background-color: $white;
+            padding: 0 6px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            text-align: center;
+            color: $base-color-text;
+            z-index: 1;
+        }
     }
 
     &__text {
         font-weight: normal;
         font-size: 15px;
-        color: #333333;
+        color: $base-color-text;
     }
 
     &__hulf {
@@ -62,7 +91,8 @@ body {
     }
 
     &__button {
-        &-sign-in {
+        &-sign-in,
+        &-registr {
             width: 170px;
             height: 42px;
             box-sizing: border-box;
@@ -71,6 +101,11 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 10px;
+        }
+
+        &-registr {
+            width: 100%;
         }
     }
 
@@ -123,6 +158,48 @@ body {
 
             &.active {
                 display: block;
+            }
+        }
+    }
+
+    &__social {
+        &-list {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        &-item {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid $yellow;
+            box-sizing: border-box;
+
+            &:not(:first-child) {
+                border-left: none;
+            }
+        }
+    }
+
+    &__policy {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        color: #919191;
+        margin-top: 10px;
+
+        & a {
+            color: #919191;
+            font-style: italic;
+            font-size: 14px;
+            border-bottom: 1px solid $yellow;
+            line-height: 21px;
+
+            &:hover {
+                border-bottom: transparent;
             }
         }
     }

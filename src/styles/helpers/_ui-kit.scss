@@ -59,3 +59,110 @@
 iframe {
     width: 100%;
 }
+
+.icon-vk {
+    position: relative;
+
+    &:before {
+        content: '';
+        background: url(icon-vkontakte()) no-repeat;
+    }
+
+    &_color {
+        position: relative;
+
+        &:before {
+            content: '';
+            background: url(icon-vkontakte('4C75A3')) no-repeat;
+            width: 35px;
+            height: 35px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+}
+
+.icon-fb {
+    position: relative;
+
+    &:before {
+        content: '';
+        background: url(icon-facebook()) no-repeat;
+        width: 35px;
+        height: 35px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+
+    &_color {
+        position: relative;
+
+        &:before {
+            content: '';
+            background: url(icon-facebook('3C5A99')) no-repeat;
+            width: 35px;
+            height: 35px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+}
+
+.icon-ok {
+    position: relative;
+
+    &:before {
+        content: '';
+        background: url(icon-odnoklassniki()) no-repeat;
+    }
+
+    &_color {
+        position: relative;
+
+        &:before {
+            content: '';
+            background: url(icon-odnoklassniki('ED812B')) no-repeat;
+            width: 35px;
+            height: 35px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        };
+    }
+}
+
+.icon-google {
+    position: relative;
+
+    &:before {
+        content: '';
+        background: url(icon-google()) no-repeat;
+    }
+
+    &_color {
+        position: relative;
+
+        &:before {
+            content: '';
+            background: url(icon-google('C4302B')) no-repeat;
+            width: 20px;
+            height: 21px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+}

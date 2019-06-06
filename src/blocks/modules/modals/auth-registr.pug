@@ -4,7 +4,7 @@
         li.active(data-tab-menu='auth') Вход с паролем
         li(data-tab-menu='register') Регистрация
     .modal__tab-list
-        .modal__tab-item(data-tab-item='auth')
+        .modal__tab-item.active(data-tab-item='auth')
             form(action='', method='post').modal__auth
                 input(name='email', type='text', placeholder='Электронная почта')
                 input(name='password', type='password', placeholder='Пароль')
@@ -17,11 +17,16 @@
                 input(name='email', type='text', placeholder='Электронная почта')
                 input(name='password', type='password', placeholder='Пароль')
                 input(name='password_confirmation', type='password', placeholder='Повторите пароль')
-                button(type='submit').button.button-yellow Зарегистрироваться
-                p='Нажимая на кнопку, Вы соглашаетесь на обработку'
-                a(href='#')='персональных данных'
+                button(type='submit').button.button-yellow.modal__button-registr Зарегистрироваться
+                .modal__policy
+                    | Нажимая на кнопку, Вы соглашаетесь на обработку
+                    a(href='#')=' персональных данных'
     .modal__social
-        .modal__title-center
+        .modal__title-line
+            .modal__title-center
+                | или
+                span=' войти '
+                | через
         .modal__social-list
             a(href="#").modal__social-item.icon-vk_color
             a(href="#").modal__social-item.icon-fb_color
