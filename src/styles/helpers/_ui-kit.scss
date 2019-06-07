@@ -166,3 +166,56 @@ iframe {
         }
     }
 }
+
+/* Скрываем реальный чекбокс */
+.input-checkbox {
+    display: none;
+}
+/* Задаем внешний вид для кастомного чекбокса */
+.input-checkbox-custom {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+}
+
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Свойство display: inline-block обязательно должно быть */
+.input-checkbox-custom,
+.label-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.label,
+.label_checkbox {
+    margin-right: 40px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/* Если реальный чекбокс отмечен, то тогда добавляем данный признак к кастомному чекбоксу */
+.input-checkbox:checked + .input-checkbox-custom {
+    background-color: $blue;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        /* Задаем расстояние от верхней, правой, нижней и левой границы */
+        background-image: url(icon-check());
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $blue;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}

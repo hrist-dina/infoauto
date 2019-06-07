@@ -1,0 +1,35 @@
+.modal.modal__auth-register.js-auth-register-tabs.js-modal(data-modal-type='auth-register')
+    .modal__inner
+        .close.modal__close.js-modal-close
+        ul.modal__tab-menu
+            li.active(data-tab-menu='auth') Вход с паролем
+            li(data-tab-menu='register') Регистрация
+        .modal__tab-list
+            .modal__tab-item.active(data-tab-item='auth')
+                form(action='', method='post').modal__form-auth
+                    input(name='email', type='text', placeholder='Электронная почта')
+                    input(name='password', type='password', placeholder='Пароль')
+                    .modal__hulf
+                        button(type='submit').button.button-yellow.modal__button-sign-in Войти
+                        a(href='#').modal__link-forgot Забыли пароль?
+            .modal__tab-item(data-tab-item='register')
+                form(action='', method='post').modal__form-registr
+                    input(name='name', type='text', placeholder='Как к вам обращаться?')
+                    input(name='email', type='text', placeholder='Электронная почта')
+                    input(name='password', type='password', placeholder='Пароль')
+                    input(name='password_confirmation', type='password', placeholder='Повторите пароль')
+                    button(type='submit').button.button-yellow.modal__button-registr Зарегистрироваться
+                    .modal__policy
+                        | Нажимая на кнопку, Вы соглашаетесь на обработку
+                        a(href='#')=' персональных данных'
+        .modal__social
+            .modal__title-line
+                .modal__title-center='или '
+                    span.js-tab-modal-text='войти'
+                    |  через
+            .modal__social-list
+                a(href="#").modal__social-item.icon-vk_color
+                a(href="#").modal__social-item.icon-fb_color
+                a(href="#").modal__social-item.icon-ok_color
+                a(href="#").modal__social-item.icon-google_color
+

@@ -17,7 +17,7 @@ header.header
                 .header__right
                     .header__personal-area-icon
                         include ../../components/personal-area-icon/personal-area-icon
-                        a(href="#").button-black.header__ask-question Задать вопрос
+                        a(href="#", data-modal-type='ask-question').button-black.header__ask-question.js-modal-open Задать вопрос
                     +personal-auto('Mazda 323 III (BF) 1985 - 1989')
     include ../../components/mobile-menu/mobile-menu
     .header__menu

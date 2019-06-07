@@ -197,7 +197,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="time"],
-input[type="date"] {
+input[type="date"],
+textarea {
     background: $input-bg;
     border-radius: 4px;
     padding: 15px 14px;
