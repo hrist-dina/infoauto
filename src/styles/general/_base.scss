@@ -2,243 +2,255 @@
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: Roboto, sans-serif;
-  font-size: 18px;
-  color: $base-color-text;
-  @include md-block {
-    font-size: 15px;
-  }
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    color: $base-color-text;
+    @include md-block {
+        font-size: 15px;
+    }
 }
 
-h1, h2, h3, h4, h5, h6, ul {
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 h1,
 .h1 {
-  font-weight: 500;
-  font-size: 40px;
-  color: $dark-gray;
-  line-height: 140%;
-  @include md-block {
-    font-size: 28px;
-  }
+    font-weight: 500;
+    font-size: 40px;
+    color: $dark-gray;
+    line-height: 140%;
+    @include md-block {
+        font-size: 28px;
+    }
 }
 
 h2,
 .h2 {
-  font-weight: 500;
-  font-size: 30px;
-  color: $dark-gray;
-  line-height: 140%;
-  @include md-block {
-    font-size: 24px;
-  }
+    font-weight: 500;
+    font-size: 30px;
+    color: $dark-gray;
+    line-height: 140%;
+    @include md-block {
+        font-size: 24px;
+    }
 }
 
 h3,
 .h3 {
-  font-weight: 500;
-  font-size: 24px;
-  color: $dark-gray;
-  line-height: 140%;
+    font-weight: 500;
+    font-size: 24px;
+    color: $dark-gray;
+    line-height: 140%;
 }
 
 main {
-  padding-bottom: 50px;
-  height: 100%;
-  box-sizing: border-box;
+    padding-bottom: 50px;
+    height: 100%;
+    box-sizing: border-box;
 
-  @include md-block {
-    padding-bottom: 30px;
-  }
-
-  h1 {
-    margin-bottom: 45px;
     @include md-block {
-      margin-bottom: 20px;
+        padding-bottom: 30px;
     }
-  }
+
+    h1 {
+        margin-bottom: 45px;
+        @include md-block {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .content {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
 .footer {
-  flex: 0 0 auto;
+    flex: 0 0 auto;
 }
 
 .overflow {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .container {
-  @include container();
-  //@include sm(max-width, 510px);
-  //@include md(max-width, 690px);
-  //@include lg(max-width, 930px);
-  @include xl(max-width, 1280px);
-  @include sm-block {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+    @include container();
+    //@include sm(max-width, 510px);
+    //@include md(max-width, 690px);
+    //@include lg(max-width, 930px);
+    @include xl(max-width, 1280px);
+    @include sm-block {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 
 .img-responsive {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
 }
 
 .section {
-  padding-top: 40px;
-  padding-bottom: 40px;
-
-  @include md-block {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  &__container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 
     @include md-block {
-      margin-top: 20px;
-    }
-  }
-
-  &__list {
-    margin-bottom: 40px;
-
-    &:last-child {
-      margin-bottom: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    @include sm-block {
-      margin-bottom: 30px;
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        @include md-block {
+            margin-top: 20px;
+        }
     }
 
-    & h2,
-    & .h2 {
-      margin-bottom: 25px;
-      @include sm-block {
-        margin-bottom: 20px;
-      }
-    }
-  }
+    &__list {
+        margin-bottom: 40px;
 
-  &__border-line {
-    border-bottom: 3px solid #E7E7E7;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    @include sm-block {
-      margin-bottom: 15px;
-      padding-bottom: 20px;
-    }
-  }
+        &:last-child {
+            margin-bottom: 0;
+        }
 
-  &__main {
-    width: #{calc(100% - 368px)};
-    margin-right: 63px;
-    @include xl-block {
-      width: #{calc(100% - 335px)};
-      margin-right: 30px;
-    }
-    @include lg-block {
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 30px;
-    }
-  }
+        @include sm-block {
+            margin-bottom: 30px;
+        }
 
-  &__sidebar {
-    max-width: 305px;
-    width: 100%;
-    @include lg-block {
-      max-width: 100%;
+        & h2,
+        & .h2 {
+            margin-bottom: 25px;
+            @include sm-block {
+                margin-bottom: 20px;
+            }
+        }
     }
-  }
+
+    &__border-line {
+        border-bottom: 3px solid #e7e7e7;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        @include sm-block {
+            margin-bottom: 15px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__main {
+        width: #{calc(100% - 368px)};
+        margin-right: 63px;
+        @include xl-block {
+            width: #{calc(100% - 335px)};
+            margin-right: 30px;
+        }
+        @include lg-block {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__sidebar {
+        max-width: 305px;
+        width: 100%;
+        @include lg-block {
+            max-width: 100%;
+        }
+    }
 }
 
 .section-white {
-  background-color: $section-white;
+    background-color: $section-white;
 }
 
 .section-gray {
-  background-color: $section-gray;
+    background-color: $section-gray;
 }
 
 body .hide {
-  display: none;
+    display: none;
 }
 
-input[type='text'],
-input[type='email'],
-input[type='password'] {
-  background: $input-bg;
-  border-radius: 4px;
-  padding: 15px 14px;
-  font-size: 15px;
-  color: $input-color;
-  border: none;
-  box-sizing: border-box;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="time"],
+input[type="date"] {
+    background: $input-bg;
+    border-radius: 4px;
+    padding: 15px 14px;
+    font-size: 15px;
+    color: $input-color;
+    border: none;
+    box-sizing: border-box;
 
-  &::placeholder { /* Firefox, Chrome, Opera */
-    color: $input-placeholder;
-  }
+    &::placeholder {
+        /* Firefox, Chrome, Opera */
+        color: $input-placeholder;
+    }
 
-  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $input-placeholder;
-  }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $input-placeholder;
+    }
 
-  &::-ms-input-placeholder { /* Microsoft Edge */
-    color: $input-placeholder;
-  }
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $input-placeholder;
+    }
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 }
 
 .auto-front {
-  position: relative;
-  padding-left: 50px;
-
-  @include sm-block {
-    padding-left: 35px;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    background: url("../img/sprites/intermediate-svg/auto-front.svg") no-repeat center;
-    background-size: 100%;
-    width: 36px;
-    height: 36px;
-    top: 0;
-    bottom: 0;
-    right: auto;
-    left: 0;
-    margin: auto;
+    position: relative;
+    padding-left: 50px;
 
     @include sm-block {
-      width: 26px;
-      height: 26px;
+        padding-left: 35px;
     }
-  }
+
+    &:before {
+        content: "";
+        position: absolute;
+        background: url("../img/sprites/intermediate-svg/auto-front.svg")
+            no-repeat center;
+        background-size: 100%;
+        width: 36px;
+        height: 36px;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        left: 0;
+        margin: auto;
+
+        @include sm-block {
+            width: 26px;
+            height: 26px;
+        }
+    }
 }

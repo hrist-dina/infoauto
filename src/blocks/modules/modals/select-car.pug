@@ -1,3 +1,17 @@
-input.checkbox(name="checkbox-test" type="checkbox")
-span.checkbox-custom
-
+include ../../components/select/select 
+.modal.modal__select-car
+    .close.modal__close
+    .modal__title Выберите автомобиль
+    label.modal__label.modal__label_checkbox
+        input.modal__input-checkbox(name="agree" type="checkbox")
+        span.modal__input-checkbox-custom
+        span.modal__label-text Легковой
+    label.modal__label.modal__label_checkbox
+        input.modal__input-checkbox(name="agree" type="checkbox")
+        span.modal__input-checkbox-custom
+        span.modal__label-text Коммерческий
+        form
+        //- +select(optionsMark)
+        //- +select(optionsModel)
+        //- +select(optionsGeneration)
+    button.button-yellow.button__choose Выбрать

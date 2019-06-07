@@ -1,4 +1,13 @@
-.modal
-    .modal__close
+.modal.modal__remind-me
+    .close.modal__close
     .modal__title Напомнить мне
     .modal__text Вы еще не зарегистрированы на сайте?
+    form(action='', method='post').modal__remind-me
+        input(name='name', type='text', placeholder='Как к вам обращаться?')
+        input(name='email', type='text', placeholder='Электронная почта')
+    .modal__text Когда напомнить?
+    form(action='', method='post').modal__remind-me
+        input(name='date', type='date', placeholder='Выберите дату')
+        input(name='time', type='time', placeholder='Выберите время')
+
+    button.button-yellow.button__remind Напомнить

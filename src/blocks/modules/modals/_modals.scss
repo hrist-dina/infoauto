@@ -50,7 +50,7 @@
             margin-top: 30px;
 
             &:before {
-                content: '';
+                content: "";
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -58,7 +58,7 @@
                 right: 0;
                 margin: auto;
                 width: 100%;
-                background-color: #F3F3F3;
+                background-color: #f3f3f3;
                 height: 1px;
                 z-index: 0;
             }
@@ -241,15 +241,63 @@
     width: 310px;
 }
 
-.checkbox {
+/* Скрываем реальный чекбокс */
+.modal__input-checkbox {
     display: none;
 }
+/* Задаем внешний вид для кастомного чекбокса */
+.modal__input-checkbox-custom {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #127aef;
+}
 
-/* Задаем внешний вид для нашего кастомного чекбокса. Все обязательные свойства прокомментированы, остальные же свойства меняйте по вашему усмотрению */
-.checkbox-custom {
-    position: relative; /* Обязательно задаем, чтобы мы могли абсолютным образом позиционировать псевдоэлемент внютри нашего кастомного чекбокса */
-    width: 20px; /* Обязательно задаем ширину */
-    height: 20px; /* Обязательно задаем высоту */
-    border: 2px solid #ccc;
-    border-radius: 3px;
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Свойство display: inline-block обязательно должно быть */
+.modal__input-checkbox-custom,
+.modal__label-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.modal__label,
+.modal__label_checkbox {
+    margin-right: 40px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/* Если реальный чекбокс отмечен, то тогда добавляем данный признак к кастомному чекбоксу */
+.modal__input-checkbox:checked + .modal__input-checkbox-custom::before {
+    content: "";
+    display: block;
+    position: absolute;
+    /* Задаем расстояние от верхней, правой, нижней и левой границы */
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+    box-sizing: border-box;
+}
+
+.modal__select-car {
+    background-color: red;
+    max-width: 800px;
+    text-align: left;
+}
+
+.button__choose {
+    width: 220px;
+}
+
+.modal__remind-me {
+    max-width: 500px;
+    text-align: left;
+}
+
+.button__remind {
+    width: 404px;
 }
