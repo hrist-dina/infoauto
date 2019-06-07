@@ -10,6 +10,9 @@
 
     &__inner {
         padding: 45px 50px 55px;
+        @include sm-block {
+            padding: 20px 25px 30px;
+        }
     }
 
     & a {
@@ -55,6 +58,12 @@
         background: $yellow;
         opacity: 1;
         cursor: pointer;
+        z-index: 100;
+
+        @include sm-block {
+            width: 36px;
+            height: 36px;
+        }
 
         &:before,
         &:after {
@@ -63,6 +72,12 @@
             background-color: $base-color-text;
             top: 10px;
             left: 22px;
+
+            @include sm-block {
+                height: 26px;
+                left: 18px;
+                top: 5px;
+            }
         }
     }
 
@@ -116,9 +131,27 @@
         align-items: center;
         justify-content: space-between;
 
+        @include sm-block {
+            flex-direction: column;
+            & .button {
+                width: 100%;
+            }
+
+            & .modal__policy {
+                @include sm-block {
+                    width: 100%;
+                    padding: 0;
+                }
+            }
+        }
+
         & input {
             width: #{calc(50% - 12px)};
             margin: 0;
+
+            @include sm-block {
+                width: 100%;
+            }
         }
     }
 
@@ -222,6 +255,7 @@
         font-size: 14px;
         color: #919191;
         margin-top: 10px;
+
 
         & a {
             color: #919191;
