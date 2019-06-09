@@ -1,0 +1,56 @@
+{
+  "alphabets": [
+    {
+      "id": 1,
+      "code": "ru",
+      "name": "А-Я",
+      "literals": [
+        {
+          "id": 1,
+          "name": "А"
+        },
+        {
+          "id": 2,
+          "name": "Б"
+        },
+        {
+          "id": 3,
+          "name": "В"
+        }
+      ],
+      "changeList": [
+        {
+          "id": 2,
+          "code": "en",
+          "name": "A-Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "code": "en",
+      "name": "A-Z",
+      "literals": [
+        {
+          "id": 33,
+          "name": "A"
+        },
+        {
+          "id": 34,
+          "name": "B"
+        },
+        {
+          "id": 35,
+          "name": "C"
+        }
+      ],
+      "changeList": [
+        {
+          "id": 1,
+          "code": "ru",
+          "name": "А-Я"
+        }
+      ]
+    }
+  ]
+}

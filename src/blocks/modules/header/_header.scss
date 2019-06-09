@@ -99,6 +99,13 @@
   }
 
   &__ask-question {
+    width: 158px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  &__ask-question,
+  &__sign-in {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 12px;

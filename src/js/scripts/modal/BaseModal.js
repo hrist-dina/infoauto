@@ -1,5 +1,5 @@
 import  $ from "jquery";
-import iziModal from 'izimodal';
+import iziModal from 'izimodal-1.6.0';
 // Initialise imported function as jQuery function
 $.fn.iziModal = iziModal;
 

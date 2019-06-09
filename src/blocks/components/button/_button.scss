@@ -14,12 +14,12 @@ button {
 .button-black {
     display: inline-block;
     padding: 14px 35px;
-    background: #16162d;
+    background: $dark-gray;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
     box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
     border-radius: 4px;
-    color: #ffffff;
+    color: $white;
     font-size: 16px;
     cursor: pointer;
     text-align: center;
@@ -36,7 +36,7 @@ button {
 .button-yellow {
     display: inline-block;
     padding: 14px 35px;
-    background: #ffd223;
+    background: $yellow;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
     box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
@@ -48,17 +48,45 @@ button {
     color: $base-color-text;
 
     &:hover {
-        background: #f2c208;
+        background: $yellow;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
     }
 
     &:active {
-        background: #f2c208;
+        background:$yellow;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: none;
     }
 }
+
+.button-gray {
+    display: inline-block;
+    padding: 14px 23px;
+    background: $dirty-white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: $base-color-text;
+
+    &:hover {
+        background: #D7D7D7;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    &:active {
+        background: #D7D7D7;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: none;
+    }
+}
+
 
 .button-add {
     position: relative;

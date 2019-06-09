@@ -28,6 +28,9 @@ import debug from "gulp-debug";
 import clean from "gulp-clean";
 import yargs from "yargs";
 
+// Json server
+import jsonServer from "json-server";
+
 const webpackConfig = require("./webpack.config.js"),
     argv = yargs.argv,
     production = !!argv.production,
@@ -89,6 +92,11 @@ const webpackConfig = require("./webpack.config.js"),
         server_config: {
             src: "./src/.htaccess",
             dist: "./dist/"
+        },
+        jsonServer: {
+            data: './json-server/db.json',
+            watch: './json-server/*',
+            port: 4001,
         }
     };
 
@@ -295,8 +303,41 @@ export const favs = () => gulp.src(paths.favicons.src)
         "title": "Favicons"
     }));
 
+
+export let listServerJson = [];
+
+export const startServerJson = () => {
+
+    if (listServerJson.length > 0) {
+        listServerJson.map((item, index) => {
+            item.close();
+            delete listServerJson[index];
+        });
+
+    }
+
+    const serverForJson = jsonServer.create();
+    const router = jsonServer.router(paths.jsonServer.data);
+    const middlewares = jsonServer.defaults();
+    serverForJson.use(middlewares);
+    serverForJson.use(router);
+    let startedServer = serverForJson.listen(paths.jsonServer.port, () => {
+        console.log(`JSON Server is running - URL:  http://localhost:${paths.jsonServer.port}`);
+    });
+
+    listServerJson.push(startedServer);
+
+    return startedServer;
+};
+
+export const serverJson = () => {
+    startServerJson();
+    gulp.watch(paths.jsonServer.watch, serverJson);
+};
+
 export const development = gulp.series(cleanFiles, smartGrid,
     gulp.parallel(views, styles, scripts, svgsprites, images, fonts, favs),
+    //gulp.parallel(server, serverJson));
     gulp.parallel(server));
 
 export const prod = gulp.series(cleanFiles, smartGrid, serverConfig, views, styles, scripts, svgsprites, images, fonts, favs);

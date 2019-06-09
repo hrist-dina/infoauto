@@ -15,10 +15,17 @@ header.header
                     include ../../components/sub-menu/sub-menu
                     +search('Поиск по сайту', true)
                 .header__right
-                    .header__personal-area-icon
-                        include ../../components/personal-area-icon/personal-area-icon
-                        a(href="#", data-modal-type='ask-question').button-black.header__ask-question.js-modal-open Задать вопрос
-                    +personal-auto('Mazda 323 III (BF) 1985 - 1989')
+                    if !isAuth
+                        .header__personal-area-icon
+                            button(data-modal-type='auth-register').button.button-gray.header__sign-in.js-modal-open Войти
+                            a(href="#", data-modal-type='ask-question').button-black.header__ask-question.js-modal-open Задать вопрос
+                        +personal-auto('Выберите автомобиль')
+                    else
+                        .header__personal-area-icon
+                            include ../../components/personal-area-icon/personal-area-icon
+                            a(href="#", data-modal-type='ask-question').button-black.header__ask-question.js-modal-open Задать вопрос
+                        +personal-auto('Mazda 323 III (BF) 1985 - 1989')
+
     include ../../components/mobile-menu/mobile-menu
     .header__menu
         .container

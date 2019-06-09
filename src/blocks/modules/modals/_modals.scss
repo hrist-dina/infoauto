@@ -10,6 +10,7 @@
 
     &__inner {
         padding: 45px 50px 55px;
+        background-color: $white;
         @include sm-block {
             padding: 20px 25px 30px;
         }
@@ -151,6 +152,7 @@
 
             @include sm-block {
                 width: 100%;
+                margin-bottom: 20px;
             }
         }
     }
@@ -166,7 +168,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 10px;
         }
 
         &-registr {
@@ -178,6 +179,9 @@
         &-forgot {
             margin-right: auto;
             margin-left: auto;
+            @include md-block {
+                margin-top: 20px;
+            }
         }
     }
 
@@ -190,6 +194,9 @@
             border-radius: 8px;
             font-size: 0;
             text-align: center;
+            @include sm-block {
+                margin-top: 30px;
+            }
 
             & li {
                 display: inline-block;
@@ -199,6 +206,9 @@
                 font-size: 18px;
                 color: $dark-gray;
                 cursor: pointer;
+                @include sm-block {
+                    display: block;
+                }
 
                 &.active {
                     background-color: $dark-gray;
@@ -302,12 +312,34 @@
     &__select-horisontal {
         display: flex;
 
+        @include md-block {
+            flex-direction: column;
+        }
+
         & .select2 {
             margin-right: 20px;
             margin-bottom: 0;
 
+            @include md-block {
+                margin-bottom: 20px;
+            }
+
             &:last-child {
                 margin-right: 0;
+            }
+        }
+    }
+
+    &__radio-list {
+        @include md-block {
+            display: flex;
+            flex-direction: column;
+
+            & .label_checkbox {
+                margin: 0 0 20px 0;
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -325,6 +357,10 @@
 .button__choose {
     width: 220px;
     margin-top: 20px;
+
+    @include md-block {
+        width: 100%;
+    }
 }
 
 .button__remind {

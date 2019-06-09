@@ -29,7 +29,7 @@ include ../../components/select/select
         .close.modal__close.js-modal-close
         .modal__title Выберите автомобиль
         form(action='', method='post').modal__form-select-car
-            .modal__block
+            .modal__block.modal__radio-list
                 label.label.label_checkbox
                     input.input-checkbox(name="auto" type="radio" value="passenger")
                     span.input-checkbox-custom
@@ -40,7 +40,7 @@ include ../../components/select/select
                     span.label-text Коммерческий
             .modal__block
                 .modal__select-horisontal
-                    +select(optionsMark, 'mark', 'js-select-gray')
-                    +select(optionsModel, 'model', 'js-select-gray')
-                    +select(optionsGeneration, 'generation', 'js-select-gray')
+                    +select(optionsMark, 'mark', 'js-modal-select')
+                    +select(optionsModel, 'model', 'js-modal-select')
+                    +select(optionsGeneration, 'generation', 'js-modal-select')
             button.button-yellow.button__choose Выбрать
