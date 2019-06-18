@@ -1,3 +1,17 @@
+@mixin arrow-down {
+    border-color: #919191 transparent transparent transparent;
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    height: 0;
+}
+
+@mixin arrow-up {
+    border-color: transparent transparent #919191 transparent;
+    border-width: 0 6px 7px 6px;
+    border-style: solid;
+    height: 0;
+}
+
 .close {
     position: relative;
     width: 32px;

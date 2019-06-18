@@ -28,50 +28,87 @@ section.marks-and-models__section
             a(href="#")='Y'
             a(href="#")='Z'
         a(href="#").alphabet-edit А-Я
-    .marks-and-models
+    .marks-and-models.js-marks-and-models
         .letter A
         .marks
-            ul.marks__list
-                li.marks__item.active
-                    a(href="#") Acura
-                li.marks__item
-                    a(href="#") Alfa Romeo
-                li.marks__item
-                    a(href="#") Alpina
-                li.marks__item
-                    a(href="#") Aston Martin
-                li.marks__item
-                    a(href="#") Audi
-        .models
-            .models__logo
-                img(src="img/acura-logo.png", alt="")
-            .models__container
-                .models__title Список моделей
-                .models__list
-                    a(href="#") Cl
-                    a(href="#") Csx
-                    a(href="#") El
-                    a(href="#") Ilx
-                    a(href="#") Integra
-                    a(href="#") Legend
-                    a(href="#") Mdx
-                    a(href="#") Nsx
-                    a(href="#") Rdx
-                .models__list
-                    a(href="#") RL
-                    a(href="#") Rlx
-                    a(href="#") Rsx
-                    a(href="#") slx
-                    a(href="#") tl
-                    a(href="#") tlx
-                    a(href="#") tsx
-                    a(href="#") vigor
-                    a(href="#") zdx
-                .models__list
-                    a(href="#") Rsx
-                    a(href="#") slx
-                    a(href="#") tl
-                    a(href="#") tlx
-                    a(href="#") tsx
-                    a(href="#") vigor
-                    a(href="#") zdx
+            ul.marks__list.js-marks
+                li.marks__item.active(data-mark='acura')
+                    a(href="javascript:void(0)") Acura
+                li.marks__item(data-mark='alfa-romeo')
+                    a(href="javascript:void(0)") Alfa Romeo
+                li.marks__item(data-mark='alpina')
+                    a(href="javascript:void(0)") Alpina
+                li.marks__item(data-mark='aston-martin')
+                    a(href="javascript:void(0)") Aston Martin
+                li.marks__item(data-mark='audi')
+                    a(href="javascript:void(0)") Audi
+
+        .models.js-models
+            .models__item(data-model='acura')
+                .models__head
+                    .models__logo
+                        img(src="img/acura-logo.png", alt="")
+                    .models__title Список моделей
+                .models__container
+                    .models__list
+                        a(href="#") Cl
+                        a(href="#") Csx
+                        a(href="#") El
+                        a(href="#") Ilx
+                        a(href="#") Integra
+                        a(href="#") Legend
+                        a(href="#") Mdx
+                        a(href="#") Nsx
+                        a(href="#") Rdx
+                    .models__list
+                        a(href="#") RL
+                        a(href="#") Rlx
+                        a(href="#") Rsx
+                        a(href="#") slx
+                        a(href="#") tl
+                        a(href="#") tlx
+                        a(href="#") tsx
+                        a(href="#") vigor
+                        a(href="#") zdx
+                    .models__list
+                        a(href="#") Rsx
+                        a(href="#") slx
+                        a(href="#") tl
+                        a(href="#") tlx
+                        a(href="#") tsx
+                        a(href="#") vigor
+                        a(href="#") zdx
+            .models__item(data-model='alfa-romeo')
+                .models__head
+                    .models__logo
+                        img(src="img/acura-logo.png", alt="")
+                    .models__title Список моделей
+                .models__container
+                    .models__list
+                        a(href="#") alfa-romeo
+                        a(href="#") alfa-romeo
+                        a(href="#") alfa-romeo
+                        a(href="#") alfa-romeo
+                        a(href="#") alfa-romeo
+                        a(href="#") Legend
+                        a(href="#") Mdx
+                        a(href="#") Nsx
+                        a(href="#") Rdx
+                    .models__list
+                        a(href="#") RL
+                        a(href="#") Rlx
+                        a(href="#") alfa-romeo
+                        a(href="#") slx
+                        a(href="#") tl
+                        a(href="#") tlx
+                        a(href="#") tsx
+                        a(href="#") vigor
+                        a(href="#") zdx
+                    .models__list
+                        a(href="#") Rsx
+                        a(href="#") alfa-romeo
+                        a(href="#") tl
+                        a(href="#") tlx
+                        a(href="#") tsx
+                        a(href="#") vigor
+                        a(href="#") zdx

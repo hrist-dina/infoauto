@@ -27,10 +27,7 @@
       width: 30px;
 
       & b {
-        border-color: #919191 transparent transparent transparent;
-        border-style: solid;
-        border-width: 7px 6px 0 6px;
-        height: 0;
+        @include arrow-down();
         left: 50%;
         margin-left: -9px;
         margin-top: -2px;
@@ -48,8 +45,7 @@
 
 
       & .select2-selection__arrow b {
-        border-color: transparent transparent #919191 transparent;
-        border-width: 0 6px 7px 6px;
+        @include arrow-up();
         margin-top: -4px;
       }
     }

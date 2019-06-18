@@ -153,7 +153,10 @@ button {
     text-transform: lowercase;
     color: $base-color-text;
     text-align: center;
-    padding: 7px;
+    padding: 5px 7px;
+    @include sm-block {
+        padding: 3px 7px;
+    }
 }
 
 .remove {
@@ -226,124 +229,4 @@ button {
     background: #ffffff;
     border: 2px solid rgba(18, 122, 239, 0.75);
     box-sizing: border-box;
-}
-
-.comments {
-    display: inline-block;
-    background: #ffffff;
-    position: relative;
-    padding-top: 40px;
-
-    &__inner {
-        padding: 40px 90px;
-        max-width: 844px;
-        margin: 0 auto;
-    }
-
-    & input[type="text"] {
-        // max-width: 100%;
-        // min-width: 100%;
-        width: 100%;
-        border: 1px solid #e0e0e0;
-        box-sizing: border-box;
-        // resize: none;
-        padding: 22px;
-        font-weight: normal;
-        font-size: 18px;
-        background: #ffffff;
-        color: #828282;
-        outline: none;
-        // border: none;
-    }
-
-    & button,
-    .button-comments {
-        border: none;
-        border-radius: 4px;
-        font-weight: normal;
-        color: #ffffff;
-        font-size: 16px;
-        padding: 8px 30px;
-        box-sizing: border-box;
-    }
-
-    &__quantity-text {
-        color: #16162d;
-        font-weight: 500;
-        font-size: 21px;
-        padding-bottom: 35px;
-    }
-
-    &__item {
-        padding: 17px 27px;
-        margin: 0 -25px;
-    }
-
-    &__author {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-    }
-
-    & img {
-        max-width: 36px;
-        max-height: 36px;
-        width: 100%;
-        height: 100%;
-    }
-
-    &__info {
-        margin-left: 15px;
-    }
-
-    &__name {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 25px;
-        color: #000000;
-    }
-
-    &__date {
-        font-weight: normal;
-        font-size: 13px;
-        line-height: 21px;
-        color: #919191;
-    }
-
-    &__text {
-        font-weight: normal;
-        font-size: 15px;
-        color: #333333;
-    }
-
-    &__reply {
-        margin-top: 10px;
-        margin-left: -5px;
-        color: #919191;
-        font-weight: normal;
-        font-size: 15px;
-        border: 0;
-        background: 0 0;
-        letter-spacing: normal;
-        cursor: pointer;
-    }
-
-    &__answer {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    &-name__answer {
-        font-weight: normal;
-        font-size: 12px;
-        color: #919191;
-    }
-
-    &__answer-img {
-        width: 12px;
-        height: 12px;
-        margin-left: 10px;
-        margin-right: 7px;
-    }
 }

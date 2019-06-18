@@ -1,0 +1,57 @@
+-
+    var comments = [
+        {
+            img: 'img/comments.jpg',
+            name: 'Иван Сидоров',
+            date: '02.04.2019',
+            text: 'Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще ' +
+            'Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще',
+            answer: false
+        },
+        {
+            img: 'img/comments.jpg',
+            name: 'Василий Петров',
+            date: '03.04.2019',
+            text: 'Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще',
+            answer: 'Иван Сидоров'
+        },
+        {
+            img: 'img/comments.jpg',
+            name: 'Иван Сидоров',
+            date: '03.04.2019',
+            text: 'Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще',
+            answer: false
+        },
+        {
+            img: 'img/comments.jpg',
+            name: 'Иван Сидоров',
+            date: '04.04.2019',
+            text: 'Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще',
+            answer: false
+        }
+    ]
+
+mixin comment(img, name, date, text, answer)
+    li.comments__item(class=answer ? 'comments__item-answer':'')
+        .comments__author
+            img(src=img, alt='')
+            .comments__info
+                .comments__name
+                    span=name
+                    if answer
+                        a(href="javascript:void(0)").comments__answer=answer
+                .comments__date=date
+
+        .comments__text=text
+        a(href="javascript:void(0)").comments__reply Ответить
+
+
+section.comments
+    .comments__inner
+        .comments__quantity-text 4 комментария
+        form.comments__form
+            textarea(name="message", placeholder="Оставить комментарий...")
+            button.button-yellow.button-comments(type="submit") Отправить
+        ul.comments__list
+            for comment in comments
+                +comment(comment.img, comment.name, comment.date, comment.text, comment.answer)

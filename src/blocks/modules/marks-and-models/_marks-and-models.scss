@@ -145,13 +145,12 @@
   }
 
   &__item {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: inline-block;
 
     @include md-block {
       margin-bottom: 0;
     }
-
 
     & a {
       display: inline-block;
@@ -159,6 +158,8 @@
       font-weight: 500;
       font-size: 15px;
       color: $dark-gray;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 3px;
 
       @include md-block {
         border-bottom: 1px solid #E6E6E6;
@@ -166,6 +167,18 @@
         padding-left: 18px;
         padding-top: 12px;
         padding-bottom: 12px;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          @include arrow-down();
+          top: 0;
+          bottom: 0;
+          right: 12px;
+          left: auto;
+          margin: auto;
+        }
       }
     }
 
@@ -177,6 +190,9 @@
         padding-bottom: 3px;
         @include md-block {
           padding-bottom: 12px;
+          &:before {
+            @include arrow-up();
+          }
         }
       }
     }
@@ -185,13 +201,9 @@
 
 .models {
   position: relative;
-  display: inline-block;
   max-width: 893px;
   width: 100%;
   background: $white;
-  box-sizing: border-box;
-  padding: 40px 10px 70px 100px;
-  font-size: 15px;
 
   @include xl-block {
     max-width: 70%;
@@ -205,12 +217,51 @@
     max-width: 100%;
   }
 
+  &__item {
+    display: none;
+    width: 100%;
+    background: $white;
+    box-sizing: border-box;
+    padding: 40px 10px 70px 100px;
+    font-size: 15px;
+
+    @include md-block {
+      padding: 0 20px;
+    }
+
+    &.active {
+      display: inline-block;
+    }
+  }
+
+  &__head {
+    @include md-block {
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+    }
+  }
+
+  &__container {
+    @include md-block {
+      margin-top: 12px;
+    }
+  }
+
   &__logo {
     position: absolute;
     width: 65px;
     height: 65px;
     left: 13px;
     top: 13px;
+
+    @include md-block {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      left: inherit;
+      top: inherit;
+    }
 
     & img {
       width: 100%;
@@ -223,6 +274,11 @@
     font-size: 15px;
     color: $model-title;
     margin-bottom: 22px;
+    @include md-block {
+      margin-bottom: 0;
+      margin-left: 15px;
+    }
+
   }
 
   &__list {

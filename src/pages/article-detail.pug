@@ -5,8 +5,11 @@ block variables
 
 block content
     include ../blocks/components/breadcrumbs/breadcrumbs
-    main
+    main.section-gray
         .container
             +breadcrumbs(breadcrumbs)
             h1=title
         include ../blocks/components/article-detail/article-detail
+        .container
+            include ../blocks/components/comment/comment
+
