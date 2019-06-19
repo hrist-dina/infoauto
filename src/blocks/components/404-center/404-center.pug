@@ -1,17 +1,13 @@
-section.error
+section.not-found
     .container
-        .error__inner
-            .error-left
-                .error_img
-                    img(src="img/sprites/intermediate-svg/404.svg", alt="")
-            .error-right
-                h1.error-right__h1 Страница не найдена!
-                .error-right__text
-                    |К сожалению, запрашиваемая вами страница не найдена. 
-                    |Возможно, виной тому устаревшая ссылка. Или ошибка в строке ввода, кто знает. 
-                    |Мы предлагаем перейти в один из основных разделов: 
-                .error-right-services
-                    .error-right-services__img
-                        img(src="img/sprites/intermediate-svg/repair-404.svg", alt="")
-                        img(src="img/sprites/intermediate-svg/maintenance-404.svg", alt="")
-                        img(src="img/sprites/intermediate-svg/consumables-404.svg", alt="")
+        .not-found__inner
+            .not-found__img
+                img(src="img/sprites/intermediate-svg/404.svg", alt="")
+            .not-found__content
+                h1.h1 Страница не найдена!
+                .not-found__text
+                    p
+                        |К сожалению, запрашиваемая вами страница не найдена.
+                        | Возможно, виной тому устаревшая ссылка. Или ошибка в строке ввода, кто знает.
+                    p Мы предлагаем перейти в один из основных разделов:
+                include ../services/services
