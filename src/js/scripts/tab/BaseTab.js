@@ -27,18 +27,20 @@ export class BaseTab {
         this.menu.on('click', function (e) {
             e.preventDefault();
 
-            let itemMenu = $(this);
+            let type =  $(this).data(self.dataMenu);
 
-            self.menu.removeClass('active');
-            itemMenu.addClass('active');
-
-            let type =  itemMenu.data(self.dataMenu);
-
-            self.items.removeClass('active');
-            $(self.selector).find(`[data-${self.dataItems}=${type}]`).addClass('active');
-
-            self.onClickedTab(itemMenu);
+            self.active(type);
         });
+    }
+
+    active(type) {
+        this.menu.removeClass('active');
+        $(this.selector).find(`[data-${this.dataMenu}=${type}]`).addClass('active');
+
+        this.items.removeClass('active');
+        $(this.selector).find(`[data-${this.dataItems}=${type}]`).addClass('active');
+
+        this.onClickedTab(type);
     }
 
     onClickedTab(element) {

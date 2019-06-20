@@ -11,7 +11,7 @@
                     input(name='password', type='password', placeholder='Пароль')
                     .modal__hulf
                         button(type='submit').button.button-yellow.modal__button-sign-in Войти
-                        a(href='#').modal__link-forgot Забыли пароль?
+                        a(href='javascript:void(0)', data-modal-type='restore-password').modal__link-forgot.js-modal-open Забыли пароль?
             .modal__tab-item(data-tab-item='register')
                 form(action='', method='post').modal__form-registr
                     input(name='name', type='text', placeholder='Как к вам обращаться?')

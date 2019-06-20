@@ -124,6 +124,7 @@
     &__text {
         font-weight: normal;
         font-size: 15px;
+        line-height: 25px;
         color: $base-color-text;
     }
 
@@ -171,6 +172,10 @@
         }
 
         &-registr {
+            width: 100%;
+        }
+
+        &-restore-password {
             width: 100%;
         }
     }
@@ -289,6 +294,9 @@
         max-width: 720px;
     }
 
+    &__restore-password {
+        max-width: 495px;
+    }
 
     & &__text {
         margin-bottom: 20px;
@@ -348,6 +356,31 @@
         max-width: 800px;
         text-align: left;
     }
+
+    &__link-list {
+        margin-top: 40px;
+
+        a {
+            position: relative;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            text-decoration: none;
+            color: #919191;
+
+            &:after {
+                content: '|';
+                position: relative;
+                color: #919191;
+                margin: 0 20px;
+            }
+
+            &:last-child::after {
+                content: none;
+            }
+        }
+    }
+
 }
 
 .button__send {

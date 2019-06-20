@@ -5,12 +5,9 @@ const selectorByText = '.js-tab-modal-text';
 
 export class TabAuthRegister extends BaseTab {
 
-    onClickedTab(element) {
-        let $element = super.onClickedTab(element);
-        let data = $element.data('tab-menu');
-
+    onClickedTab(type) {
         let text = '';
-        switch (data) {
+        switch (type) {
         case 'register':
             text = 'регистрация';
             break;
@@ -20,6 +17,6 @@ export class TabAuthRegister extends BaseTab {
         default:
             break;
         }
-        $(selectorByText).text(text);
+        $(document).find(selectorByText).text(text);
     }
 }

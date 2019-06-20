@@ -1,6 +1,7 @@
 import $ from "jquery";
 import "%components%/article-detail/article-detail";
 import "%components%/card-slider/card-slider";
+import "%components%/share/share";
 import {Select} from "%components%/select/select";
 import {FilterSearch} from "%components%/filter-search/filter-search";
 import {MobileMenu} from "%components%/mobile-menu/mobile-menu";

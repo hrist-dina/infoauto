@@ -17,7 +17,7 @@ header.header
                 .header__right
                     if !isAuth
                         .header__personal-area-icon
-                            button(data-modal-type='auth-register').button.button-gray.header__sign-in.js-modal-open Войти
+                            button(data-modal-type='auth-register' data-modal-tab='auth').button.button-gray.header__sign-in.js-modal-open Войти
                             a(href="#", data-modal-type='ask-question').button-black.header__ask-question.js-modal-open Задать вопрос
                         +personal-auto('Выберите автомобиль')
                     else
