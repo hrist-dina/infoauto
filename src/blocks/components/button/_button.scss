@@ -7,14 +7,17 @@ span {
     }
 }
 
-button {
+button,
+.button {
     cursor: pointer;
+    @include transition();
 }
+
 
 .button-black {
     display: inline-block;
     padding: 14px 35px;
-    background: $dark-gray;
+    background: #3e3e41;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
     box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
@@ -26,6 +29,7 @@ button {
     text-decoration: none;
 
     &:hover {
+        background: $dark-gray;
     }
 
     &:active {
@@ -167,7 +171,8 @@ button {
     text-decoration: none;
     cursor: pointer;
     box-sizing: border-box;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 
     @include sm-block {
         background: #f3f3f3;

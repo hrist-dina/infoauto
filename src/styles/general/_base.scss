@@ -255,3 +255,14 @@ textarea {
         }
     }
 }
+
+.hover-menu {
+    position: relative;
+
+    &-line {
+        position: absolute;
+        bottom: 0;
+        @include transition(.5s);
+    }
+}
+

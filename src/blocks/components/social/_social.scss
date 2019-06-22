@@ -12,6 +12,11 @@
     width: 20px;
     height: 20px;
     margin-left: 30px;
+    @include transition(0.2s);
+
+    &:hover {
+      opacity: 0.6;
+    }
 
     &:first-child {
       margin-left: 0;

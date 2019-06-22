@@ -23,6 +23,11 @@
       text-transform: uppercase;
       color: $dark-gray;
       text-decoration: none;
+      @include transition(.2s);
+
+      &:hover {
+        background-color: $yellow;
+      }
 
       @include lg-block {
         font-size: 15px;
@@ -40,7 +45,8 @@
   }
 
   &-edit {
-    margin-left: 20px;
+    margin-left: 15px;
+    padding-left: 5px;
     letter-spacing: 5px;
     white-space: nowrap;
     height: 32px;
@@ -52,6 +58,11 @@
     text-transform: uppercase;
     color: $dark-gray;
     text-decoration: none;
+    @include transition(.2s);
+
+    &:hover {
+      background-color: $yellow;
+    }
 
     @include lg-block {
       font-size: 15px;

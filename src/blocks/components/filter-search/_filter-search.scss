@@ -1,5 +1,5 @@
 @mixin filter-link() {
-  font-weight: 900;
+  font-weight: 700;
   font-size: 15px;
   position: relative;
   text-decoration: none;
@@ -7,6 +7,11 @@
   margin-left: 25px;
   border-bottom: 0.5px solid #ABABAB;
   padding-bottom: 3px;
+  @include transition(.2s);
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
 }
 
 .filter-search {
@@ -30,6 +35,7 @@
     margin: auto;
     height: auto;
     & a {
+      display: inline-block;
       background: none;
       border: none;
       height: auto;

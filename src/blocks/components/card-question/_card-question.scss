@@ -6,6 +6,7 @@
     border-radius: 8px;
     background-color: $white;
     text-decoration: none;
+    @include transition(0.3s, ease-in-out, box-shadow);
 
     @include sm-block {
         width: 100%;
@@ -63,9 +64,10 @@
     &__title {
         font-weight: normal;
         font-size: 20px;
+        line-height: 28px;
         color: #16162d;
         margin-top: 15px;
-        margin-bottom: 45px;
+        margin-bottom: 32px;
     }
 
     &__status {
@@ -86,7 +88,7 @@
     }
 
     &-list {
-        display: inline-flex;
+        display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
 

@@ -44,7 +44,7 @@
     display: none;
 
     @include sm-block {
-      display: block;
+      display: block !important;
     }
   }
 }

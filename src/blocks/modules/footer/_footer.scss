@@ -66,6 +66,11 @@
         font-size: 15px;
         color: $footer-color-menu;
         text-decoration: none;
+        @include transition(0.2s);
+
+        &:hover {
+          color: $footer-color-menu-hover;
+        }
       }
     }
   }
@@ -100,6 +105,11 @@
         font-size: 15px;
         color: $footer-color-menu;
         text-decoration: none;
+        @include transition(0.2s);
+
+        &:hover {
+          color: $footer-color-menu-hover;
+        }
       }
     }
   }
@@ -109,6 +119,7 @@
     font-size: 15px;
     color: $footer-color-menu;
   }
+
   &__copyright {
     @include sm-block {
       margin-bottom: 20px;

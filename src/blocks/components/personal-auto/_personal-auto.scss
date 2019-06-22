@@ -24,6 +24,11 @@
     color: $personal-auto;
     border-bottom: 0.5px solid #ABABAB;
     padding-bottom: 3px;
+    @include transition(0.2s);
+
+    &:hover {
+      border-color: transparent;
+    }
     @include lg-block {
       display: inline-block;
       border-bottom: 0;

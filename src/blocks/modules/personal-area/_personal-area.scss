@@ -92,6 +92,14 @@
             box-sizing: border-box;
         }
 
+        & .hover-menu-line {
+            height: 4px;
+            background: $yellow;
+            @include md-block {
+                height: 3px;
+            }
+        }
+
         & ul {
             display: flex;
             & li {
@@ -104,13 +112,6 @@
 
                     @include md-block {
                         padding-bottom: 9px;
-                    }
-
-                    &.active {
-                        border-bottom: 4px solid $yellow;
-                        @include md-block {
-                            border-bottom-width: 3px;
-                        }
                     }
                 }
             }
@@ -147,9 +148,11 @@
     }
 
     &__info {
-        max-width: 396px;
+        padding-right: 10px;
         width: 100%;
         box-sizing: border-box;
+        font-size: 15px;
+        line-height: 25px;
 
         @include sm-block {
             max-width: 100%;
@@ -186,7 +189,7 @@
         border: 1px solid #e0e0e0;
         box-sizing: border-box;
         border-radius: 3px;
-        padding: 19px 19px 15px 16px;
+        padding: 13px 19px 13px 16px;
         margin-bottom: 10px;
 
         @include sm-block {

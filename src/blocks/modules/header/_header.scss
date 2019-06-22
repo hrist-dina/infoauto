@@ -106,13 +106,19 @@
 
   &__ask-question,
   &__sign-in {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     margin-left: 12px;
+    font-size: 15px;
     @include lg(display, none);
   }
 
-  &__personal-area-icon{
+  &__sign-in {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  &__personal-area-icon {
     display: flex;
     justify-content: flex-end;
     align-items: center;

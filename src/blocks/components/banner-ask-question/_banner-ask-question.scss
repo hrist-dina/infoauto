@@ -39,6 +39,13 @@
   }
 
   & .button {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 20px;
     border: none;
+
+    @include md-block {
+      font-size: 16px;
+    }
   }
 }

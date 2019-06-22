@@ -13,10 +13,6 @@
   margin: 0 5px;
   cursor: pointer;
 
-  &:hover >  &__message {
-    display: block;
-  }
-
   &__message {
     position: absolute;
     left: 45px;

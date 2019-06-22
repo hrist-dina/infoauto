@@ -14,7 +14,7 @@ export class Share {
 
     show() {
         this.share.hover(() => {
-            this.shareDropdown.fadeToggle();
+            this.shareDropdown.stop().fadeToggle();
         });
     }
 }
