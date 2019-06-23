@@ -1,7 +1,7 @@
 import  $ from "jquery";
 import iziModal from 'izimodal-1.6.0';
-import {BaseTab} from "../tab/BaseTab";
 import {TabAuthRegister} from "../tab/TabAuthRegister";
+import {Select} from "%components%/select/select";
 // Initialise imported function as jQuery function
 $.fn.iziModal = iziModal;
 
@@ -12,17 +12,25 @@ class BaseModal {
         selectorOpen = '.js-modal-open',
         selectorClose = '.js-modal-close'
     ) {
-        this.element = $(selector);
+        this.selector = selector;
+        this.element = $(document).find(this.selector);
         this.selectorOpen = selectorOpen;
         this.selectorClose = selectorClose;
-        this.baseOptopns = {
+        this.options = $.extend(BaseModal.baseOptions(), options);
+        this.init();
+    }
+
+    static baseOptions() {
+        return {
             radius: 0,
             width: 'auto',
             borderBottom: false,
-            closeButton: false
+            closeButton: false,
         };
-        this.options = $.extend(this.baseOptopns, options);
-        this.init();
+    }
+
+    static closeCurrent(elem) {
+        $(elem).iziModal('close');
     }
 
     init() {
@@ -58,6 +66,7 @@ class BaseModal {
     close() {
         this.element.map((item, elem) => $(elem).iziModal('close'));
     }
+
 }
 
 export {BaseModal};

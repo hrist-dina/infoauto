@@ -52,5 +52,39 @@
         }
       ]
     }
+  ],
+  "marks": [
+    {
+      "id": 1,
+      "code": "toyota",
+      "name": "Toyota"
+    },
+    {
+      "id": 2,
+      "code": "lada",
+      "name": "Лада"
+    }
+  ],
+  "models": [
+    {
+      "id": 1,
+      "mark_code": "toyota",
+      "code": "rav-4",
+      "name": "Rav-4"
+    },
+    {
+      "id": 2,
+      "mark_code": "toyota",
+      "code": "camry",
+      "name": "Camry"
+    },
+    {
+      "id": 3,
+      "mark_code": "lada",
+      "code": "vesta",
+      "name": "Vesta"
+    }
+  ],
+  "ask-question": [
   ]
 }
