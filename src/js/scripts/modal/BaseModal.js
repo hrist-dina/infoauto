@@ -21,7 +21,7 @@ class BaseModal {
             borderBottom: false,
             closeButton: false
         };
-        this.options = Object.assign(this.baseOptopns, options);
+        this.options = $.extend(this.baseOptopns, options);
         this.init();
     }
 

@@ -7,19 +7,17 @@
   }
 
   &__list {
-    @include row-flex();
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   &__item {
-    @include col();
     @include size(3);
-    @include size-md(6);
-    margin-left: 10px;
-    margin-right: 10px;
-    width: calc(25% - 20px);
     text-decoration: none;
     display: inline-block;
     @include md-block {
+      width: #{calc(50% - 8px)};
       margin-bottom: 10px;
     }
     @include to(425px) {

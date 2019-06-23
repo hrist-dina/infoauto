@@ -40,7 +40,10 @@ include ../../components/select/select
                     span.label-text Коммерческий
             .modal__block
                 .modal__select-horisontal
-                    +select(optionsMark, 'mark', 'js-modal-select')
-                    +select(optionsModel, 'model', 'js-modal-select')
-                    +select(optionsGeneration, 'generation', 'js-modal-select')
+                    .modal__select-item
+                        +select(optionsMark, 'mark', 'js-modal-select')
+                    .modal__select-item
+                        +select(optionsModel, 'model', 'js-modal-select')
+                    .modal__select-item
+                        +select(optionsGeneration, 'generation', 'js-modal-select')
             button.button-yellow.button__choose Выбрать

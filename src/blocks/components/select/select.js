@@ -14,7 +14,7 @@ export class Select {
             theme: this.theme
         };
 
-        this.options = Object.assign(this.baseOptions, options);
+        this.options = $.extend(this.baseOptions, options);
 
         this.init();
     }

@@ -7,6 +7,7 @@
     background: $search-bgc;
     border-radius: 4px;
     display: flex;
+    justify-content: space-between;
     padding: 6px 6px 6px 40px;
 
     @include sm-block {
@@ -34,17 +35,21 @@
     }
 
     & input[type='text'] {
-      width: 100%;
+      width: 77%;
       border: none;
       font-weight: 500;
       font-size: 18px;
-      line-height: 30px;
       outline: none;
       background: $search-bgc;
       padding: 0 6px 0 0;
 
-      @include sm-block {
+      @include md-block {
         font-size: 16px;
+        width: 80%;
+      }
+
+      @include sm-block {
+        width: 70%;
       }
     }
 

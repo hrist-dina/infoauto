@@ -5,6 +5,12 @@
     flex-direction: column;
   }
 
+  &__img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 10px;
+  }
+
   &__item {
     text-decoration: none;
     display: flex;
@@ -16,10 +22,8 @@
       width: 100%;
       margin-bottom: 20px;
     }
-
-
     & img {
-      margin-bottom: 10px;
+      width: 100%;
     }
 
     & span {
