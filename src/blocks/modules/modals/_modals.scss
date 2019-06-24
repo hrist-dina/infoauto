@@ -352,6 +352,11 @@
     }
 
     &__radio-list {
+        & .label_checkbox {
+            display: inline-block;
+            padding-bottom: 0;
+        }
+
         @include md-block {
             display: flex;
             flex-direction: column;
