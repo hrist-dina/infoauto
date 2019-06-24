@@ -8,6 +8,7 @@ export default class Validator {
             this.form = selectorForm;
         }
 
+        this.validator = 'validator';
         this.requireFiled = 'validator-require';
         this.typeFiled = 'validator-type';
         this.slectorAgreeFiled = 'js-validator-agree';
@@ -19,6 +20,19 @@ export default class Validator {
             email: 'Некорректный Email адрес!',
             phone: 'Некорректный телефон!'
         };
+
+        this.addClass();
+    }
+
+    addClass() {
+        if (!this.form.hasClass(this.validator)) {
+            this.form.addClass(this.validator);
+        }
+    }
+
+    addMessages(messages) {
+        $.extend(this.massages, messages);
+        return this;
     }
 
     removeErrorMessages() {

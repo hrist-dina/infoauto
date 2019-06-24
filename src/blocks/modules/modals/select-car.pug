@@ -28,7 +28,7 @@ include ../../components/select/select
     .modal__inner
         .close.modal__close.js-modal-close
         .modal__title Выберите автомобиль
-        form(action='', method='post').modal__form-select-car
+        form(action='', method='post').modal__form-select-car.js-ajax-form-select-car
             .modal__block.modal__radio-list
                 label.label.label_checkbox
                     input.input-checkbox(name="auto" type="radio" value="passenger")
@@ -41,9 +41,21 @@ include ../../components/select/select
             .modal__block
                 .modal__select-horisontal
                     .modal__select-item
-                        +select(optionsMark, 'mark', 'js-modal-select')
+                        label
+                            +select(optionsMark, 'mark', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/marks`
+                            })
                     .modal__select-item
-                        +select(optionsModel, 'model', 'js-modal-select')
+                        label
+                            +select(optionsModel, 'model', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/models`
+                            })
                     .modal__select-item
-                        +select(optionsGeneration, 'generation', 'js-modal-select')
+                        label
+                            +select(optionsGeneration, 'generation', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/generation`
+                            })
             button.button-yellow.button__choose Выбрать

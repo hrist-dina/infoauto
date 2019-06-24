@@ -69,6 +69,8 @@ export class Ajax {
     }
 
     ajax(method) {
+        console.log(this.url);
+        console.log(this.data);
         $.ajax(
             this.url,
             {

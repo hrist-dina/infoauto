@@ -6,18 +6,24 @@
             li(data-tab-menu='register') Регистрация
         .modal__tab-list
             .modal__tab-item.active(data-tab-item='auth')
-                form(action='', method='post').modal__form-auth
-                    input(name='email', type='text', placeholder='Электронная почта')
-                    input(name='password', type='password', placeholder='Пароль')
+                form(action='', method='post').modal__form-auth.js-ajax-auth
+                    label
+                        input(name='email', type='text', placeholder='Электронная почта', data-validator-require="true", data-validator-type="email")
+                    label
+                        input(name='password', type='password', placeholder='Пароль', data-validator-require="true")
                     .modal__hulf
                         button(type='submit').button.button-yellow.modal__button-sign-in Войти
                         a(href='javascript:void(0)', data-modal-type='restore-password').modal__link-forgot.js-modal-open Забыли пароль?
             .modal__tab-item(data-tab-item='register')
-                form(action='', method='post').modal__form-registr
-                    input(name='name', type='text', placeholder='Как к вам обращаться?')
-                    input(name='email', type='text', placeholder='Электронная почта')
-                    input(name='password', type='password', placeholder='Пароль')
-                    input(name='password_confirmation', type='password', placeholder='Повторите пароль')
+                form(action='', method='post').modal__form-registr.js-ajax-register
+                    label
+                        input(name='name', type='text', placeholder='Как к вам обращаться?', data-validator-require="true")
+                    label
+                        input(name='email', type='text', placeholder='Электронная почта', data-validator-require="true", data-validator-type="email")
+                    label
+                        input(name='password', type='password', placeholder='Пароль', data-validator-require="true")
+                    label
+                        input(name='password_confirmation', type='password', placeholder='Повторите пароль', data-validator-require="true")
                     button(type='submit').button.button-yellow.modal__button-registr Зарегистрироваться
                     .modal__policy
                         | Нажимая на кнопку, Вы соглашаетесь на обработку

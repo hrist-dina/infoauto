@@ -1,6 +1,7 @@
-.add-to-favorite {
+body .add-to-favorite {
     position: relative;
     padding-left: 35px;
+    border: none;
 
     &:before {
         content: "";
@@ -23,9 +24,10 @@
     }
 }
 
-.remind-me {
+body .remind-me {
     position: relative;
     padding-left: 35px;
+    border: none;
 
     &:before {
         content: "";

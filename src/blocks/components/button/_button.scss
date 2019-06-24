@@ -52,13 +52,13 @@ button,
     color: $base-color-text;
 
     &:hover {
-        background: $yellow;
+        background: #F2C208;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
     }
 
     &:active {
-        background: $yellow;
+        background: #F2C208;
         border: 1px solid rgba(255, 255, 255, 0.18);
         box-shadow: none;
     }
