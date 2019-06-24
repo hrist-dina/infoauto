@@ -86,5 +86,45 @@
     }
   ],
   "ask-question": [
+    {
+      "mark": "Лада",
+      "model": "Vesta",
+      "generation": "2018",
+      "question": "кауцоащкхуцо",
+      "textarea": "маткмд",
+      "id": 1
+    },
+    {
+      "mark": "Лада",
+      "model": "Camry",
+      "generation": "2018",
+      "question": "рррррррррррррр",
+      "textarea": "ррррррррррррн",
+      "id": 2
+    },
+    {
+      "mark": "Лада",
+      "model": "Camry",
+      "generation": "2018",
+      "question": "рррррррррррррр",
+      "textarea": "ррррррррррррн",
+      "id": 3
+    },
+    {
+      "mark": "Лада",
+      "model": "Camry",
+      "generation": "2018",
+      "question": "рррррррррррррр",
+      "textarea": "ррррррррррррн",
+      "id": 4
+    },
+    {
+      "mark": "Toyota",
+      "model": "Camry",
+      "generation": "2018",
+      "question": "гогено",
+      "textarea": "ооооооооооооооооооо",
+      "id": 5
+    }
   ]
 }
