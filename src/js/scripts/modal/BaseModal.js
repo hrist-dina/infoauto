@@ -29,6 +29,13 @@ class BaseModal {
         };
     }
 
+    static selectorModalContent() {
+        return 'js-modal-content';
+    }
+    static selectorModalText() {
+        return 'js-modal-text';
+    }
+
     static closeCurrent(elem) {
         $(elem).iziModal('close');
     }
@@ -64,7 +71,84 @@ class BaseModal {
     }
 
     close() {
-        this.element.map((item, elem) => $(elem).iziModal('close'));
+        this.element.map((item, elem) =>  {
+            $(elem).iziModal('close');
+            BaseModal.hideMessage(elem);
+            BaseModal.clear(elem);
+        });
+    }
+
+    static successMessage() {
+        return {
+            title: 'Успешно!',
+            text: 'Запрос отправлен.'
+        };
+    }
+
+    static renderMessage(message = BaseModal.successMessage) {
+
+        let modalText = $('<div>', {'class': BaseModal.selectorModalText()});
+        if (message.title) {
+            let title = $('<div>', {'class': 'modal__title'}).text(message.title);
+            modalText.append(title);
+        }
+        if (message.text) {
+            let text = $('<div>', {'class': 'modal__text'}).text(message.text);
+            modalText.append(text);
+        }
+        return modalText;
+    }
+
+    static setSuccessMessage(element, message) {
+        let close = $(element).find('.js-modal-close');
+        let modalContent = $('<div>', {'class': BaseModal.selectorModalContent()});
+        let content = $(close).siblings();
+        modalContent.append(content);
+        close.after(modalContent);
+        modalContent.fadeOut();
+        close.after(BaseModal.renderMessage(message));
+
+    }
+
+    static hideMessage(element) {
+        const content = $(element).find(`.${BaseModal.selectorModalContent()}`);
+        if ($(content).length) {
+            $(content).fadeIn();
+        }
+        const text = $(element).find(`.${BaseModal.selectorModalText()}`);
+        if ($(text).length) {
+            $(text).fadeOut();
+        }
+    }
+
+    static clear(element) {
+        $(element).find('input')
+            .filter(':text, :password, :file').val('')
+            .end()
+            .filter(':checkbox, :radio')
+            .removeAttr('checked')
+            .end()
+            .end()
+            .find('textarea').val('')
+            .end()
+            .find('select').prop("selectedIndex", 0)
+            .find('option:selected').removeAttr('selected')
+            .end()
+            .find('button[type=submit]').prop('disabled', false);
+        new Select('.js-modal-select', 'infoauto-gray');
+        BaseModal.hideMessage();
+        return this;
+    }
+
+    static showSuccessMessage(modal, successMessage) {
+        BaseModal.setSuccessMessage(modal, successMessage);
+        setTimeout(function () {
+            BaseModal.closeCurrent(modal);
+            setTimeout(function () {
+                BaseModal.clear(modal);
+                BaseModal.hideMessage(modal);
+            }, 1000);
+        }, 3000);
     }
 
 }

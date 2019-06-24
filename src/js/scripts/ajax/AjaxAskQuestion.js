@@ -3,6 +3,11 @@ import {Ajax} from "./Ajax";
 import Validator from "../classes/Validator";
 import {BaseModal} from "../modal/BaseModal";
 
+const successMessage = {
+    title: 'Вопрос принят!',
+    text: 'Наши эксперты в ближайшее время ответят на него.'
+};
+
 export class AjaxAskQuestion extends Ajax {
 
     validate() {
@@ -11,23 +16,18 @@ export class AjaxAskQuestion extends Ajax {
 
     done(data) {
         const res =  super.done(data);
-        const self =  this;
         if (res) {
-            let button = this.element.find('button[type=submit]');
-            const buttonText = button.text();
-            button.prop('disabled', true);
-            button.text('Успешно!');
             let modal = $(this.element).parents('.js-modal');
-            setTimeout(function () {
-                BaseModal.closeCurrent(modal);
-                self.clear();
-                button.text(buttonText).prop('disabled', false);
-            }, 5000);
+            BaseModal.showSuccessMessage(modal, successMessage);
         }
     }
 
     fail(error) {
         console.log('fail');
         console.log(error);
+
+        //TODO:: Написать логику на бэке по обработке ошибок. То что ниже удалить!
+        let modal = $(this.element).parents('.js-modal');
+        BaseModal.showSuccessMessage(modal, successMessage);
     }
 }

@@ -3,6 +3,12 @@ import {Ajax} from "./Ajax";
 import Validator from "../classes/Validator";
 import {BaseModal} from "../modal/BaseModal";
 
+const successMessage = {
+    title: 'Успешно!',
+    text: 'Новый пароль придет на указанную Вами почту.'
+};
+
+
 export class AjaxRestorePassword extends Ajax {
 
     validate() {
@@ -11,18 +17,18 @@ export class AjaxRestorePassword extends Ajax {
 
     done(data) {
         const res =  super.done(data);
-        const self =  this;
         if (res) {
             let modal = $(this.element).parents('.js-modal');
-            setTimeout(function () {
-                BaseModal.closeCurrent(modal);
-                self.clear();
-            }, 5000);
+            BaseModal.showSuccessMessage(modal, successMessage);
         }
     }
 
     fail(error) {
         console.log('fail');
         console.log(error);
+
+        //TODO:: Написать логику на бэке по обработке ошибок. То что ниже удалить!
+        let modal = $(this.element).parents('.js-modal');
+        BaseModal.showSuccessMessage(modal, successMessage);
     }
 }

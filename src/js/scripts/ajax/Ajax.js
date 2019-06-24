@@ -105,23 +105,4 @@ export class Ajax {
         console.log('fail');
         console.log(error);
     }
-
-
-    clear() {
-        this.element.find('input')
-            .filter(':text, :password, :file').val('')
-            .end()
-            .filter(':checkbox, :radio')
-            .removeAttr('checked')
-            .end()
-            .end()
-            .find('textarea').val('')
-            .end()
-            .find('select').prop("selectedIndex", 0)
-            .find('option:selected').removeAttr('selected')
-            .end()
-            .find('button[type=submit]').prop('disabled', false);
-        new Select('.js-modal-select', 'infoauto-gray');
-        return this;
-    }
 }
