@@ -1,130 +1,89 @@
 {
-  "alphabets": [
-    {
-      "id": 1,
-      "code": "ru",
-      "name": "А-Я",
-      "literals": [
+    "alphabets": [
         {
-          "id": 1,
-          "name": "А"
+            "id": 1,
+            "code": "ru",
+            "name": "А-Я",
+            "literals": [
+                {
+                    "id": 1,
+                    "name": "А"
+                },
+                {
+                    "id": 2,
+                    "name": "Б"
+                },
+                {
+                    "id": 3,
+                    "name": "В"
+                }
+            ],
+            "changeList": [
+                {
+                    "id": 2,
+                    "code": "en",
+                    "name": "A-Z"
+                }
+            ]
         },
         {
-          "id": 2,
-          "name": "Б"
+            "id": 2,
+            "code": "en",
+            "name": "A-Z",
+            "literals": [
+                {
+                    "id": 33,
+                    "name": "A"
+                },
+                {
+                    "id": 34,
+                    "name": "B"
+                },
+                {
+                    "id": 35,
+                    "name": "C"
+                }
+            ],
+            "changeList": [
+                {
+                    "id": 1,
+                    "code": "ru",
+                    "name": "А-Я"
+                }
+            ]
+        }
+    ],
+    "marks": [
+        {
+            "id": 1,
+            "code": "toyota",
+            "name": "Toyota"
         },
         {
-          "id": 3,
-          "name": "В"
+            "id": 2,
+            "code": "lada",
+            "name": "Лада"
         }
-      ],
-      "changeList": [
+    ],
+    "models": [
         {
-          "id": 2,
-          "code": "en",
-          "name": "A-Z"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "code": "en",
-      "name": "A-Z",
-      "literals": [
-        {
-          "id": 33,
-          "name": "A"
+            "id": 1,
+            "mark_code": "toyota",
+            "code": "rav-4",
+            "name": "Rav-4"
         },
         {
-          "id": 34,
-          "name": "B"
+            "id": 2,
+            "mark_code": "toyota",
+            "code": "camry",
+            "name": "Camry"
         },
         {
-          "id": 35,
-          "name": "C"
+            "id": 3,
+            "mark_code": "lada",
+            "code": "vesta",
+            "name": "Vesta"
         }
-      ],
-      "changeList": [
-        {
-          "id": 1,
-          "code": "ru",
-          "name": "А-Я"
-        }
-      ]
-    }
-  ],
-  "marks": [
-    {
-      "id": 1,
-      "code": "toyota",
-      "name": "Toyota"
-    },
-    {
-      "id": 2,
-      "code": "lada",
-      "name": "Лада"
-    }
-  ],
-  "models": [
-    {
-      "id": 1,
-      "mark_code": "toyota",
-      "code": "rav-4",
-      "name": "Rav-4"
-    },
-    {
-      "id": 2,
-      "mark_code": "toyota",
-      "code": "camry",
-      "name": "Camry"
-    },
-    {
-      "id": 3,
-      "mark_code": "lada",
-      "code": "vesta",
-      "name": "Vesta"
-    }
-  ],
-  "ask-question": [
-    {
-      "mark": "Лада",
-      "model": "Vesta",
-      "generation": "2018",
-      "question": "кауцоащкхуцо",
-      "textarea": "маткмд",
-      "id": 1
-    },
-    {
-      "mark": "Лада",
-      "model": "Camry",
-      "generation": "2018",
-      "question": "рррррррррррррр",
-      "textarea": "ррррррррррррн",
-      "id": 2
-    },
-    {
-      "mark": "Лада",
-      "model": "Camry",
-      "generation": "2018",
-      "question": "рррррррррррррр",
-      "textarea": "ррррррррррррн",
-      "id": 3
-    },
-    {
-      "mark": "Лада",
-      "model": "Camry",
-      "generation": "2018",
-      "question": "рррррррррррррр",
-      "textarea": "ррррррррррррн",
-      "id": 4
-    },
-    {
-      "mark": "Toyota",
-      "model": "Camry",
-      "generation": "2018",
-      "question": "гогено",
-      "textarea": "ооооооооооооооооооо",
-      "id": 5
-    }
-  ]
+    ],
+    "ask-question": []
 }
