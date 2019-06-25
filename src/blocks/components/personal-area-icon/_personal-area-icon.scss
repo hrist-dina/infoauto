@@ -2,6 +2,17 @@
   position: relative;
 
   & > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    color: #333333;
+  }
+
+  & img {
     position: relative;
     display: inline-block;
     width: 35px;
@@ -9,20 +20,16 @@
     border-radius: 50%;
     background-color: $personal-area-icon-bg;
     cursor: pointer;
+  }
 
-    &:before {
-      content: '';
-      position: absolute;
-      background: url("../img/sprites/intermediate-svg/personal-area.svg") no-repeat;
-      width: 16px;
-      height: 18px;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
+  & span {
+    margin-left: 12px;
+
+    @include lg-block {
+      color: $white;
     }
   }
+
 }
 
 .personal-area-layout {
@@ -50,11 +57,7 @@
   min-width: 210px;
   border-radius: 4px;
   z-index: -1;
-  -webkit-transition: opacity .7s ease;
-  -moz-transition: opacity .7s ease;
-  -ms-transition: opacity .7s ease;
-  -o-transition: opacity .7s ease;
-  transition: opacity .7s ease;
+  @include transition(.7s, ease, opacity);
 
   @include lg-block {
     right: -10px;
@@ -114,11 +117,7 @@
 
         &:hover {
           background: #F3F3F3;
-          -webkit-transition: background-color .5s ease;
-          -moz-transition: background-color .5s ease;
-          -ms-transition: background-color .5s ease;
-          -o-transition: background-color .5s ease;
-          transition: background-color .5s ease;
+          @include transition(.5s, ease, background-color);
         }
       }
     }

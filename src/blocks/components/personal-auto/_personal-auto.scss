@@ -5,18 +5,9 @@
   font-size: 15px;
   font-weight: 500;
   margin-left: 42px;
-  @include lg-block {
-    margin-left: 6px;
-    height: 47px;
-  };
 
   & p {
     margin-bottom: 5px;
-  }
-
-  @include sm-block {
-    margin-right: -12px;
-    margin-top: -8px;
   }
 
   & a {
@@ -29,25 +20,12 @@
     &:hover {
       border-color: transparent;
     }
-    @include lg-block {
-      display: inline-block;
-      border-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 47px solid $white;
-      border-left: 15px solid transparent;
-      height: 0;
-      width: 37px;
-
-      & span {
-        display: none;
-      }
-    }
   }
 
   &:before {
     content: '';
     position: absolute;
-    background: url("../img/sprites/intermediate-svg/personal-auto.svg") no-repeat;
+    background: url(icon-personal-auto()) no-repeat;
     width: 32px;
     height: 14px;
     left: -42px;
@@ -56,15 +34,5 @@
     bottom: 0;
     margin: auto;
     cursor: pointer;
-
-    @include lg-block {
-      left: 0;
-      right: -5px;
-      top: 0;
-    };
-
-    @include sm-block {
-      top: 4px;
-    }
   }
 }

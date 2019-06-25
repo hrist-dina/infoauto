@@ -37,6 +37,30 @@ button,
     }
 }
 
+.button-pen-adaptive {
+    @include lg-block {
+        background: $dark-gray;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        font-size: 0;
+
+        &:before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: url(icon-pen())  no-repeat;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+}
+
 .button-yellow {
     display: inline-block;
     padding: 14px 35px;

@@ -1,18 +1,23 @@
-.personal-area-layout.js-sub-menu-layout
-.personal-area-icon
-    a(href="#").js-icon-sub-menu
-    nav.personal-area-sub-menu.js-sub-menu
-        ul
-            li
-                a(href="#") Личные данные
-            li
-                a(href="#") Автомобили
-            li
-                a(href="#") Книга учета ТО
-            li
-                a(href="#") Избранное
-            li
-                a(href="#") Мои вопросы
-            li.exit
-                a(href="#") Выход
+mixin personal-area-icon(needSubmenu = true)
+    if needSubmenu
+        .personal-area-layout.js-sub-menu-layout
+    .personal-area-icon
+        a(href="#", class=needSubmenu?'js-icon-sub-menu':'')
+            img(src='img/personal-area-icon.svg')
+            span Александр
+        if needSubmenu
+            nav.personal-area-sub-menu.js-sub-menu
+                ul
+                    li
+                        a(href="#") Личные данные
+                    li
+                        a(href="#") Автомобили
+                    li
+                        a(href="#") Книга учета ТО
+                    li
+                        a(href="#") Избранное
+                    li
+                        a(href="#") Мои вопросы
+                    li.exit
+                        a(href="#") Выход
 

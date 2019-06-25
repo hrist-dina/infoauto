@@ -1,7 +1,7 @@
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 87px;
+  top: 76px;
   left: 0;
   background-color: $dark-gray;
   width: 100%;
@@ -16,6 +16,16 @@
 
   @include from(1025px) {
     display: none !important;
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 21px;
+    text-decoration: none;
+    color: $white;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   &__main {
@@ -38,6 +48,27 @@
         & span {
           display: block;
         }
+      }
+    }
+
+
+
+    & .personal-area-icon {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    & .personal-auto {
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+
+      &:before {
+        background: url(icon-personal-auto('FFD223')) no-repeat;
+      }
+
+      & span {
+        color: $white;
       }
     }
   }
