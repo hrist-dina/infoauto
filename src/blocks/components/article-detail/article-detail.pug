@@ -1,5 +1,6 @@
 include ../../components/card-slider/card-slider
 include ../../../data/article-detail
+include ../../components/share/share
 
 section.article-detail
     .container
@@ -102,7 +103,7 @@ section.article-detail
                 .article-bottom__item
                     a(href="javascript:void(0)", data-modal-type="remind-me").remind-me.js-modal-open Напомнить мне
                 .article-bottom__item
-                    include ../../components/share-list/share-list
+                    +share(true)
 section.pay-attension
     .container
         .article-content

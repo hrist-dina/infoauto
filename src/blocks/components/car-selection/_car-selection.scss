@@ -38,6 +38,12 @@
     font-size: 15px;
     text-decoration: dashed;
     cursor: pointer;
+    border-bottom: 0.5px dashed #333333;
+
+    &:hover {
+      @include transition(.2s);
+      border-color: transparent;
+    }
   }
 
   &__text {

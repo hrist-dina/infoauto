@@ -11,7 +11,7 @@
         display: inline-block;
         width: 20px;
         height: 20px;
-        margin-left: 30px;
+        margin-left: 10px;
         @include transition(0.2s);
 
         &:hover {
@@ -28,27 +28,49 @@
         }
     }
 
+    $hover-color: '127aef';
+
     &__icon-vk {
-        background: url("../img/sprites/intermediate-svg/icon-vk.svg");
-        width: 18px;
-        height: 10px;
+        background-image: url(icon-vkontakte());
+        background-repeat: no-repeat;
+        width: 28px;
+        height: 28px;
+
+        &:hover {
+            background-image: url(icon-vkontakte($hover-color));
+        }
     }
 
     &__icon-fb {
-        background: url("../img/sprites/intermediate-svg/icon-fb.svg");
-        width: 9px;
-        height: 16px;
+        background-image: url(icon-facebook());
+        background-repeat: no-repeat;
+        width: 28px;
+        height: 28px;
+
+        &:hover {
+            background-image: url(icon-facebook($hover-color));
+        }
     }
 
     &__icon-ok {
-        background: url("../img/sprites/intermediate-svg/icon-ok.svg");
-        width: 10px;
-        height: 16px;
+        background-image: url(icon-odnoklassniki());
+        background-repeat: no-repeat;
+        width: 28px;
+        height: 28px;
+
+        &:hover {
+        background-image: url(icon-odnoklassniki($hover-color));
+    }
     }
 
     &__icon-insta {
-        background: url("../img/sprites/intermediate-svg/icon-insta.svg");
+        background-image: url(icon-insta());
+        background-repeat: no-repeat;
         width: 15px;
         height: 14px;
+
+        &:hover {
+            background-image: url(icon-insta($hover-color));
+        }
     }
 }

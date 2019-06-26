@@ -1,4 +1,5 @@
-.share.js-share
-    .share__text Поделиться с друзьями
-    .share__dropdown.js-share-dropdown
-        .ya-share2(data-services="vkontakte,facebook,twitter,odnoklassniki")
+mixin share(isTop = false)
+    .share.js-share
+        .share__text Поделиться с друзьями
+        .share__dropdown.js-share-dropdown(class=isTop?'share__dropdown_top':'')
+            .ya-share2(data-services="vkontakte,facebook,twitter,odnoklassniki")

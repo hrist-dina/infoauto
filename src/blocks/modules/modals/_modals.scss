@@ -73,10 +73,19 @@
         opacity: 1;
         cursor: pointer;
         z-index: 100;
+        @include transition();
 
         @include sm-block {
             width: 36px;
             height: 36px;
+        }
+
+        &:hover {
+            opacity: .9;
+            &:before,
+            &:after {
+                opacity: .7;
+            }
         }
 
         &:before,

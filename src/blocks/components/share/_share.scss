@@ -1,4 +1,5 @@
 .share {
+  position: relative;
   display: inline-flex;
   align-items: center;
   height: 32px;
@@ -11,7 +12,6 @@
     color: $base-color-text;
     padding-right: 35px;
     cursor: pointer;
-    margin-right: 20px;
 
     @include sm-block {
       display: none;
@@ -42,6 +42,13 @@
 
   &__dropdown {
     display: none;
+    margin-left: 20px;
+
+    &_top {
+      position: absolute;
+      right: 0;
+      top: -40px;
+    }
 
     @include sm-block {
       display: block !important;
