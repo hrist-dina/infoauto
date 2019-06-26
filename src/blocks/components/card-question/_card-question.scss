@@ -16,7 +16,6 @@
         box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
     }
 
-
     &__remove {
         position: absolute;
         top: -1px;
@@ -69,6 +68,9 @@
         margin-top: 15px;
         margin-bottom: 32px;
     }
+    &:hover &__title {
+        color: $blue;
+    }
 
     &__status {
         display: inline-block;
@@ -99,7 +101,6 @@
 
         & .card-question {
             margin-bottom: 16px;
-
 
             @include sm-block {
                 &:last-child {

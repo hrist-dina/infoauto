@@ -1,30 +1,30 @@
 .sub-menu {
-  @include lg(display, none);
+    @include lg(display, none);
 
-  &__list {
-    list-style-type: none;
-    display: flex;
-  }
-
-  &__item {
-    margin-right: 60px;
-
-    &:last-child {
-      margin-right: 0;
+    &__list {
+        list-style-type: none;
+        display: flex;
     }
 
-    & a {
-      text-decoration: none;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 15px;
-      color: $sub-menu-item;
+    &__item {
+        margin-right: 60px;
 
-      @include transition(0.2s, ease-in-out, opacity);
+        &:last-child {
+            margin-right: 0;
+        }
 
-      &:hover {
-        opacity: .7;
-      }
+        & a {
+            text-decoration: none;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            color: $sub-menu-item;
+
+            @include transition(0.2s, ease-in-out, opacity);
+
+            &:hover {
+                color: $blue;
+            }
+        }
     }
-  }
 }

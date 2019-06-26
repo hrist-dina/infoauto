@@ -1,54 +1,54 @@
 .social {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  @include sm-block {
-    justify-content: flex-start;
-  }
-
-  &__item {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 30px;
-    @include transition(0.2s);
-
-    &:hover {
-      opacity: 0.6;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @include sm-block {
+        justify-content: flex-start;
     }
 
-    &:first-child {
-      margin-left: 0;
+    &__item {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 30px;
+        @include transition(0.2s);
+
+        &:hover {
+            color: #127aef;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+        }
     }
 
-    &:before {
-      content: '';
-      position: absolute;
+    &__icon-vk {
+        background: url("../img/sprites/intermediate-svg/icon-vk.svg");
+        width: 18px;
+        height: 10px;
     }
-  }
 
-  &__icon-vk {
-    background: url("../img/sprites/intermediate-svg/icon-vk.svg");
-    width: 18px;
-    height: 10px;
-  }
+    &__icon-fb {
+        background: url("../img/sprites/intermediate-svg/icon-fb.svg");
+        width: 9px;
+        height: 16px;
+    }
 
-  &__icon-fb {
-    background: url("../img/sprites/intermediate-svg/icon-fb.svg");
-    width: 9px;
-    height: 16px;
-  }
+    &__icon-ok {
+        background: url("../img/sprites/intermediate-svg/icon-ok.svg");
+        width: 10px;
+        height: 16px;
+    }
 
-  &__icon-ok {
-    background: url("../img/sprites/intermediate-svg/icon-ok.svg");
-    width: 10px;
-    height: 16px;
-  }
-
-  &__icon-insta {
-    background: url("../img/sprites/intermediate-svg/icon-insta.svg");
-    width: 15px;
-    height: 14px;
-  }
+    &__icon-insta {
+        background: url("../img/sprites/intermediate-svg/icon-insta.svg");
+        width: 15px;
+        height: 14px;
+    }
 }
