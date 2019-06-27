@@ -1,57 +1,63 @@
 .share {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-
-  &__text {
     position: relative;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    color: $base-color-text;
-    padding-right: 35px;
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
 
-    @include sm-block {
-      display: none;
+    &__text {
+        position: relative;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        color: $base-color-text;
+        padding-right: 35px;
+        cursor: pointer;
+
+        @include sm-block {
+            display: none;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: url("../img/sprites/intermediate-svg/icon-share.svg");
+            width: 23px;
+            height: 26px;
+            top: 0;
+            right: 0;
+            left: auto;
+            bottom: 0;
+            margin: auto;
+            -webkit-transition: transform 0.5s;
+            -moz-transition: transform 0.5s;
+            -ms-transition: transform 0.5s;
+            -o-transition: transform 0.5s;
+            transition: transform 0.5s;
+        }
     }
 
-    &:before {
-      content: '';
-      position: absolute;
-      background: url("../img/sprites/intermediate-svg/icon-share.svg");
-      width: 23px;
-      height: 26px;
-      top: 0;
-      right: 0;
-      left: auto;
-      bottom: 0;
-      margin: auto;
-      -webkit-transition: transform .5s ;
-      -moz-transition: transform .5s;
-      -ms-transition: transform .5s;
-      -o-transition: transform .5s;
-      transition: transform .5s;
-    }
-  }
-
-  &:hover &__text::before {
-    transform: rotate(180deg);
-  }
-
-  &__dropdown {
-    display: none;
-    margin-left: 20px;
-
-    &_top {
-      position: absolute;
-      right: 0;
-      top: -40px;
+    &:hover &__text::before {
+        transform: rotate(180deg);
     }
 
-    @include sm-block {
-      display: block !important;
+    &__dropdown {
+        display: none;
+        margin-left: 20px;
+
+        &_top {
+            position: absolute;
+            right: 0;
+            top: -40px;
+            @include sm-block {
+                margin-left: 0;
+                position: inherit;
+                right: inherit;
+                top: inherit;
+            }
+        }
+
+        @include sm-block {
+            display: block !important;
+        }
     }
-  }
 }
