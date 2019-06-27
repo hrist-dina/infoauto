@@ -161,11 +161,39 @@ button,
     &:hover:after,
     &:hover:before {
         background: #ffffff;
+        @include transition();
     }
 
     &:active:before,
     &:active:after {
+        @include transition();
         background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.button-transparent {
+    position: relative;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #16162d;
+    padding: 10px 34px;
+    text-align: center;
+    border: 2px solid #3E3E41;
+    box-sizing: border-box;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+
+    &:hover {
+        background: #16162d;
+        color: #ffffff;
+    }
+
+    &:active {
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
