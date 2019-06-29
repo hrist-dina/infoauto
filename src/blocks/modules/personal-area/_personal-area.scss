@@ -129,9 +129,24 @@
                     height: 100%;
                     border-bottom: 4px solid transparent;
                     padding-bottom: 11px;
+                    @include transition();
 
                     @include md-block {
                         padding-bottom: 9px;
+                    }
+
+                    &.active {
+                        border-bottom: 4px solid $yellow;
+                        @include md-block {
+                            border-bottom-width: 3px;
+                        }
+                    }
+
+                    &:not(.active):hover {
+                        border-bottom: 4px solid rgba(255, 210, 35, 0.45);
+                        @include md-block {
+                            border-bottom-width: 3px;
+                        }
                     }
                 }
             }

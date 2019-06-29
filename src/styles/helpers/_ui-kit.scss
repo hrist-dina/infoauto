@@ -77,6 +77,11 @@ iframe {
     }
 }
 
+@mixin fa-fab {
+    @extend %fa-icon;
+    @extend .fab;
+}
+
 .icon-vk {
     width: 35px;
     height: 35px;
@@ -84,11 +89,17 @@ iframe {
     @include hover-icon(icon-vkontakte());
 
     &_color {
-        color:#4C75A3;
-        background: url(icon-vkontakte('4C75A3')) no-repeat center;
-        width: 35px;
-        height: 35px;
-        @include hover-icon(icon-vkontakte('3a7ac1'));
+        @include fa-fab();
+
+        &:before {
+            color: #4c75a3;
+            content: fa-content($fa-var-vk);
+        }
+        // background: url(icon-vkontakte('4c75a3')) no-repeat;
+        // width: 35px;
+        // height: 35px;
+        // background-size: 35px 35px;
+        // @include hover-icon(icon-vkontakte('3a7ac1'));
     }
 }
 
@@ -99,10 +110,16 @@ iframe {
     @include hover-icon();
 
     &_color {
-        background: url(icon-facebook('3C5A99')) no-repeat center;
-        width: 35px;
-        height: 35px;
-        @include hover-icon(icon-facebook('3C5AB9'));
+        @include fa-fab();
+
+        &:before {
+            color: #3c5a99;
+            content: fa-content($fa-var-facebook-f);
+        }
+        // background: url(icon-facebook('3c5a99')) no-repeat center;
+        // width: 35px;
+        // height: 35px;
+        // @include hover-icon(icon-facebook('3c5aB9'));
     }
 }
 
@@ -113,10 +130,16 @@ iframe {
     @include hover-icon();
 
     &_color {
-        background: url(icon-odnoklassniki('ED812B')) no-repeat center;
-        width: 35px;
-        height: 35px;
-        @include hover-icon(icon-odnoklassniki('ED8100'));
+        @include fa-fab();
+
+        &:before {
+            content: fa-content($fa-var-odnoklassniki);
+            color: #ed812b;
+        }
+        // background: url(icon-odnoklassniki('ed812b')) no-repeat center;
+        // width: 35px;
+        // height: 35px;
+        // @include hover-icon(icon-odnoklassniki('ed8100'));
     }
 }
 
@@ -127,10 +150,16 @@ iframe {
     @include hover-icon();
 
     &_color {
-        background: url(icon-google('C4302B')) no-repeat center;
-        width: 20px;
-        height: 21px;
-        @include hover-icon(icon-google('C43008'));
+        @include fa-fab();
+
+        &:before {
+            content: fa-content($fa-var-google);
+            color: #c4302b;
+        }
+        // background: url(icon-google('c4302b')) no-repeat center;
+        // width: 20px;
+        // height: 21px;
+        // @include hover-icon(icon-google('c43008'));
     }
 }
 
