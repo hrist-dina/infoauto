@@ -46,10 +46,30 @@
         }
     }
 
+    & .card-list {
+        margin: -10px -10px;
+        @include md-block {
+            margin: 0;
+
+        }
+    }
+
+    & .card-question-list {
+        margin: -20px -10px -25px;
+        @include md-block {
+            margin: 0 0 -20px 0;
+        }
+
+        @include sm-block {
+            margin: 0;
+        }
+    }
+
     & .card-question {
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         border-radius: 8px;
+        min-height: auto;
 
         & .card-question__auto {
             padding-right: 100px;
@@ -137,8 +157,8 @@
     }
 
     &__h3 {
-        margin-top: 15px;
-        margin-bottom: 30px;
+        margin-top: 20px;
+        margin-bottom: 22px;
         font-size: 21px;
 
         @include sm-block {
@@ -160,7 +180,8 @@
         }
 
         & input {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            padding: 13px 14px;
             width: 100%;
 
             @include sm-block {
@@ -174,18 +195,18 @@
 
         & button {
             max-width: 170px;
-            margin-top: 10px;
+            margin-top: 15px;
             width: 100%;
 
             @include sm-block {
-                margin-top: 0px;
+                margin-top: 0;
                 max-width: 100%;
             }
         }
     }
 
     &__form-info {
-        max-width: 396px;
+        max-width: 405px;
         width: 100%;
         box-sizing: border-box;
     }

@@ -13,7 +13,7 @@
     }
 
     &__top {
-        margin-bottom: 50px;
+        margin-bottom: 60px;
         @include sm-block {
             margin-bottom: 30px;
         }
@@ -35,6 +35,11 @@
                 justify-content: flex-start;
             }
         }
+
+        & .social {
+            margin-top: -8px;
+            margin-right: 8px;
+        }
     }
 
     &__menu {
@@ -49,7 +54,11 @@
         & li {
             @include col();
             @include size(3);
+            width: calc(25% - 30px);
             margin: 0;
+            @include xl-block {
+                width: 25%;
+            }
 
             @include lg-block {
                 width: 100%;
@@ -89,7 +98,12 @@
         & li {
             @include col();
             @include size(3);
+            width: calc(25% - 30px);
             margin: 0;
+
+            @include xl-block {
+                width: 25%;
+            }
 
             @include lg-block {
                 width: 100%;

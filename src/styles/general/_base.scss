@@ -56,7 +56,7 @@ h3,
 }
 
 main {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     height: 100%;
     box-sizing: border-box;
 
@@ -65,7 +65,12 @@ main {
     }
 
     h1 {
-        margin-bottom: 45px;
+        margin-bottom: 35px;
+        padding-right: 100px;
+
+        @include xl-block {
+            padding-right: 0;
+        }
         @include md-block {
             margin-bottom: 20px;
         }
@@ -118,7 +123,7 @@ main {
     }
 
     &__container {
-        margin-top: 40px;
+        margin-top: 32px;
 
         &_flex {
             display: flex;
@@ -132,7 +137,7 @@ main {
     }
 
     &__list {
-        margin-bottom: 40px;
+        margin-bottom: 55px;
 
         &:last-child {
             margin-bottom: 0;
@@ -144,9 +149,9 @@ main {
 
         & h2,
         & .h2 {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             @include sm-block {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
         }
     }
@@ -181,6 +186,11 @@ main {
         @include lg-block {
             max-width: 100%;
         }
+    }
+
+    &.section-white {
+        padding-top: 37px;
+        padding-bottom: 80px;
     }
 }
 

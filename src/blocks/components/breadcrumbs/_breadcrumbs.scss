@@ -1,6 +1,6 @@
 .breadcrumbs {
     padding-top: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     list-style-type: none;
     @include md-block {
         padding-top: 14px;
@@ -24,6 +24,6 @@
 
     &__item:not(:last-child):after {
         content: "/";
-        padding: 0 15px;
+        padding: 0 10px;
     }
 }

@@ -3,11 +3,20 @@
   &__section {
     margin-bottom: 60px;
     padding-bottom: 60px;
+    margin-top: 40px;
     border-bottom: 3px solid #E7E7E7;
 
     @include xl-block {
       margin-bottom: 30px;
       padding-bottom: 30px;
+    }
+
+    & .section__sidebar {
+      margin-top: 45px;
+
+      @include md-block {
+        margin-top: 0;
+      }
     }
   }
 
@@ -65,7 +74,7 @@
     font-size: 20px;
     color: $dark-gray;
     margin-bottom: 20px;
-    padding: 4px 18px;
+    padding: 5px 20px;
     background-color: $yellow;
 
     @include md-block {
@@ -92,8 +101,8 @@
   &__text {
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 32px;
     color: $base-color-text;
 
     @include sm-block {
@@ -154,6 +163,11 @@
       border-left: 36px solid transparent;
 
     }
+  }
+
+  &__left &__text {
+    font-size: 18px;
+    line-height: 30px;
   }
 
 }

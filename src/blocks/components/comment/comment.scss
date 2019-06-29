@@ -3,6 +3,7 @@
     background: #ffffff;
     position: relative;
     margin-top: 40px;
+    margin-bottom: 20px;
     width: 100%;
     @include sm-block {
         margin: 30px -12px 0;
@@ -10,7 +11,7 @@
     }
 
     &__inner {
-        padding: 40px 40px;
+        padding: 40px 40px 70px;
         max-width: 844px;
         margin: 0 auto;
 
@@ -21,6 +22,10 @@
         @include sm-block {
             padding: 25px 14px;
         }
+    }
+
+    &__list {
+        margin-top: 30px;
     }
 
     &__form {
@@ -76,17 +81,17 @@
         color: #16162d;
         font-weight: 500;
         font-size: 21px;
-        padding-bottom: 35px;
+        padding-bottom: 40px;
         @include sm-block {
             padding-bottom: 20px;
         }
     }
 
     &__item {
-        margin: 17px 0;
+        margin-bottom: 20px;
 
         &-answer {
-            margin-left: 95px;
+            margin-left: 66px;
             @include sm-block {
                 margin-left: 25px;
             }
@@ -96,7 +101,7 @@
     &__author {
         display: flex;
         align-items: center;
-        margin-bottom: 12px;
+        margin-bottom: 3px;
     }
 
     & img {
@@ -133,7 +138,7 @@
 
     &__reply {
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 8px;
         color: #919191;
         font-weight: normal;
         font-size: 15px;

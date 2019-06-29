@@ -1,7 +1,8 @@
 .article-detail {
     & .two-img {
         width: 100%;
-        margin-top: 60px;
+        margin-top: 55px;
+        margin-bottom: 20px;
 
         & .slick-list {
             height: 100% !important;
@@ -9,6 +10,7 @@
 
         @include  md-block {
             margin-top: 40px;
+            margin-bottom: 10px;
         }
 
         & .slick-slide {
@@ -40,11 +42,15 @@
 
 .article-content,
 .text {
-    padding-top: 50px;
+    padding-top: 44px;
     margin: auto;
     max-width: 844px;
     text-align: left;
     line-height: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+
 
     @include md-block {
         padding-top: 30px;
@@ -65,14 +71,19 @@
     }
 
     & p {
-        margin-bottom: 30px;
+        margin-bottom: 18px;
+        text-align: left;
+        line-height: 30px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
 
         &:last-child {
             margin-bottom: 0;
         }
 
         @include md-block {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         & ~ img {
@@ -81,12 +92,12 @@
     }
 
     & h2 {
-        margin-top: 50px;
-        margin-bottom: 30px;
+        margin-top: 40px;
+        margin-bottom: 20px;
 
         @include md-block {
             margin-top: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
     }
 
@@ -99,6 +110,7 @@
     & > ul {
         list-style-type: none;
         margin-bottom: 30px;
+        margin-top: 22px;
 
         @include md-block {
             margin-bottom: 20px;
@@ -107,8 +119,10 @@
         & li {
             position: relative;
             font-size: 18px;
+            font-style: normal;
+            font-weight: normal;
             line-height: 30px;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             padding-left: 20px;
 
             @include md-block {
@@ -135,6 +149,12 @@
                 background-color: $base-color-text;
             }
         }
+    }
+}
+
+.article-content {
+    &_activites {
+        padding-top: 5px;
     }
 }
 
@@ -207,4 +227,8 @@
         align-items: flex-start;
         justify-content: center;
     }
+}
+
+.pay-attension .article-content h2 {
+    margin-top: 0;
 }

@@ -50,8 +50,8 @@
   }
 
   &__title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     color: $dark-gray;
     font-weight: normal;
     font-size: 18px;
@@ -87,7 +87,7 @@
 
     & .card {
       //@include col();
-      margin-bottom: 35px;
+      margin-bottom: 32px;
 
       &:nth-last-child(3),
       &:nth-last-child(2),
@@ -134,7 +134,7 @@
     &__border-line {
       border-bottom: 3px solid #E7E7E7;
       margin-bottom: 25px;
-      padding-bottom: 25px;
+      padding-bottom: 40px;
     }
   }
 }

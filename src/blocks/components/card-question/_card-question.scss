@@ -2,13 +2,13 @@
     position: relative;
     display: inline-block;
     width: #{calc(50% - 8px)};
-    min-height: 185px;
+    min-height: 158px;
     border-radius: 8px;
     background-color: $white;
     text-decoration: none;
     @include transition(0.3s, ease-in-out, box-shadow);
 
-    @include sm-block {
+    @include md-block {
         width: 100%;
     }
 
@@ -20,11 +20,11 @@
         position: absolute;
         top: -1px;
         right: -1px;
-        z-index: 100;
         border-radius: 0 8px 0 8px;
         background-color: $white;
         padding: 4px 6px 6px 32px;
         cursor: pointer;
+        z-index: 2;
 
         &:before {
             left: 6px;
@@ -36,6 +36,11 @@
 
     &__inner {
         padding: 19px 15px 16px 24px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
     }
 
     &__auto {
@@ -67,6 +72,7 @@
         color: #16162d;
         margin-top: 15px;
         margin-bottom: 32px;
+        flex: 1 0 auto;
     }
     &:hover &__title {
         color: $blue;
@@ -76,13 +82,15 @@
         display: inline-block;
         min-width: 128px;
         max-height: 30px;
-        padding: 5px 10px;
+        padding: 7px 10px;
         background: #e0e0e0;
         border-radius: 3px;
         text-align: center;
         color: #000000;
         font-weight: 300;
         box-sizing: border-box;
+        font-size: 15px;
+        flex: 0 1 auto;
     }
 
     &__has-answer {
@@ -93,6 +101,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        margin-bottom: 15px;
 
         & ~ .link {
             display: inline-block;
@@ -100,7 +109,12 @@
         }
 
         & .card-question {
-            margin-bottom: 16px;
+            max-width: #{calc(50% - 10px)};
+            margin-bottom: 20px;
+
+            @include md-block {
+                max-width: 100%;
+            }
 
             @include sm-block {
                 &:last-child {
@@ -120,5 +134,13 @@
                 max-width: 100%;
             }
         }
+    }
+}
+
+.section__main .card-question {
+    max-width: #{calc(50% - 8px)};
+    margin-bottom: 16px;
+    @include md-block {
+        max-width: 100%;
     }
 }
