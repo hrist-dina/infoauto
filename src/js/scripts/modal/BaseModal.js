@@ -26,6 +26,7 @@ class BaseModal {
             width: 'auto',
             borderBottom: false,
             closeButton: false,
+            focusInput: false,
         };
     }
 

@@ -49,11 +49,12 @@
     max-width: 570px;
     max-height: 185px;
     width: 100%;
-    background: linear-gradient(180deg, #FFDE5C 3.7%, #FFD223 68.9%);
-    border: 2px solid #FFD223;
-    box-sizing: border-box;
+    background: #FFD223;
+    padding: 2px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
     border-radius: 8px;
-    padding: 30px 40px 60px;
+    box-sizing: border-box;
     margin-left: 85px;
     @include lg-block {
       max-width: 626px;
@@ -64,6 +65,15 @@
       padding: 20px 12px 25px;
     }
 
+    &-inner {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 30px 40px 60px;
+      background: linear-gradient(180deg, #FFDE5C 3.7%, #FFD223 68.9%);
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+    }
 
     &:before {
       content: 'или';
