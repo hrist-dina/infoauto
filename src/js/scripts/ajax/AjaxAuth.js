@@ -12,23 +12,37 @@ export class AjaxAuth extends Ajax {
 
 
     validate() {
+        this.element.children().find('button + .validator-error-message').remove();
         return !new Validator(this.element).init();
     }
 
     done(data) {
+        this.element.children().find('button + .validator-error-message').remove();
         const res =  super.done(data);
         if (res) {
-            let modal = $(this.element).parents('.js-modal');
-            BaseModal.showSuccessMessage(modal, successMessage);
+            if(isset(data.reload) && data.reload===true ) {
+                location.reload();
+            } else
+                if(isset(data.res)) {
+                    var failRes = document.createElement('div');
+                    failRes.classList.add('validator-error-message');
+                    failRes.classList.add('no-abosulte');
+                    failRes.innerHTML = data.err;
+                    this.element.children().find('button').after(failRes);
+                }
+                else {
+                    let modal = $(this.element).parents('.js-modal');
+                    BaseModal.showSuccessMessage(modal, successMessage);        
+                }
         }
     }
 
     fail(error) {
-        console.log('fail');
-        console.log(error);
-
-        //TODO:: Написать логику на бэке по обработке ошибок. То что ниже удалить!
-        let modal = $(this.element).parents('.js-modal');
-        BaseModal.showSuccessMessage(modal, successMessage);
+        this.element.children().find('button + .validator-error-message').remove();
+        var failRes = document.createElement('div');
+        failRes.classList.add('validator-error-message');
+        failRes.classList.add('no-abosulte');
+        failRes.innerHTML = 'Ошибка! Повторите немного позже';
+        this.element.children().find('button').after(failRes);
     }
 }
