@@ -1,0 +1,13 @@
+extends ../views/layouts/default
+block variables
+    - var title = 'Личный кабинет';
+    - var breadcrumbs = ['Главная', 'Личный кабинет']
+
+block content
+    include ../blocks/components/breadcrumbs/breadcrumbs
+    main.section-gray
+        .container
+            +breadcrumbs(breadcrumbs)
+            h1=title
+        include ../blocks/modules/personal-area/personal-area
+

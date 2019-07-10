@@ -1,0 +1,26 @@
+.slider {
+  position: relative;
+
+  &-arrow {
+
+    &-right,
+    &-left {
+      display: inline-block;
+      position: absolute;
+      width: 14px;
+      height: 34px;
+      top: 50%;
+      cursor: pointer;
+    }
+
+    &-left {
+      left: -24px;
+      background: url(icon-arrow-left()) no-repeat;
+    }
+
+    &-right {
+      right: -24px;
+      background: url(icon-arrow-right()) no-repeat;
+    }
+  }
+}

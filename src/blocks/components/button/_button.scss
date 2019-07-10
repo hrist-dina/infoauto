@@ -1,0 +1,285 @@
+button,
+select,
+span {
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+button,
+.button {
+    cursor: pointer;
+    @include transition();
+}
+
+
+.button-black {
+    display: inline-block;
+    padding: 14px 35px;
+    background: #3e3e41;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    color: $white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        background: $dark-gray;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.button-pen-adaptive {
+    @include lg-block {
+        background: $dark-gray;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        font-size: 0;
+
+        &:before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: url(icon-pen())  no-repeat;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+}
+
+.button-yellow {
+    display: inline-block;
+    padding: 14px 35px;
+    background: $yellow;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: $base-color-text;
+
+    &:hover {
+        background: #F2C208;
+        box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    &:active {
+        background: #F2C208;
+        box-shadow: none;
+    }
+}
+
+.button-gray {
+    display: inline-block;
+    padding: 14px 23px;
+    background: $dirty-white;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: $base-color-text;
+
+    &:hover {
+        background: #d7d7d7;
+        box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    &:active {
+        background: #d7d7d7;
+        box-shadow: none;
+    }
+}
+
+.button-add {
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    color: #16162d;
+    padding: 10px 30px 10px 40px;
+    text-align: center;
+    border: 1px solid #16162d;
+    box-sizing: border-box;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: $white;
+
+    &:hover {
+        background: #16162d;
+        color: #ffffff;
+    }
+
+    &:active {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        background-color: #16162d;
+        border-radius: 2px;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        right: auto;
+        margin: auto;
+    }
+
+    &:before {
+        width: 10px;
+        height: 2px;
+    }
+
+    &:after {
+        width: 2px;
+        height: 10px;
+        left: 24px;
+    }
+
+    &:hover:after,
+    &:hover:before {
+        background: #ffffff;
+        @include transition();
+    }
+
+    &:active:before,
+    &:active:after {
+        @include transition();
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.button-transparent {
+    position: relative;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #16162d;
+    padding: 10px 34px;
+    text-align: center;
+    border: 2px solid #3E3E41;
+    box-sizing: border-box;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+
+    &:hover {
+        background: #16162d;
+        color: #ffffff;
+    }
+
+    &:active {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.mark {
+    display: inline-block;
+    font-size: 14px;
+    background: rgba(255, 210, 35, 0.5);
+    border-radius: 2px;
+    text-transform: lowercase;
+    color: $base-color-text;
+    text-align: center;
+    padding: 5px 7px;
+    @include sm-block {
+        padding: 3px 7px;
+    }
+}
+
+.remove {
+    position: relative;
+    font-size: 15px;
+    color: #919191;
+    padding-left: 28px;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+
+    @include sm-block {
+        background: #f3f3f3;
+        border-radius: 3px 0 2px;
+        font-size: 13px;
+        padding: 6px 5px 6px 28px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: auto;
+        margin: auto;
+        background-color: $gray;
+        border-radius: 50%;
+
+        @include sm-block {
+            width: 16px;
+            height: 16px;
+            left: 5px;
+        }
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 4px;
+        right: auto;
+        margin: auto;
+        width: 10px;
+        height: 2px;
+        background: $white;
+        border-radius: 4px;
+
+        @include sm-block {
+            width: 8px;
+            left: 9px;
+        }
+    }
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+    box-sizing: border-box;
+}
+
+.checkbox-custom {
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+    box-sizing: border-box;
+}

@@ -1,0 +1,32 @@
+extends layouts/pages
+block variables
+	- var title = "Инфоавто  - Список страниц"
+
+block content
+	.container
+		include ../blocks/modules/main/main
+		.article-content
+			h2=title
+			ul
+				li
+					a(href="home.html") Главная
+				li
+					a(href="home-not-auth.html") Главная - для не авторизованного
+				li
+					a(href="car-repair.html") Ремонт автомобиля
+				li
+					a(href="article-detail.html") Детальная статьи
+				li
+					a(href="searching-results.html") Результаты поиска
+				li
+					a(href="marks-and-models.html") Марки и модели
+				li
+					a(href="personal-area.html") Личный кабинет
+				li
+					a(href="faq.html") Вопросы и ответы
+				li
+					a(href="faq-detail.html") Вопросы и ответы - Детальная
+				li
+					a(href="404.html") 404
+				li
+					a(href="ui-kit.html") Ui-kit

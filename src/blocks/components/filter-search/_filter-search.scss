@@ -1,0 +1,172 @@
+@mixin filter-link() {
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+  text-decoration: none;
+  color: $personal-auto;
+  margin-left: 25px;
+  border-bottom: 0.5px solid #ABABAB;
+  padding-bottom: 3px;
+  @include transition(.2s);
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}
+
+.filter-search {
+  background-color: $yellow;
+  padding: 16px 26px 25px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+
+  @include md-block {
+    padding: 15px 12px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 20px;
+  }
+  @include sm-block {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  & .personal-auto {
+    margin: auto;
+    height: auto;
+    & a {
+      display: inline-block;
+      background: none;
+      border: none;
+      height: auto;
+      width: auto;
+      @include filter-link;
+      margin: 0;
+
+    }
+    & span {
+      display: block;
+    }
+
+    &:before {
+      content: none;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 7px;
+
+    &-top,
+    &-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      @include sm-block {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+    }
+
+    &-top {
+      margin-bottom: 15px;
+    }
+
+    &-title {
+      min-width: 125px;
+      margin-right: 20px;
+      font-size: 15px;
+      color: $dark-gray;
+
+      @include sm-block {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__item {
+    width: #{calc(100% / 3 - 10px)};
+    @include sm-block {
+      margin-bottom: 10px;
+      width: 100%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-full {
+      display: flex;
+      max-width: 812px;
+      width: 100%;
+      justify-content: space-between;
+      @include sm-block {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  & .button {
+    max-width: 252px;
+    width: 100%;
+    padding: 11px 35px;
+    margin-left: 16px;
+
+    @include sm-block {
+      max-width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  &__result {
+    display: flex;
+  }
+
+  &__left,
+  &__right {
+    width: 50%;
+  }
+
+  &__left {
+    @include sm-block {
+      width: 90%;
+    }
+  }
+
+  &__right {
+    text-align: right;
+    align-self: flex-end;
+    @include sm-block {
+      width: 10%;
+    }
+  }
+
+  &__edit {
+    @include filter-link;
+
+    & span {
+      @include sm-block {
+        display: none;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: url("../img/sprites/intermediate-svg/filter-edit.svg") no-repeat;
+      width: 19px;
+      height: 19px;
+      left: -25px;
+      right: auto;
+      top: -7px;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+

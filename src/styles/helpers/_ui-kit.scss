@@ -1,0 +1,217 @@
+body .add-to-favorite {
+    position: relative;
+    padding-left: 35px;
+    border: none;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        margin: auto;
+        width: 22px;
+        height: 21px;
+        background-image: url(icon-favorite());
+        background-repeat: no-repeat;
+    }
+
+    &.active {
+        &:before {
+            background-image: url(icon-favorite(true));
+        }
+    }
+}
+
+body .remind-me {
+    position: relative;
+    padding-left: 35px;
+    border: none;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: auto;
+        margin: auto;
+        width: 22px;
+        height: 26px;
+        background-image: url(icon-remind());
+        background-repeat: no-repeat;
+    }
+
+    &.active {
+        &:before {
+            background-image: url(icon-remind(true));
+        }
+    }
+}
+
+.link {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: $blue;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    @include transition();
+
+    &:hover {
+        border-bottom: 1px solid $blue;
+    }
+}
+
+iframe {
+    width: 100%;
+}
+
+@mixin hover-icon($image:'') {
+    &:hover {
+        @if $image {
+            background: url("#{$image}") no-repeat center;
+            @include transition();
+        }
+    }
+}
+
+@mixin fa-fab {
+    @extend %fa-icon;
+    @extend .fab;
+}
+
+.icon-vk {
+    width: 35px;
+    height: 35px;
+    background: url(icon-vkontakte()) no-repeat center;
+    @include hover-icon(icon-vkontakte());
+
+    &_color {
+        @include fa-fab();
+
+        &:before {
+            color: #4c75a3;
+            content: fa-content($fa-var-vk);
+        }
+        // background: url(icon-vkontakte('4c75a3')) no-repeat;
+        // width: 35px;
+        // height: 35px;
+        // background-size: 35px 35px;
+        // @include hover-icon(icon-vkontakte('3a7ac1'));
+    }
+}
+
+.icon-fb {
+    background: url(icon-facebook()) no-repeat center;
+    width: 35px;
+    height: 35px;
+    @include hover-icon();
+
+    &_color {
+        @include fa-fab();
+
+        &:before {
+            color: #3c5a99;
+            content: fa-content($fa-var-facebook-f);
+        }
+        // background: url(icon-facebook('3c5a99')) no-repeat center;
+        // width: 35px;
+        // height: 35px;
+        // @include hover-icon(icon-facebook('3c5aB9'));
+    }
+}
+
+.icon-ok {
+    width: 35px;
+    height: 35px;
+    background: url(icon-odnoklassniki()) no-repeat center;
+    @include hover-icon();
+
+    &_color {
+        @include fa-fab();
+
+        &:before {
+            content: fa-content($fa-var-odnoklassniki);
+            color: #ed812b;
+        }
+        // background: url(icon-odnoklassniki('ed812b')) no-repeat center;
+        // width: 35px;
+        // height: 35px;
+        // @include hover-icon(icon-odnoklassniki('ed8100'));
+    }
+}
+
+.icon-google {
+    background: url(icon-google()) no-repeat center center;
+    width: 20px;
+    height: 21px;
+    @include hover-icon();
+
+    &_color {
+        @include fa-fab();
+
+        &:before {
+            content: fa-content($fa-var-google);
+            color: #c4302b;
+        }
+        // background: url(icon-google('c4302b')) no-repeat center;
+        // width: 20px;
+        // height: 21px;
+        // @include hover-icon(icon-google('c43008'));
+    }
+}
+
+/* Скрываем реальный чекбокс */
+.input-checkbox {
+    display: none;
+}
+/* Задаем внешний вид для кастомного чекбокса */
+.input-checkbox-custom {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(18, 122, 239, 0.75);
+}
+
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Свойство display: inline-block обязательно должно быть */
+.input-checkbox-custom,
+.label-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.label,
+.label_checkbox {
+    margin-right: 40px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/* Если реальный чекбокс отмечен, то тогда добавляем данный признак к кастомному чекбоксу */
+.input-checkbox:checked + .input-checkbox-custom {
+    background-color: $blue;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        /* Задаем расстояние от верхней, правой, нижней и левой границы */
+        background-image: url(icon-check());
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $blue;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}

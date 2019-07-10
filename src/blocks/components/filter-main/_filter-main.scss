@@ -1,0 +1,104 @@
+.filter-main {
+  min-height: 479px;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-size: cover !important;
+  padding-top: 44px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  @include md-block {
+    padding-top: 20px;
+    padding-bottom: 45px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    text-align: center;
+    color: $white;
+    padding: 0 25px;
+    @include md-block {
+      font-size: 28px;
+      line-height: 39px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 57px;
+    @include lg-block {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include md-block {
+      margin-top: 20px;
+    }
+
+    & .car-selection {
+      display: inline-block;
+    }
+  }
+
+  &__search {
+    position: relative;
+    max-width: 570px;
+    max-height: 185px;
+    width: 100%;
+    background: #FFD223;
+    padding: 2px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-left: 85px;
+    @include lg-block {
+      max-width: 626px;
+      margin-left: 0;
+      margin-top: 46px;
+    }
+    @include sm-block {
+      padding: 20px 12px 25px;
+    }
+
+    &-inner {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 30px 40px 60px;
+      background: linear-gradient(180deg, #FFDE5C 3.7%, #FFD223 68.9%);
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+    }
+
+    &:before {
+      content: 'или';
+      position: absolute;
+      left: -60px;
+      font-weight: 500;
+      font-size: 18px;
+      color: $white;
+
+      @include lg-block {
+        left: 0;
+        right: 0;
+        bottom: auto;
+        top: -36px;
+        margin: auto;
+        text-align: center;
+      }
+
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 18px;
+      color: $filter-main-title;
+      margin-bottom: 30px;
+    }
+  }
+}

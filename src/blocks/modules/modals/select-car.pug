@@ -1,0 +1,61 @@
+include ../../components/select/select
+-
+    var optionsMark = [
+        'Марка',
+        'Toyota',
+        'Лада',
+        'Mazda'
+    ];
+
+-
+    var optionsModel = [
+        'Модель',
+        'Camry',
+        'Vesta',
+        '323'
+    ];
+
+-
+    var optionsGeneration = [
+        'Поколение',
+        '2018',
+        '2016',
+        'III (BF), 1985 — 1989'
+    ];
+
+
+.modal.modal__select-car.js-modal(data-modal-type='select-car')
+    .modal__inner
+        .close.modal__close.js-modal-close
+        .modal__title Выберите автомобиль
+        form(action='', method='post').modal__form-select-car.js-ajax-form-select-car
+            .modal__block.modal__radio-list
+                label.label.label_checkbox
+                    input.input-checkbox(name="auto" type="radio" value="passenger")
+                    span.input-checkbox-custom
+                    span.label-text Легковой
+                label.label.label_checkbox
+                    input.input-checkbox(name="auto" type="radio" value="commercial")
+                    span.input-checkbox-custom
+                    span.label-text Коммерческий
+            .modal__block
+                .modal__select-horisontal
+                    .modal__select-item
+                        label
+                            +select(optionsMark, 'mark', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/marks`
+                            })
+                    .modal__select-item
+                        label
+                            +select(optionsModel, 'model', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/models`
+                            })
+                    .modal__select-item
+                        label
+                            +select(optionsGeneration, 'generation', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/generation`
+                            })
+            button.button-yellow.button__choose Выбрать

@@ -1,0 +1,11 @@
+mixin card-question(auto, title, hasAnswer=false, hasRemove = false)
+    a(href="#").card-question
+        if (hasRemove)
+            span.remove.card-question__remove Удалить
+        .card-question__inner
+            .card-question__auto=auto
+            .card-question__title=title
+            if hasAnswer
+                .card-question__status.card-question__has-answer Есть ответ
+            else
+                .card-question__status Ответ ожидается

@@ -1,0 +1,60 @@
+.share {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+
+    &__text {
+        position: relative;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        color: $base-color-text;
+        padding-right: 35px;
+        cursor: pointer;
+
+        @include sm-block {
+            display: none;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: url("../img/sprites/intermediate-svg/icon-share.svg");
+            width: 23px;
+            height: 26px;
+            top: 0;
+            right: 0;
+            left: auto;
+            bottom: 0;
+            margin: auto;
+            @include transition(0.5s, ease, transform);
+        }
+    }
+
+    &:hover &__text::before {
+        transform: rotate(180deg);
+    }
+
+    &__dropdown {
+        display: none;
+        margin-left: 20px;
+
+        &_top {
+            position: absolute;
+            right: 0;
+            top: -40px;
+            @include sm-block {
+                margin-left: 0;
+                position: inherit;
+                right: inherit;
+                top: inherit;
+            }
+        }
+
+        @include sm-block {
+            display: block !important;
+            opacity: 1 !important
+        }
+    }
+}

@@ -1,0 +1,76 @@
+include ../../components/select/select
+include ../../components/card/card
+include ../../../data/personal-area
+include ../../components/card-question/card-question
+
+section.personal-area
+    .container
+        include ../../components/personal-area-head/personal-area-head
+        .personal-area__conteiner.js-tabs
+            .personal-area__tabs.js-tabs-content
+                .personal-area__tabs-content
+                    ul.hover-menu
+                        li
+                            a(class='active' data-tab-menu='info' href="#") Личные данные
+                        li
+                            a(data-tab-menu='autos' href="#") Автомобили
+                        li
+                            a(data-tab-menu='ledger' href="#") Книга учета ТО
+                        li
+                            a(data-tab-menu='favorite' href="#") Избранное
+                        li
+                            a(data-tab-menu='questions' href="#") Мои вопросы
+                    a(href="#").personal-area__logout Выйти
+            .personal-area__content
+                .personal-area__tab-item.active(data-tab-item='info')
+                    form.personal-area__form-info(action='' method='POST')
+                        input(name='name' type='text' placeholder='Как к вам обращаться?')
+                        input(name='email' type='email' placeholder='Электронная почта')
+                        h3.personal-area__h3 Сменить пароль
+                        input(name='old_password' type='password' placeholder='Старый пароль')
+                        input(name='new_password' type='password' placeholder='Новый пароль')
+                        button(type='submit').button.button-yellow Сохранить
+                .personal-area__tab-item(data-tab-item='autos')
+                    .personal-area__auto-wrap
+                        .personal-area__auto
+                            .personal-area__info
+                                | Lexus LX III Рестайлинг 2 2015 - н.в.
+                            a(href="#").remove.personal-area__remove Удалить
+                        .personal-area__auto
+                            .personal-area__info
+                                | Lexus LX III Рестайлинг 2 2015 - н.в.
+                            a(href="#").remove.personal-area__remove Удалить
+                        .personal-area__auto
+                            .personal-area__info
+                                | Lexus LX III Рестайлинг 2 2015 - н.в.
+                            a(href="#").remove.personal-area__remove Удалить
+                        .personal-area__auto
+                            .personal-area__info
+                                | Lexus LX III Рестайлинг 2 2015 - н.в.
+                            a(href="#").remove.personal-area__remove Удалить
+
+                    h3.personal-area__h3 Добавить
+                    form.filter__form
+                        .filter__item
+                            +select(optionsMark, 'mark', 'js-select-gray')
+                        .filter__item
+                            +select(optionsModel, 'model', 'js-select-gray')
+                        .filter__item
+                            // Поколение
+                            +select(optionsGeneration, 'generation', 'js-select-gray')
+                        .filter__item
+                            button.button.button-yellow Сохранить
+
+                .personal-area__tab-item(data-tab-item='ledger')
+                    include ../../components/ledger/ledger
+                .personal-area__tab-item(data-tab-item='favorite')
+                    .card-list
+                        for card in cards
+                            +card(card.img, card.title, card.marks, true)
+                    include ../../components/pagination/pagination        
+
+                .personal-area__tab-item(data-tab-item='questions')
+                    .card-question-list
+                        for question in questions
+                            +card-question(question.auto, question.title, question.hasAnswer, true)
+                    include ../../components/pagination/pagination

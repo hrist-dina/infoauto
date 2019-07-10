@@ -1,0 +1,48 @@
+.note {
+  background: linear-gradient(270deg, #ffde5c 0%, #ffd223 67.71%);
+
+  &__text {
+    color: #676774;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 25px;
+    padding-top: 45px;
+    padding-bottom: 50px;
+    padding-right: 30px;
+    @include sm-block {
+      padding-right: 0;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+  }
+
+  &__img {
+    display: block;
+    background: url("../img/sprites/intermediate-svg/banner-engine.svg") no-repeat top center;
+    background-size: contain;
+    max-width: 331px;
+    width: 100%;
+    height: 159px;
+    margin: auto;
+  }
+
+  &__inner {
+    @include row-flex();
+  }
+
+  &__left {
+    @include col();
+    @include size(8);
+    @include size-sm(12);
+  }
+
+  &__right {
+    @include col();
+    @include size(4);
+    @include size-sm(12);
+    @include sm-block {
+      order: -1;
+    }
+  }
+}

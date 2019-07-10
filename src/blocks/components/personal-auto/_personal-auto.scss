@@ -1,0 +1,37 @@
+.personal-auto {
+  position: relative;
+  text-decoration: none;
+  color: $personal-auto;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 42px;
+
+  & p {
+    margin-bottom: 5px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $personal-auto;
+    border-bottom: 0.5px solid #ABABAB;
+    @include transition(0.2s);
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url(icon-personal-auto()) no-repeat;
+    width: 32px;
+    height: 14px;
+    left: -42px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+}

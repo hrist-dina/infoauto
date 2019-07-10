@@ -1,0 +1,44 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__img {
+    @include lg-block {
+      width: 35px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 13px 0;
+    color: $header-menu-color;
+    @include transition(0.2s);
+    @include lg(font-size, 15px);
+
+    &:hover {
+      color: $header-menu-color-hover;
+    }
+
+    &.active {
+      color: $header-menu-color-hover;
+    }
+
+    & img {
+      max-width: 40px;
+      max-height: 26px;
+      width: 100%;
+    }
+
+    & span {
+      margin-left: 10px;
+      display: block;
+      white-space: nowrap;
+      @include sm(display, none);
+    }
+  }
+}

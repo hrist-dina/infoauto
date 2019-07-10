@@ -1,0 +1,36 @@
+.services {
+  display: flex;
+
+  @include md-block {
+    flex-direction: column;
+  }
+
+  &__img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 10px;
+  }
+
+  &__item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 33%;
+
+    @include md-block {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    & img {
+      width: 100%;
+    }
+
+    & span {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 25px;
+      color: $base-color-text;
+    }
+  }
+}

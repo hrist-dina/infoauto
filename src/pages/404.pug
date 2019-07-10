@@ -1,0 +1,15 @@
+extends ../views/layouts/default
+block variables
+    - var title = "404";
+
+block content
+    main.section-gray
+        include ../blocks/components/404-center/404-center
+        .container
+            .not-found__text-center
+                |Либо использовать поиск материалов по марке и модели автомобиля:
+            include ../blocks/components/filter/filter
+            .not-found__text-center
+                | Весь список автомобилей вы можете найти на странице
+                |
+                a(href='#')='Марки и модели'

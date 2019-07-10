@@ -1,0 +1,245 @@
+.ledger {
+  display: table;
+  border-collapse:separate;
+  border-spacing: 0 10px;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-top: -16px;
+
+  @include lg-block {
+    display: block;
+  }
+
+  &__head {
+    display: table-header-group;
+    font-weight: normal;
+    font-size: 15px;
+    color: #919191;
+
+    @include lg-block {
+      display: none;
+    }
+  }
+
+  &__body {
+    display: table-row-group;
+    @include lg-block {
+      display: block;
+    }
+  }
+
+  &__row {
+    display: table-row;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    @include lg-block {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+    }
+  }
+
+  &__form {
+
+    &-row {
+      margin-bottom: 25px;
+    }
+
+    &-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include lg-block {
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding: 20px 15px 0;
+      }
+
+      @include md-block {
+        padding: 13px 12px;
+      }
+
+      & input,
+      & .select2 {
+        width: #{calc(100% - 12px)};
+        height: 42px;
+        @include lg-block {
+          width: 100%;
+          min-width: 100%;
+          max-width: 100%;
+          margin-bottom: 14px;
+        }
+      }
+    }
+
+
+
+    & .button-add {
+      height: 30px;
+      padding-top: 0;
+      padding-bottom: 0;
+      box-sizing: border-box;
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    display: table-cell;
+    padding: 18px 15px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    width: auto;
+
+    @include lg-block {
+      display: block;
+      width: 100%;
+      border: none;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-sizing: border-box;
+
+      &:before {
+        content: attr(data-th);
+        display: block;
+        font-size: 13px;
+        line-height: 25px;
+        color: #919191;
+      }
+
+      &:first-child {
+        border: none;
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+
+    @include md-block {
+      padding: 10px 12px;
+    }
+
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-left: 1px solid #e0e0e0;
+    }
+
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-right: 1px solid #e0e0e0;
+    }
+  }
+
+  &__head &__row,
+  &__head &__item {
+    border: none;
+  }
+
+
+  &__head &__item {
+    font-weight: normal;
+    font-size: 15px;
+    color: #919191;
+    padding-top: 0;
+    padding-bottom: 5px;
+  }
+
+  &__body &__item {
+    font-weight: normal;
+    font-size: 15px;
+    color: #333333;
+  }
+
+  &__select {
+    padding-right: 15px;
+    @include lg-block {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 100%;
+      max-width: 100%;
+      padding-right: 0;
+    }
+
+  }
+
+
+  &__date,
+  &__length {
+    width: 15%;
+
+    @include lg-block {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__text {
+    width: 25%;
+    @include lg-block {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+   &__remove {
+    @include xl-block {
+      width: 10%;
+    }
+  }
+
+   &__remove {
+    width: 7%;
+    padding: 12px 15px;
+    text-align: right;
+    font-weight: normal;
+    font-size: 15px;
+    color: #919191;
+
+    @include lg-block {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding-top: 0;
+    }
+
+    @include md-block {
+      position: relative;
+      padding: 5px;
+
+      & .remove {
+       position: absolute;
+       bottom: 0;
+       right: 0;
+      }
+    }
+  }
+
+  &__form &__remove {
+    @include lg-block {
+      padding-top: 0;
+      padding-right: 0;
+    }
+
+    @include md-block {
+      & .remove {
+        position: absolute;
+        bottom: -13px;
+        right: -12px;
+      }
+    }
+  }
+}

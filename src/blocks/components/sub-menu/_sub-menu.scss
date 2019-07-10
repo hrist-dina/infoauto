@@ -1,0 +1,30 @@
+.sub-menu {
+    @include lg(display, none);
+
+    &__list {
+        list-style-type: none;
+        display: flex;
+    }
+
+    &__item {
+        margin-right: 60px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        & a {
+            text-decoration: none;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            color: $sub-menu-item;
+
+            @include transition(0.2s, ease-in-out, color);
+
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}

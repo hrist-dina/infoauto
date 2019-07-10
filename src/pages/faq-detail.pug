@@ -1,0 +1,30 @@
+extends ../views/layouts/default
+block variables
+    - var title = "Течет масло";
+    - var breadcrumbs = ['Главная', 'Вопросы и ответы']
+
+block content
+    include ../blocks/components/card-question/card-question
+    include ../blocks/components/breadcrumbs/breadcrumbs
+    include ../blocks/components/banners/banners
+    include ../data/faq-detail
+
+    main.section-gray
+        .container
+            +breadcrumbs(breadcrumbs)
+            h1=title
+            .section__container.section__container_flex.question__section
+                .section__main
+                    include ../blocks/components/question/question
+                .section__sidebar
+                    include ../blocks/components/banner-ask-question/banner-ask-question
+            section.section__list
+                h2.h2 Другие вопросы пользователей Honda HR-V
+                .card-question-list.card-question-list_3-col
+                    for question in questions
+                        +card-question(question.auto, question.title, question.hasAnswer)
+        +banners()
+
+
+
+

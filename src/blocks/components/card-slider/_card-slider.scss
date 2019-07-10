@@ -1,0 +1,27 @@
+.card-slider {
+  margin-top: 45px;
+
+  & .card {
+    box-sizing: border-box;
+    margin-right: 20px;
+    margin-left: 20px;
+
+
+    @include lg-block {
+      max-width: 100%;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    @include sm-block {
+      max-width: 100%;
+      margin-right: 6px;
+      margin-left: 6px;
+    }
+  }
+
+  & .slider-arrow-right,
+  & .slider-arrow-left {
+    top: 83px;
+  }
+}

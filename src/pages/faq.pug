@@ -1,0 +1,29 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Вопросы и ответы";
+	- var breadcrumbs = ['Главная']
+
+block content
+	include ../blocks/components/card-question/card-question
+	include ../blocks/components/breadcrumbs/breadcrumbs
+	include ../data/faq
+
+	main.section-gray
+		.container
+			+breadcrumbs(breadcrumbs)
+			h1=title
+			include ../blocks/components/filter/filter
+			.section__container.section__container_flex
+				.section__main
+					.card-question-list.section__border-line
+						for question in questions
+							+card-question(question.auto, question.title, question.hasAnswer)
+
+					include ../blocks/components/pagination/pagination
+				.section__sidebar
+					include ../blocks/components/banner-ask-question/banner-ask-question
+					include ../blocks/components/banners-sidebar/banners-sidebar
+
+
+
+

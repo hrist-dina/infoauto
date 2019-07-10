@@ -1,0 +1,70 @@
+// Colors
+$yellow: #ffd223;
+$very-light-gray: #ababab; //TODO: дать нормальное имя
+$light-gray: #777777;
+$gray: #333333;
+$dark-gray: #16162d;
+$white: #ffffff;
+$dirty-white: #ebebeb; //TODO: дать нормальное имя
+$blue: #127aef;
+
+// Text
+$base-color-text: $gray;
+
+// Input
+$input-bg: #eff1f4;
+$input-color: #333333;
+$input-placeholder: #ababab;
+
+// Header
+$header-bg: $yellow;
+$header-menu-bg: $dark-gray;
+$header-menu-color: $white;
+$header-menu-color-hover: $yellow;
+
+// Search
+$search-bgc: $white;
+$search-input-text: $very-light-gray;
+$search-button-color: $dark-gray;
+$search-button-bgc: $dirty-white;
+
+// Footer
+$footer-bg: $white;
+$footer-border: #e0e0e0;
+$footer-color-menu: $dark-gray;
+$footer-color-menu-hover: $blue;
+
+// Logo
+$logo-text: $gray;
+
+// Sum menu
+$sub-menu-item: $gray;
+
+// Personal area
+$personal-area-border: #e0e0e0;
+
+// Personal icon area
+$personal-area-icon-bg: $dirty-white;
+
+// Personal auto
+$personal-auto: $gray;
+
+// Filter main
+$filter-main-title: $dark-gray;
+
+// Section bgc
+$section-white: $white;
+$section-gray: #f3f3f3;
+
+// Select
+$gray-theme: #eff1f4;
+
+// Marks and models
+$model-title: #bdbdbd;
+
+// Hint
+$hint-bgc: $blue;
+$hint-color: $white;
+$hint-color-message: #625f5f;
+$hint-color-required: #eb5757;
+$hint-color-italic: #919191;

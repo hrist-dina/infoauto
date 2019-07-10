@@ -1,0 +1,22 @@
+include ../../components/personal-area-icon/personal-area-icon
+include ../../components/personal-auto/personal-auto
+
+.mobile-menu.js-mobile-menu
+    .mobile-menu__main
+        .container
+            if isAuth
+                +personal-area-icon(false)
+            else
+                a(href='' data-modal-type='auth-register' data-modal-tab='auth').mobile-menu__link.js-modal-open Войти
+    .mobile-menu__main
+        .container
+            if isAuth
+                +personal-auto('Mazda 323 III (BF) 1985 - 1989')
+            else
+                +personal-auto('Выберите автомобиль')
+    .mobile-menu__main
+        .container
+            include ../menu/menu
+    .mobile-menu__footer
+        .container
+            include ../../modules/footer/footer-menu

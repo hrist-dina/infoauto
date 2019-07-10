@@ -1,0 +1,33 @@
+@mixin error-border() {
+    border: 1px solid #F56C6C;
+    box-sizing: border-box;
+}
+
+.validator {
+
+    &-error {
+        @include error-border;
+
+        &-message {
+            position: absolute;
+            bottom: 0;
+            padding-top: 5px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 25px;
+            color: #F56C6C;
+            @include transition(0.2s);
+        }
+    }
+
+    & input.validator-error,
+    & textarea.validator-error,
+    & select.validator-error ~ .select2 .select2-selection--single {
+        @include error-border;
+    }
+
+    & [type=submit]:disabled {
+        opacity: .3;
+    }
+}

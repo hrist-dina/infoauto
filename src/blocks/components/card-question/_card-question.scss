@@ -1,0 +1,146 @@
+.card-question {
+    position: relative;
+    display: inline-block;
+    width: #{calc(50% - 8px)};
+    min-height: 158px;
+    border-radius: 8px;
+    background-color: $white;
+    text-decoration: none;
+    @include transition(0.3s, ease-in-out, box-shadow);
+
+    @include md-block {
+        width: 100%;
+    }
+
+    &:hover {
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+    }
+
+    &__remove {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-radius: 0 8px 0 8px;
+        background-color: $white;
+        padding: 4px 6px 6px 32px;
+        cursor: pointer;
+        z-index: 2;
+
+        &:before {
+            left: 6px;
+        }
+        &:after {
+            left: 10px;
+        }
+    }
+
+    &__inner {
+        padding: 19px 15px 16px 24px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    &__auto {
+        position: relative;
+        font-weight: 300;
+        font-size: 15px;
+        color: #16162d;
+        padding-left: 25px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: url("../img/sprites/intermediate-svg/auto-front.svg")
+                no-repeat;
+            width: 16px;
+            height: 12px;
+            top: 0;
+            bottom: 0;
+            right: auto;
+            left: 0;
+            margin: auto;
+        }
+    }
+
+    &__title {
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 28px;
+        color: #16162d;
+        margin-top: 15px;
+        margin-bottom: 32px;
+        flex: 1 0 auto;
+    }
+    &:hover &__title {
+        color: $blue;
+    }
+
+    &__status {
+        display: inline-block;
+        min-width: 128px;
+        max-height: 30px;
+        padding: 7px 10px;
+        background: #e0e0e0;
+        border-radius: 3px;
+        text-align: center;
+        color: #000000;
+        font-weight: 300;
+        box-sizing: border-box;
+        font-size: 15px;
+        flex: 0 1 auto;
+        align-self: flex-start;
+    }
+
+    &__has-answer {
+        background: #b2edce;
+    }
+
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        & ~ .link {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        & .card-question {
+            max-width: #{calc(50% - 10px)};
+            margin-bottom: 20px;
+
+            @include md-block {
+                max-width: 100%;
+            }
+
+            @include sm-block {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &_3-col .card-question {
+            max-width: #{calc(33% - 20px)};
+
+            @include lg-block {
+                max-width: #{calc(50% - 8px)};
+            }
+
+            @include sm-block {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.section__main .card-question {
+    max-width: #{calc(50% - 8px)};
+    margin-bottom: 16px;
+    @include md-block {
+        max-width: 100%;
+    }
+}

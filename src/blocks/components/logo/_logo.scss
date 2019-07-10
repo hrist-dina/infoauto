@@ -1,0 +1,19 @@
+.logo {
+  max-width: 255px;
+  &__img {
+    max-width: 255px;
+    width: 100%;
+    @include lg-block {
+      max-width: 110px;
+    }
+  }
+  
+  &__text {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $logo-text;
+    @include xl(font-size, 11px);
+    @include lg(display, none);
+  }
+}

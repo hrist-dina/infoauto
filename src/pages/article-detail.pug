@@ -1,0 +1,15 @@
+extends ../views/layouts/default
+block variables
+    - var title = '7 проблем, поджидающих покупателя BMW 5-й серии в кузове F10';
+    - var breadcrumbs = ['Главная', 'Статьи']
+
+block content
+    include ../blocks/components/breadcrumbs/breadcrumbs
+    main.section-gray
+        .container
+            +breadcrumbs(breadcrumbs)
+            h1=title
+        include ../blocks/components/article-detail/article-detail
+        .container
+            include ../blocks/components/comment/comment
+

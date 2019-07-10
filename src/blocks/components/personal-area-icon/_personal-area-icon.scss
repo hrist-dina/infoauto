@@ -1,0 +1,125 @@
+.personal-area-icon {
+  position: relative;
+
+  & > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 21px;
+    color: #333333;
+  }
+
+  & img {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: $personal-area-icon-bg;
+    cursor: pointer;
+  }
+
+  & span {
+    margin-left: 12px;
+
+    @include lg-block {
+      color: $white;
+    }
+  }
+
+}
+
+.personal-area-layout {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  &.active {
+    display: block;
+  }
+}
+
+.personal-area-sub-menu {
+  opacity: 0;
+  position: absolute;
+  top: 50px;
+  left: -10px;
+  background: #FFFFFF;
+  border: 1px solid #F3F3F3;
+  box-sizing: border-box;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  min-width: 210px;
+  border-radius: 4px;
+  z-index: -1;
+  @include transition(.7s, ease, opacity);
+
+  @include lg-block {
+    right: -10px;
+    left: auto;
+  }
+
+  &.active {
+    opacity: 1;
+    z-index: 1000
+  }
+
+
+
+
+  & .exit {
+    border-top: 1px solid #F3F3F3;;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: -8px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: -1;
+
+    @include lg-block {
+      right: 18px;
+      left: auto;
+    }
+  }
+
+  & ul {
+    list-style-type: none;
+    background: #FFFFFF;
+    border-radius: 4px;
+    & li {
+      & a {
+        display: block;
+        padding: 13px 23px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        color: #919191;
+        text-decoration: none;
+
+        &:hover {
+          background: #F3F3F3;
+          @include transition(.5s, ease, background-color);
+        }
+      }
+    }
+  }
+}
