@@ -281,4 +281,30 @@ textarea {
 
 .no-abosulte {
     position: relative;    
+    padding: 0 15px 10px;
+    text-align: center;
+}
+
+
+div[id^="wait_"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0;
+    bottom: 0;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.611764705882353) !important;
+    color: transparent !important;
+}
+
+div[id^="wait_"]:before {
+    display: block;
+    content: '';
+    background: url(/local/templates/new/img/loader.svg);
+    background-size: contain;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    height: 120px;
+    width: 120px;
 }
