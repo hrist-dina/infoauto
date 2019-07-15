@@ -42,10 +42,12 @@ export class Ajax {
         const self = this;
         this.element.on('submit', function (event) {
             event.preventDefault();
-            console.log(this);
+
 
             if (self.validate()) {
-                console.log('validated - true');
+                if(this.getAttribute('action')=='/ajax/') {
+                    BX.showWait();
+                }
                 self.post();
             } else  {
                 console.log('validated - false');
