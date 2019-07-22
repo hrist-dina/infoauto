@@ -56,15 +56,16 @@ $(document).ready(function () {
                     if($(this).attr('name')=='model')
                         param.model = $(this).find(':selected').val();
                 } else {
-                    switch(selectStep) {     
+                    $(this).prop('disabled', true);
+                    switch(selectStep) {                         
                         case 1:                     
-                            $(this).html('<option value="0" disabled selected hidden>Марка</option>');                  
+                            $(this).html('<option value="0" selected hidden>Марка</option>');                  
                             break;          
                         case 2:  
-                            $(this).html('<option value="0" disabled selected hidden>Модель</option>');                  
+                            $(this).html('<option value="0" selected hidden>Модель</option>');                  
                             break;          
                         case 3:  
-                            $(this).html('<option value="0" disabled selected hidden>Поколение</option>');                    
+                            $(this).html('<option value="0" selected hidden>Поколение</option>');                    
                             break;
                     }   
                 }
@@ -110,25 +111,25 @@ $(document).ready(function () {
                 case 0: 
                     break;          
                 case 1:                     
-                    $this.find('[data-numcarselection="1"]').html('<option value="0" disabled selected hidden>Марка</option>');
+                    $this.find('[data-numcarselection="1"]').html('<option value="0" selected hidden>Марка</option>');
                     for (var i = 0; i < data.length ; i++) {            
                         options=options+'<option value="'+data[i].id_car_mark+'">'+data[i].name+'</option>';                
                     }
-                    $this.find('[data-numcarselection="1"]').append(options);                                       
+                    $this.find('[data-numcarselection="1"]').append(options).prop('disabled', false);
                     break;          
                 case 2:  
-                    $this.find('[data-numcarselection="2"]').html('<option value="0" disabled selected hidden>Модель</option>');
+                    $this.find('[data-numcarselection="2"]').html('<option value="0" selected hidden>Модель</option>');
                     for (var i = 0; i < data.length ; i++) {            
                         options=options+'<option value="'+data[i].id_car_model+'">'+data[i].name+'</option>';                
                     }
-                    $this.find('[data-numcarselection="2"]').append(options);                
+                    $this.find('[data-numcarselection="2"]').append(options).prop('disabled', false);
                     break;          
                 case 3:  
-                    $this.find('[data-numcarselection="3"]').html('<option value="0" disabled selected hidden>Поколение</option>');
+                    $this.find('[data-numcarselection="3"]').html('<option value="0" selected hidden>Поколение</option>');
                     for (var i = 0; i < data.length ; i++) {            
                         options=options+'<option value="'+data[i].id_car_generation+'">'+data[i].name+'</option>';                
                     }
-                    $this.find('[data-numcarselection="3"]').append(options);                       
+                    $this.find('[data-numcarselection="3"]').append(options).prop('disabled', false);
                     break;        
                 default:                    
                     break;
