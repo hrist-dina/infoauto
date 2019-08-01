@@ -42,7 +42,7 @@ export class Ajax {
         const self = this;
         this.element.on('submit', function (event) {
             event.preventDefault();
-            
+
 
             if (self.validate()) {
                 if(this.getAttribute('action')=='/ajax/') {

@@ -63,6 +63,11 @@
     border-radius: 4px;
   }
 
+  & .select2-results__options {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
   & .select2-results__option {
     font-size: 15px;
     color: #333333;

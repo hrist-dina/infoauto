@@ -33,7 +33,7 @@ export class AjaxAskQuestion extends Ajax {
                 let modal = $(this.element).parents('.js-modal');
                 BaseModal.showSuccessMessage(modal, successMessage);
             }
-            
+
         }
     }
 

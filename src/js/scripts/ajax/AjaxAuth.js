@@ -18,7 +18,7 @@ export class AjaxAuth extends Ajax {
     done(data) {
         this.element.children().find('button').parent().prev('.validator-error-message').remove();
         const res =  super.done(data);
-        if (res) {            
+        if (res) {
             if(data.reload && data.reload === true ) {
                 location.reload();
             } else
@@ -31,9 +31,9 @@ export class AjaxAuth extends Ajax {
                     BX.closeWait();
                 }
                 else {
-                    BX.closeWait();    
+                    BX.closeWait();
                     let modal = $(this.element).parents('.js-modal');
-                    BaseModal.showSuccessMessage(modal, successMessage);    
+                    BaseModal.showSuccessMessage(modal, successMessage);
                 }
         }
     }

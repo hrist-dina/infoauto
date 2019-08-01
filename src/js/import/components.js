@@ -17,8 +17,14 @@ $(document).ready(function () {
     new Video();
     new PeronalAreaSubMenu();
 
+    
+    $('.section-gray [data-numcarselection="1"]').select2('focus');
+
+    /*
     window.carSelects = window.carSelects || [];
     window.carSelectsTitle = window.carSelectsTitle || [];
+    window.carSelectsOption = window.carSelectsOption || [];
+    window.valueByStep = window.valueByStep || [];
 
 	carSelects.push('types');
 	carSelects.push('mark');
@@ -30,8 +36,18 @@ $(document).ready(function () {
     carSelectsTitle.push('Выберите модель авто');
     carSelectsTitle.push('Выберите поколение авто');
 
+    carSelectsOption.push('Тип авто');
+    carSelectsOption.push('Марка');
+    carSelectsOption.push('Модель');
+    carSelectsOption.push('Поколение');
+
+    valueByStep.push('id_car_type');
+    valueByStep.push('id_car_mark');
+    valueByStep.push('id_car_model');
+    valueByStep.push('id_car_generation');
+
     $('[data-carselection]').each(function() {
-        CarSelect($(this), false);     
+        CarSelect($(this), false);
     });
 
     $(document).on('change', '[data-numcarselection]', function() {
@@ -39,116 +55,67 @@ $(document).ready(function () {
     });
 
     function CarSelect($this, $select) {
-        window.carSelects = window.carSelects || [];
-        window.carSelectsTitle = window.carSelectsTitle || [];
-        var title, options, step=0, param = {};
+        var title, options, step=0, param = {}, selectStep;
 
         //определить, какой шаг надо подгрузить
         if($select) {
+            //при изменении селекта - след шаг
             step = parseInt($select.attr('data-numcarselection'))+1;
-            $this.find('select').each(function() {
-                var selectStep = parseInt($(this).attr('data-numcarselection'));
-                if(selectStep < step) {
-                    if($(this).attr('name')=='types')
-                        param.typeAuto = $(this).find(':selected').val();
-                    if($(this).attr('name')=='mark')
-                        param.mark = $(this).find(':selected').val();
-                    if($(this).attr('name')=='model')
-                        param.model = $(this).find(':selected').val();
-                } else {
-                    $(this).prop('disabled', true);
-                    switch(selectStep) {                         
-                        case 1:                     
-                            $(this).html('<option value="0" selected hidden>Марка</option>');                  
-                            break;          
-                        case 2:  
-                            $(this).html('<option value="0" selected hidden>Модель</option>');                  
-                            break;          
-                        case 3:  
-                            $(this).html('<option value="0" selected hidden>Поколение</option>');                    
-                            break;
-                    }   
-                }
-            });
         }
-        else if($this.find('select').length > 0) {
-            var thisBreak= false;
-            $this.find('select').each(function() {
-                if($(this).find(':selected').val()!=0) {
-                    if($(this).attr('name')=='types')
-                        param.typeAuto = $(this).find(':selected').val();
-                    if($(this).attr('name')=='mark')
-                        param.mark = $(this).find(':selected').val();
-                    if($(this).attr('name')=='model')
-                        param.model = $(this).find(':selected').val();
-                    //если выбраны значения, то следующий шаг надо выполнять
-                    if(!thisBreak) 
-                        step = parseInt($(this).attr('data-numcarselection'))+1;
-                }
-                else {
-                    if(!thisBreak) {
-                        //не выбрано значение, значит этот шаг грузим
-                        step = parseInt($(this).attr('data-numcarselection'));
-                        thisBreak= true;    
-                    }
-                }
-            });
-        }   
-        
-        param.type = carSelects[step];
-        if(step<4) $.get("/local/script/autobaseApi.php", param,
-            function(data) {
-                data=$.parseJSON(data);
-                reCarSelect($this, carSelectsTitle[step], step, data);
+        else if($this.find('select').length>0) {
+            step = parseInt($this.find('select:eq(0)').attr('data-numcarselection'));
+        }        
+
+        //выберем текущие значения
+        $this.find('select').each(function() {
+            selectStep = parseInt($(this).attr('data-numcarselection'));
+            if(selectStep < step) {
+                //соберем текущие выбранные
+                param[$(this).attr('name')] = $(this).find(':selected').val();
+            } else {
+                //нижестоящим - занулим выборы
+                if(selectStep!=step)
+                    $(this).prop('disabled', true).html('<option value="0" disabled hidden selected>'+carSelectsOption[selectStep]+'</option>');
             }
-        );    
+        });        
+
+        param.type = carSelects[step];
+        
+        if(step<4) {
+            $.get("/local/script/autobaseApi.php", param,
+                function(data) {
+                    data=$.parseJSON(data);
+                    reCarSelect($this, step, data);
+                }
+            );
+        }
     }
 
-    function reCarSelect($this, title, step, data) {
-        var options ='';
-        if(data) {
-            switch(step) {
-                case 0: 
-                    break;          
-                case 1:                     
-                    $this.find('[data-numcarselection="1"]').html('<option value="0" selected hidden>Марка</option>');
-                    for (var i = 0; i < data.length ; i++) {            
-                        options=options+'<option value="'+data[i].id_car_mark+'">'+data[i].name+'</option>';                
-                    }
-                    $this.find('[data-numcarselection="1"]').append(options).prop('disabled', false);
-                    break;          
-                case 2:  
-                    $this.find('[data-numcarselection="2"]').html('<option value="0" selected hidden>Модель</option>');
-                    for (var i = 0; i < data.length ; i++) {            
-                        options=options+'<option value="'+data[i].id_car_model+'">'+data[i].name+'</option>';                
-                    }
-                    $this.find('[data-numcarselection="2"]').append(options).prop('disabled', false);
-                    break;          
-                case 3:  
-                    $this.find('[data-numcarselection="3"]').html('<option value="0" selected hidden>Поколение</option>');
-                    for (var i = 0; i < data.length ; i++) {            
-                        options=options+'<option value="'+data[i].id_car_generation+'">'+data[i].name+'</option>';                
-                    }
-                    $this.find('[data-numcarselection="3"]').append(options).prop('disabled', false);
-                    break;        
-                default:                    
-                    break;
-            }   
-        }    
-        new Select(); 
-        //var index = parseInt($this.attr('data-carselection'));
-        //$this.find('.car-selection__text').text(title); 
-        //if(index==0) {
-            //if($this.find('.car-selection__text').length==0) {
-                //$this.prepend('<div class="car-selection__text">Вы выбрали</div><ul class="car-selection__choice"></ul>');
-            //}
-            //$this.find('.car-selection__choice').html('');
-            //$this.find('select').each(function() {
-                //if($(this).val()) {
-                    //$this.find('.car-selection__choice').append('<li>'+$(this).find(':selected').text()+'<a class="close" href="javascript:void(0)"></a></li>');
-                //}
-            //});
-        //}
+    function reCarSelect($this, step, data) {
+        var options ='', title = carSelectsTitle[step];
+        if($this.find('[data-numcarselection="'+step+'"]').length==0) {
+            if(step>0) {
+                $this.find('.car-selection__text:eq(0)').text('Вы выбрали');
+                if($this.find('.car-selection__choice').length==0) {
+                    $this.find('.car-selection__text:eq(0)').after('<ul class="car-selection__choice"></ul>');                    
+                }
+                $this.find('.car-selection__choice').append('<li>'+$this.find('option:selected').text()+'<a class="close" href="javascript:void(0)"></a></li>');
+                $this.find('select, .select2').remove();
+            }
+            $this.find('.car-selection__text:eq(1)').text(title).after('<select class="select js-select" name="'+carSelects[step]+'" data-numcarselection="'+step+'"></select>');
+        }
+        
+        options = '<option value="0" disabled selected hidden>'+carSelectsOption[step]+'</option>';
+        for (var i = 0; i < data.length ; i++) {
+            options=options+'<option value="'+data[i][valueByStep[step]]+'">'+data[i].name+'</option>';
+        }
+        $this.find('[data-numcarselection="'+step+'"]').prop('disabled', false).append(options);
+        
+        new Select();
+        $this.find('[data-numcarselection="'+step+'"]+span').trigger('focus');
+        //$this.find('[data-numcarselection="'+step+'"]+span').trigger('click');
+        
     }
+    */
 
 });
