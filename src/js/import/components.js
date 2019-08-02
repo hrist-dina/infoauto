@@ -17,10 +17,8 @@ $(document).ready(function () {
     new Video();
     new PeronalAreaSubMenu();
 
-    
     $('.section-gray [data-numcarselection="1"]').select2('focus');
 
-    /*
     window.carSelects = window.carSelects || [];
     window.carSelectsTitle = window.carSelectsTitle || [];
     window.carSelectsOption = window.carSelectsOption || [];
@@ -114,8 +112,6 @@ $(document).ready(function () {
         new Select();
         $this.find('[data-numcarselection="'+step+'"]+span').trigger('focus');
         //$this.find('[data-numcarselection="'+step+'"]+span').trigger('click');
-        
     }
-    */
-
+    
 });

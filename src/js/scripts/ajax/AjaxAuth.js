@@ -20,21 +20,21 @@ export class AjaxAuth extends Ajax {
         const res =  super.done(data);
         if (res) {
             if(data.reload && data.reload === true ) {
+                BX.closeWait();
+                let modal = $(this.element).parents('.js-modal');
+                BaseModal.showSuccessMessage(modal, successMessage);
                 location.reload();
-            } else
-                if(data.err) {
-                    var failRes = document.createElement('div');
-                    failRes.classList.add('validator-error-message');
-                    failRes.classList.add('no-abosulte');
+            } else {
+                var failRes = document.createElement('div');
+                failRes.classList.add('validator-error-message');
+                failRes.classList.add('no-abosulte');
+                if(data.err)
                     failRes.innerHTML = data.err;
-                    this.element.children().find('button').parent().before(failRes);
-                    BX.closeWait();
-                }
-                else {
-                    BX.closeWait();
-                    let modal = $(this.element).parents('.js-modal');
-                    BaseModal.showSuccessMessage(modal, successMessage);
-                }
+                else
+                    failRes.innerHTML = 'Ошибка! Повторите немного позже';
+                this.element.children().find('button').parent().before(failRes);
+                BX.closeWait();
+            }
         }
     }
 
