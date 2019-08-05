@@ -1,6 +1,7 @@
 import $ from "jquery";
 
 export class MarksAndModels {
+    /*
     constructor(selector = '.js-marks-and-models') {
         this.selector = selector;
 
@@ -62,4 +63,5 @@ export class MarksAndModels {
             }
         }).resize();
     }
+    */
 }

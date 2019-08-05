@@ -18,8 +18,7 @@ export class AjaxAskQuestion extends Ajax {
     done(data) {
         this.element.children().find('button').parent().prev('.validator-error-message').remove();
         const res =  super.done(data);
-        if (res) {
-            
+        if (res) {            
             if(data.err) {
                 var failRes = document.createElement('div');
                 failRes.classList.add('validator-error-message');
@@ -39,7 +38,6 @@ export class AjaxAskQuestion extends Ajax {
 
     fail(error) {
         this.element.children().find('button').parent().prev('.validator-error-message').remove();
-
         var failRes = document.createElement('div');
         failRes.classList.add('validator-error-message');
         failRes.classList.add('no-abosulte');

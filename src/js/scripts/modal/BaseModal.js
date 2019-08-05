@@ -55,6 +55,10 @@ class BaseModal {
             self.close();
             self.open($(this).data('modal-type'));
 
+            if($(document).find('div[data-modal-type="'+$(this).data('modal-type')+'"]').find('[data-carselection]').length>0) {
+                $(document).find('div[data-modal-type="'+$(this).data('modal-type')+'"]').find('[data-carselection] select:eq(0)').change();
+            }
+
             if ($(this).data('modal-tab')) {
                 new TabAuthRegister('.js-auth-register-tabs').active($(this).data('modal-tab'));
             }

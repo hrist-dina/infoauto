@@ -43,7 +43,6 @@ export class Ajax {
         this.element.on('submit', function (event) {
             event.preventDefault();
 
-
             if (self.validate()) {
                 if(this.getAttribute('action')=='/ajax/') {
                     BX.showWait();
@@ -64,15 +63,12 @@ export class Ajax {
         const self = this;
         this.element.on('change', function (event) {
             event.preventDefault();
-            console.log(this);
             self.get();
         });
         return this;
     }
 
     ajax(method) {
-        console.log(this.url);
-        console.log(this.data);
         $.ajax(
             this.url,
             {
