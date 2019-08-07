@@ -44,6 +44,33 @@ valueByStep.push('id_car_generation');
 valueByStep.push('section');
 valueByStep.push('property');
 
+function searchAjax(data) {
+    if($(document).find('[data-search-ajax]').length==0) {
+        $('.filter-main').after('<section class="section section-white" data-search-ajax>\
+            <div class="container">\
+                <h2 class="h2">Подходящие публикации</h2>\
+                <div class="section__container">\
+                    <div class="card-list"></div>\
+                </div>\
+            </div>\
+        </section>');
+    }
+    var html ='', types;
+    for (var i = 0; i < data.length ; i++) {
+        types = '';        
+        for (var j = 0; j < data[i]['types'].length ; j++) {
+            types=types+'<div class="mark card__mark">'+data[i]['types'][j]+'</div>';
+        }        
+        html=html+'<a class="card" href="'+data[i]['url']+'">\
+            <div class="card__img" style="background-image: url('+data[i]['pic']+')"></div>\
+            <div class="card__title">'+data[i]['name']+'</div>\
+            <div class="card__mark-list">'+types+'</div>\
+        </a>';
+    }
+    $(document).find('[data-search-ajax] .card-list').html(html);
+
+    
+}
 function reCarSelect($this, step, data) {
     var options ='', title = carSelectsTitle[step];
 
@@ -86,7 +113,6 @@ function CarSelect($this, $select) {
     //выберем текущие значения
     $this.find('select').each(function() {
         selectStep = parseInt($(this).attr('data-numcarselection'));
-        console.log(selectStep+' / '+step);
         if(selectStep < step) {
             //соберем текущие выбранные
             param[$(this).attr('name')] = $(this).find(':selected').val();
@@ -129,15 +155,13 @@ function CarSelect($this, $select) {
                     }
                 );
             } else {
-                console.log(param);
                 if(!param['section']) {
                     param['section'] = $this.find('.car-selection__choice a[data-step="section"]').attr('data-value');
                 }   
-                console.log(param);
                 $.get("/local/script/autobaseApi.php", param,
                     function(data) {
                         data=$.parseJSON(data);
-                        reCarSelect($this, step, data);
+                        searchAjax(data);
                     }
                 );
             }
