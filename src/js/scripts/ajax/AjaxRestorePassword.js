@@ -12,23 +12,40 @@ const successMessage = {
 export class AjaxRestorePassword extends Ajax {
 
     validate() {
+        this.element.find('button').parent().prev('.validator-error-message').remove();
         return !new Validator(this.element).init();
     }
 
     done(data) {
-        const res =  super.done(data);
+        const res =  super.done(data);   
         if (res) {
-            let modal = $(this.element).parents('.js-modal');
-            BaseModal.showSuccessMessage(modal, successMessage);
-        }
+            if(data.reload && data.reload === true ) {
+                BX.closeWait();
+                let modal = $(this.element).parents('.js-modal');
+                BaseModal.showSuccessMessage(modal, successMessage);
+            } else {
+                this.element.find('button').parent().prev('.validator-error-message').remove();
+                var failRes = document.createElement('div');
+                failRes.classList.add('validator-error-message');
+                failRes.classList.add('no-abosulte');
+                if(data.err)
+                    failRes.innerHTML = data.err;
+                else
+                    failRes.innerHTML = 'Ошибка! Повторите немного позже';
+                this.element.find('button').parent().before(failRes);
+                BX.closeWait();
+            }
+        }     
     }
 
     fail(error) {
-        console.log('fail');
-        console.log(error);
 
-        //TODO:: Написать логику на бэке по обработке ошибок. То что ниже удалить!
-        let modal = $(this.element).parents('.js-modal');
-        BaseModal.showSuccessMessage(modal, successMessage);
+        this.element.find('button').parent().prev('.validator-error-message').remove();
+        var failRes = document.createElement('div');
+        failRes.classList.add('validator-error-message');
+        failRes.classList.add('no-abosulte');
+        failRes.innerHTML = 'Ошибка! Повторите немного позже';
+        this.element.find('button').parent().before(failRes);
     }
+
 }

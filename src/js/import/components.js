@@ -8,6 +8,9 @@ import {FilterSearch} from "%components%/filter-search/filter-search";
 import {MobileMenu} from "%components%/mobile-menu/mobile-menu";
 import {Video} from "../scripts/classes/Video";
 import {PeronalAreaSubMenu} from "%components%/personal-area-icon/PeronalAreaSubMenu";
+import {MarksAndModels} from "../scripts/marks-and-models/MarksAndModels";
+
+window.alphabetMarks = window.alphabetMarks || [];
 
 //переменные для фильтров
 window.carSelects = window.carSelects || [];
@@ -214,5 +217,23 @@ $(document).ready(function () {
         if($(this).closest('.modal').length==0)
             CarSelect($(this), false);
     });    
+
+
+    $('.alphabet a').click(function(e) {
+        e.preventDefault();
+        $('.alphabet a').removeClass('active');
+        $(this).addClass('active');
+        $('.letter').html($(this).text());
+        $('.marks__list.js-marks').html('');
+        $('.models__logo').html('');
+        if(alphabetMarks[$(this).text()][0][2]!='') {
+            $('.models__logo').html('<img src="'+alphabetMarks[$(this).text()][0][2]+'" alt="">');
+        }
+        for (var i = 0; i < alphabetMarks[$(this).text()].length ; i++) {
+            $('.marks__list.js-marks').append('<li class="marks__item" data-mark="'+alphabetMarks[$(this).text()][i][0]+'"><a href="javascript:void(0)">'+alphabetMarks[$(this).text()][i][0]+'</a></li>');
+        }        
+        new MarksAndModels();
+        $('.marks__list.js-marks li:eq(0)').click();
+    });
 
 });

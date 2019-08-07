@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 export class MarksAndModels {
-    /*
+    
     constructor(selector = '.js-marks-and-models') {
         this.selector = selector;
 
@@ -40,6 +40,10 @@ export class MarksAndModels {
             return $(item).hasClass('active');
         });
         let model = this.models.filter(function (index, item) {
+            if($(item).data('model') === activeMark.data('mark')) {
+                console.log($(document).find('.models__item[data-model="'+activeMark.data('mark')+'"] .models__list').length);
+                console.log($(document).find('.models__item[data-model="'+activeMark.data('mark')+'"] .models__list *').length);
+            }
             return $(item).data('model') === activeMark.data('mark');
         });
         model.addClass('active');
@@ -63,5 +67,5 @@ export class MarksAndModels {
             }
         }).resize();
     }
-    */
+    
 }
