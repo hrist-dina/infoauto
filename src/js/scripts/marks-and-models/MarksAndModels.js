@@ -31,6 +31,30 @@ export class MarksAndModels {
             self.marks.removeClass('active');
             self.models.removeClass('active');
             $(this).toggleClass('active');
+            $(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').css('display', '');
+            if($(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').length==0) {
+                var markName = $(this).attr('data-mark');
+                $.get("/local/script/autobaseApi.php", {type: 'model', mark: alphabetMarks[$('.alphabet a.active').text()][$(this).attr('data-mark')][1]},
+                    function(data) {
+                        data=$.parseJSON(data);
+                        var count = data.length % 3;
+                        var full = (data.length-count) / 3;
+                        var html = '<div class="models__list">';
+                        var q = 0;
+                        for (var i = 0; i < data.length; i++) {
+                            q++;
+                            if(q>(full+(count>0?1:0)) ) {
+                                q=1;
+                                count = count--; 
+                                html = html+'</div><div class="models__list">';
+                            }
+                            html = html+'<a href="#" data-js-getmodel="'+data[i]['id_car_model']+'">'+data[i]['name']+'</a>';
+                        }
+                        html = html+'</div>';
+                        $(document).find('[data-model="'+markName+'"] .models__container').html(html);
+                    }
+                );
+            }
             self.check();
         });
     }
@@ -40,10 +64,6 @@ export class MarksAndModels {
             return $(item).hasClass('active');
         });
         let model = this.models.filter(function (index, item) {
-            if($(item).data('model') === activeMark.data('mark')) {
-                console.log($(document).find('.models__item[data-model="'+activeMark.data('mark')+'"] .models__list').length);
-                console.log($(document).find('.models__item[data-model="'+activeMark.data('mark')+'"] .models__list *').length);
-            }
             return $(item).data('model') === activeMark.data('mark');
         });
         model.addClass('active');

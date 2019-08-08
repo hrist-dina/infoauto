@@ -221,19 +221,60 @@ $(document).ready(function () {
 
     $('.alphabet a').click(function(e) {
         e.preventDefault();
-        $('.alphabet a').removeClass('active');
+        $('.alphabet a, [data-model]').removeClass('active');
         $(this).addClass('active');
         $('.letter').html($(this).text());
         $('.marks__list.js-marks').html('');
-        $('.models__logo').html('');
-        if(alphabetMarks[$(this).text()][0][2]!='') {
-            $('.models__logo').html('<img src="'+alphabetMarks[$(this).text()][0][2]+'" alt="">');
-        }
-        for (var i = 0; i < alphabetMarks[$(this).text()].length ; i++) {
+        for (var i in alphabetMarks[$(this).text()]) {
             $('.marks__list.js-marks').append('<li class="marks__item" data-mark="'+alphabetMarks[$(this).text()][i][0]+'"><a href="javascript:void(0)">'+alphabetMarks[$(this).text()][i][0]+'</a></li>');
-        }        
+            if($(document).find('[data-model="'+alphabetMarks[$(this).text()][i][0]+'"]').length==0) {
+                $('.js-models').append('<div class="models__item" data-model="'+alphabetMarks[$(this).text()][i][0]+'">\
+                    <div class="models__head">\
+                        <div class="models__logo"><img src="'+alphabetMarks[$(this).text()][i][2]+'" alt=""></div>\
+                        <div class="models__title">Список моделей</div>\
+                    </div>\
+                    <div class="models__container"></div>\
+                </div>');
+            }
+        } 
+                       
         new MarksAndModels();
         $('.marks__list.js-marks li:eq(0)').click();
+    });
+
+    $(document).on('click', '[data-js-getmodel]', function(e) {
+        e.preventDefault();
+        var model = $(this);
+        if($(model).closest('[data-model] .models__container').find('[data-list-generation="'+$(this).attr('data-js-getmodel')+'"]').length==0) {
+            $.get("/local/script/autobaseApi.php", {type: 'generation', model: $(this).attr('data-js-getmodel')},
+                function(data) {
+                    data=$.parseJSON(data);
+                    var count = data.length % 4;
+                    var full = (data.length-count) / 4;
+                    var html = '<div class="models__list" data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
+                    var q = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        q++;
+                        if(q>(full+(count>0?1:0)) ) {
+                            q=1;
+                            count = count--; 
+                            html = html+'</div><div class="models__list"  data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
+                        }
+                        html = html+'<a href="/materials/?mark='+alphabetMarks[$('.alphabet a.active').text()][$(model).closest('[data-model]').attr('data-model')][1]+'&model='+$(model).attr('data-js-getmodel')+'&generation='+data[i]['id_car_generation']+'">'+data[i]['name']+'</a>';
+                    }
+                    html = html+'</div>';
+                    $(model).closest('[data-model] .models__container').append(html);
+                    $(model).closest('.models__container').find('.models__list').hide();
+                    $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
+                }
+            );
+        }
+        else {
+            $(model).closest('.models__container').find('.models__list').hide();
+            $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
+        }
+        
+
     });
 
 });
