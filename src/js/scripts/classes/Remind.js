@@ -15,7 +15,9 @@ export class Remind {
         $(this.selector).on("click", function(e) {
             e.preventDefault();
             $(this).toggleClass("active");
-            // TODO: Need add ajax request to server
+            
+            //to do 
+            
         });
     }
 }

@@ -192,6 +192,11 @@ function clearIndexFilterPoint($this, step) {
     CarSelect($this, $this.find('select'));
 }
 
+function declOfNum(number, titles) {  
+    cases = [2, 0, 1, 1, 1, 2];  
+    return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
+}
+
 $(document).ready(function () {
 
     new Select();
@@ -276,5 +281,81 @@ $(document).ready(function () {
         
 
     });
+
+    //рекламные блоки в списках
+    $('[data-show-banner]').each(function() {
+        var count = $(this).attr('data-show-banner-count'), type = $(this).attr('data-show-banner');
+        var list = $(this);
+        $.get("/local/script/script.php", {label: 'showBanners', type: type, count: count},
+            function(data) {
+                data=$.parseJSON(data);                
+                for (var i = 0; i < data.length; i++) {
+                    $(list).find('a:nth-child('+(count*2 + i*count*2+i)+')').after('<a class="card" href="'+data[i]['href']+'"><img src="'+data[i]['pic']+'" alt=""></a>');
+                }
+            }
+        );
+    });
+
+
+    //подгрузка комментов 
+    if($('.comments__inner').length>0) {
+        var start = $('.comments__inner').attr('data-last')?$('.comments__inner').attr('data-last'):0;
+        $.get("/local/script/script.php", {label: 'getComments', id: $(this).attr('data-article-id'), start: start},
+            function(data) {
+                data=$.parseJSON(data);                
+                for (var i = 0; i < data.length; i++) {
+                    //$(list).find('a:nth-child('+(count*2 + i*count*2+i)+')').after('<a class="card" href="'+data[i]['href']+'"><img src="'+data[i]['pic']+'" alt=""></a>');
+                }
+            }
+        );
+    }
+    function reComments(data) {
+        var count = ($('.comments__quantity-text').text()==''?0:parseInt($('.comments__quantity-text').text())) + data.length;
+        $('.comments__quantity-text').text(count + declOfNum(count, ['комментарий', 'комментария', 'комментариев']));
+        if($('.comments__inner').find('ul').length==0) {
+            $('.comments__inner').append('<ul class="comments__list"></ul>');
+        }
+        for (var i = 0; i < data.length; i++) {
+            if(data[i]['UF_ID']) {
+
+            }
+            else
+                $('.comments__inner').find('ul').prepend('<li class="comments__item" data-comment="'+data[i]['ID']+'">\
+                    <div class="comments__author">\
+                        <img src="'+data[i]['pic']+'" alt="">\
+                        <div class="comments__info">\
+                            <div class="comments__name"><span>'+data[i]['UF_USER']+'</span></div>\
+                            <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
+                        </div>\
+                    </div>\
+                    <div class="comments__text">'+data[i]['UF_TEXT']+'</div>\
+                    <a class="comments__reply" href="javascript:void(0)">Ответить</a>\
+                </li>');
+        }   
+    }
+
+    //
+    /*
+    <ul class="comments__list">
+                              
+
+                              <li class="comments__item comments__item-answer">
+                                <div class="comments__author"><img src="img/comments.jpg" alt="">
+                                  <div class="comments__info">
+                                    <div class="comments__name"><span>Василий Петров</span><a class="comments__answer" href="javascript:void(0)">Иван Сидоров</a>
+                                    </div>
+                                    <div class="comments__date">03.04.2019</div>
+                                  </div>
+                                </div>
+                                <div class="comments__text">Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>
+                              </li>
+                              
+
+
+            </ul>*/
+
+    //подгрузка новых комментов
+
+
 
 });
