@@ -28,9 +28,17 @@ export class MarksAndModels {
         const self = this;
         this.marks.on('click', function (e) {
             e.preventDefault();
+            let active = self.marks.filter(function (key, item)  {
+                return $(item).hasClass('active');
+            });
             self.marks.removeClass('active');
             self.models.removeClass('active');
-            $(this).toggleClass('active');
+            if ($(this)[0] === active[0]) {
+                $(this).removeClass('active');
+            } else {
+                $(this).addClass('active');
+            }
+
             $(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').css('display', '');
             if($(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').length==0) {
                 var markName = $(this).attr('data-mark');

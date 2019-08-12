@@ -35,7 +35,9 @@
       }
 
       @include md-block {
+        width: 36px;
         height: 27px;
+        margin-right: 0;
       }
 
       &.active {
@@ -89,6 +91,7 @@
     margin-top: 0;
     flex-direction: column;
     width: 100%;
+    justify-content: flex-start;
   }
 
   &__section {
@@ -304,6 +307,10 @@
     vertical-align: top;
     margin-right: 60px;
     margin-bottom: 20px;
+
+    @include md-block {
+      margin-bottom: 0;
+    }
 
     &:nth-child(4n+5) {
       margin-right: 0;
