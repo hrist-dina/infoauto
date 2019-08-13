@@ -359,10 +359,35 @@ $(document).ready(function () {
 
 
     //lk
-
     function personalArea() {
         var request = {};
 
+        //мои авто
+        if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('[name="personal-auto"]').length>0) {
+            $.get("/local/script/lk.php", {label: 'auto'},
+                function(data) {
+                    var html = '';
+                    data=$.parseJSON(data);  
+                    $(document).find('[name="personal-auto"]').html('<option value="0">Выбрать</option>');              
+                    for (var i = 0; i < data.length; i++) {
+                        $(document).find('[name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
+                        html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
+                    }
+                    $(document).find('[data-tab-item="autos"] .personal-area__auto-wrap').html(html);
+                    BX.closeWait();
+                }
+            );
+        }
+
+        //мои ТО
+        if($(document).find('[data-tab-item="ledger"]').length>0) {
+            request.label = 'listTO';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="ledger"] .ledger').html(data);
+                }
+            );
+        }
 
         //мои избранные
         if($(document).find('[data-tab-item="favorite"]').length>0) {
@@ -373,6 +398,7 @@ $(document).ready(function () {
                 }
             );
         }
+
         //мои вопросы
         if($(document).find('[data-tab-item="questions"]').length>0) {
             request.label = 'qa';
@@ -382,7 +408,111 @@ $(document).ready(function () {
                 }
             );
         }
+        BX.closeWait();
     }
 
     personalArea();
+
+    //выбор текущего авто
+    $(document).on('change', '[name="personal-auto"]', function() {
+        BX.showWait();
+        $.get("/local/script/lk.php", {label: 'currentAuto', id: $(this).val()},
+            function(data) {
+                personalArea();
+            }
+        );
+    });
+
+    //пагинаторы в табах ЛК
+    $(document).on('click', '[data-tab-item] .pagination a', function(e) {
+        var request = {};
+        e.preventDefault();
+        BX.showWait();
+        var type = $(this).closest('[data-tab-item]').attr('data-tab-item');
+        $.get($(this).attr('href'), request,
+            function(data) {
+                BX.closeWait();
+                $(document).find('[data-tab-item="'+type+'"]').html(data);
+            }
+        );
+    });
+
+    //удаление вопросов в ЛК
+    $(document).on('click', '[data-del-qa]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/lk.php", {label: 'del-qa', id: $(this).attr('data-del-qa')},
+            function(data) {
+                BX.closeWait();
+            }
+        );
+    });
+
+    //удаление избранных статей в ЛК
+    $(document).on('click', '[data-novaf-lk]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/script.php", {label: 'likes', type: 'add', id: $(this).attr('data-novaf-lk')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+    
+    //удаление авто из ЛК
+    $(document).on('click', '[data-auto-del]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/script.php", {label: 'delAuto', id: $(this).attr('data-auto-del')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+
+    //удаление ТО из ЛК
+    $(document).on('click', '[data-to]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).closest('.ledger__row').remove();
+        $.get("/local/script/script.php", {label: 'delTO', id: $(this).attr('data-to')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+    
+    //добавление ТО - новая строчка
+    $(document).on('click', '[data-copy-tr]', function() {
+        var copy = $(this).prev().clone();
+        $(copy).find('input').val('');
+        var select = $(this).prev().find('.ledger__select select').clone().attr('class', '').removeAttr('data-select2-id');
+        $(select).children().removeAttr('data-select2-id');
+        $(copy).find('.ledger__select').html('').append($(select));
+        $(this).before($(copy));
+        new Select();
+    });
+
+
+    function headCurrent() {
+        $.get("/local/script/script.php", {label: 'getCurrent'},
+            function(data) {
+                data=$.parseJSON(data);  
+                if(data.current) {
+                    $(document).find('.js-modal-open[data-modal-type="select-car"] a span').text(data.current.UF_NAME);
+                }
+                BX.closeWait();              
+            }
+        );
+    }
+    if($(document).find('.js-modal-open[data-modal-type="select-car"]').length>0) {
+        headCurrent();
+    }
+
+    $("body").on("headCurrent", function(){ headCurrent(); });
+    
+
 });

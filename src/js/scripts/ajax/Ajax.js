@@ -92,6 +92,10 @@ export class Ajax {
 
     done(data) {
         // TODO:: Изменить формат ответа, после реализации на бэкенде
+        if(data.stop) {
+            BX.closeWait();
+            $("body").trigger("headCurrent");
+        }
         if (data) {
             return true;
         }
