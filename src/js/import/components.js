@@ -3,6 +3,7 @@ import "%components%/article-detail/article-detail";
 import "%components%/card-slider/card-slider";
 import "%components%/share/share";
 import "%components%/hint/hint";
+import Validator from "../scripts/classes/Validator";
 import {Select} from "%components%/select/select";
 import {FilterSearch} from "%components%/filter-search/filter-search";
 import {MobileMenu} from "%components%/mobile-menu/mobile-menu";
@@ -357,5 +358,31 @@ $(document).ready(function () {
     //подгрузка новых комментов
 
 
+    //lk
 
+    function personalArea() {
+        var request = {};
+
+
+        //мои избранные
+        if($(document).find('[data-tab-item="favorite"]').length>0) {
+            request.label = 'material';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="favorite"]').html(data);
+                }
+            );
+        }
+        //мои вопросы
+        if($(document).find('[data-tab-item="questions"]').length>0) {
+            request.label = 'qa';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="questions"]').html(data);
+                }
+            );
+        }
+    }
+
+    personalArea();
 });
