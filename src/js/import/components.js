@@ -200,6 +200,10 @@ function declOfNum(number, titles) {
 
 $(document).ready(function () {
 
+    $('[data-src]').each(function() {
+        $(this).attr('src', $(this).attr('data-src')).removeAttr('data-src');
+    });
+
     new Select();
     new Select('.js-select-gray', 'infoauto-gray');
     new FilterSearch();
