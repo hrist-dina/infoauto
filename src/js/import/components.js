@@ -75,6 +75,7 @@ function searchAjax(data) {
 }
 function reCarSelect($this, step, data) {
     var options ='', title = carSelectsTitle[step];
+    $this.find('[data-no]').remove();
 
     if($this.find('[data-numcarselection="'+step+'"]').length==0) {
         //это фильтр на главной, пошаговый, надо создать селект следующий
@@ -98,6 +99,17 @@ function reCarSelect($this, step, data) {
     $this.find('[data-numcarselection="'+step+'"]').prop('disabled', false).append(options);
     
     new Select();
+    if($this.attr('data-cur-'+step)) {
+        $this.find('[data-numcarselection="'+step+'"]').find('option[value="'+$this.attr('data-cur-'+step)+'"]').prop('selected', true);
+        $this.find('[data-numcarselection="'+step+'"]').trigger('change');
+        $this.attr('data-cur-'+step, '');
+    }
+
+    if(step>2 && $this.is('.car-selection__center')&&data.length==0) {
+        $this.children(':not(.car-selection__text):not(.car-selection__choice)').hide();
+        $this.children('.car-selection__text:eq(0), .car-selection__choice').show();
+        $this.append('<p data-no>По выбранному автомобилю нет подходящих статей</p>');
+    }    
 }
 
 function CarSelect($this, $select) {
@@ -140,7 +152,12 @@ function CarSelect($this, $select) {
     if(step<4) {
         $.get("/local/script/autobaseApi.php", param,
             function(data) {
-                data=$.parseJSON(data);
+                data=$.parseJSON(data);                
+                if(data.length==0 && step==3 && $this.is('.car-selection__center')) {
+                    $select.attr('data-numcarselection', 4);
+                    CarSelect($this, $select);
+                    return;
+                }
                 reCarSelect($this, step, data);
             }
         );
@@ -173,6 +190,8 @@ function CarSelect($this, $select) {
 }
 
 function clearIndexFilter($this) {
+    $this.closest('section').find('[data-modal-type="select-car"]').parent().remove();
+    $this.removeClass('hide');
     $this.find('.car-selection__text:eq(0)').text('');
     $this.find('.car-selection__choice').remove();
     $this.find('.car-selection__text:eq(1)').text('');
@@ -298,22 +317,19 @@ $(document).ready(function () {
     
 
 
-    function headCurrent() {
+    function headCurrent($reload = false) {
         $.get("/local/script/script.php", {label: 'getCurrent'},
             function(data) {
                 data=$.parseJSON(data);  
                 if(data.current) {
                     $(document).find('.js-modal-open[data-modal-type="select-car"] a span').text(data.current.UF_NAME);
                 }
+                if($reload) location.reload();
                 BX.closeWait();              
             }
         );
     }
-    if($(document).find('.js-modal-open[data-modal-type="select-car"]').length>0) {
-        headCurrent();
-    }
-
-    $("body").on("headCurrent", function(){ headCurrent(); });
+    $("body").on("headCurrent", function(){ headCurrent(true); });
     
 
 
@@ -532,6 +548,22 @@ $(document).ready(function () {
             $(model).closest('.models__container').find('.models__list').hide();
             $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
         }
+    });
+
+    //пагинаторы в поиске
+    $(document).on('click', '.ajax_paginator .pagination a', function(e) {
+        var request = {};
+        e.preventDefault();
+        BX.showWait();
+        var section = $(this).closest('section');
+        request.ajax_type = $(section).attr('data-paginator');
+        $.get($(this).attr('href'), request,
+            function(data) {
+                BX.closeWait();
+                $(section).after(data);
+                $(section).remove();
+            }
+        );
     });
 
     //рекламные блоки в списках
