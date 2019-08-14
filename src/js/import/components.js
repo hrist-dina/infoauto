@@ -71,16 +71,14 @@ function searchAjax(data) {
             <div class="card__mark-list">'+types+'</div>\
         </a>';
     }
-    $(document).find('[data-search-ajax] .card-list').html(html);
-
-    
+    $(document).find('[data-search-ajax] .card-list').html(html);    
 }
 function reCarSelect($this, step, data) {
     var options ='', title = carSelectsTitle[step];
 
     if($this.find('[data-numcarselection="'+step+'"]').length==0) {
         //это фильтр на главной, пошаговый, надо создать селект следующий
-        if(step>0) {
+        if(step>1) {
             //если уже был селект, т.е. данные есть
             $this.find('.car-selection__text:eq(0)').text('Вы выбрали');
             if($this.find('.car-selection__choice').length==0) {
@@ -103,7 +101,7 @@ function reCarSelect($this, step, data) {
 }
 
 function CarSelect($this, $select) {
-    var step=0, param = {}, selectStep;
+    var step=1, param = {}, selectStep;
 
     //определить, какой шаг надо подгрузить
     if($select) {
@@ -137,6 +135,7 @@ function CarSelect($this, $select) {
     }  
 
     param.type = carSelects[step];
+    param.search = $this.attr('data-typesearch');
             
     if(step<4) {
         $.get("/local/script/autobaseApi.php", param,
@@ -146,7 +145,7 @@ function CarSelect($this, $select) {
             }
         );
     } else 
-        if ($this.attr('data-carselection')=='0') {
+        if ($this.is('.car-selection__center')) {
             //ИСКАТЬ статьи на главной
             if(!param['generation']) {
                 param['generation'] = $this.find('.car-selection__choice a[data-step="generation"]').attr('data-value');
@@ -229,77 +228,7 @@ $(document).ready(function () {
     });    
 
 
-    $('.alphabet a').click(function(e) {
-        e.preventDefault();
-        $('.alphabet a, [data-model]').removeClass('active');
-        $(this).addClass('active');
-        $('.letter').html($(this).text());
-        $('.marks__list.js-marks').html('');
-        for (var i in alphabetMarks[$(this).text()]) {
-            $('.marks__list.js-marks').append('<li class="marks__item" data-mark="'+alphabetMarks[$(this).text()][i][0]+'"><a href="javascript:void(0)">'+alphabetMarks[$(this).text()][i][0]+'</a></li>');
-            if($(document).find('[data-model="'+alphabetMarks[$(this).text()][i][0]+'"]').length==0) {
-                $('.js-models').append('<div class="models__item" data-model="'+alphabetMarks[$(this).text()][i][0]+'">\
-                    <div class="models__head">\
-                        <div class="models__logo"><img src="'+alphabetMarks[$(this).text()][i][2]+'" alt=""></div>\
-                        <div class="models__title">Список моделей</div>\
-                    </div>\
-                    <div class="models__container"></div>\
-                </div>');
-            }
-        } 
-                       
-        new MarksAndModels();
-        $('.marks__list.js-marks li:eq(0)').click();
-    });
-
-    $(document).on('click', '[data-js-getmodel]', function(e) {
-        e.preventDefault();
-        var model = $(this);
-        if($(model).closest('[data-model] .models__container').find('[data-list-generation="'+$(this).attr('data-js-getmodel')+'"]').length==0) {
-            $.get("/local/script/autobaseApi.php", {type: 'generation', model: $(this).attr('data-js-getmodel')},
-                function(data) {
-                    data=$.parseJSON(data);
-                    var count = data.length % 4;
-                    var full = (data.length-count) / 4;
-                    var html = '<div class="models__list" data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
-                    var q = 0;
-                    for (var i = 0; i < data.length; i++) {
-                        q++;
-                        if(q>(full+(count>0?1:0)) ) {
-                            q=1;
-                            count = count--; 
-                            html = html+'</div><div class="models__list"  data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
-                        }
-                        html = html+'<a href="/materials/?mark='+alphabetMarks[$('.alphabet a.active').text()][$(model).closest('[data-model]').attr('data-model')][1]+'&model='+$(model).attr('data-js-getmodel')+'&generation='+data[i]['id_car_generation']+'">'+data[i]['name']+'</a>';
-                    }
-                    html = html+'</div>';
-                    $(model).closest('[data-model] .models__container').append(html);
-                    $(model).closest('.models__container').find('.models__list').hide();
-                    $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
-                }
-            );
-        }
-        else {
-            $(model).closest('.models__container').find('.models__list').hide();
-            $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
-        }
-        
-
-    });
-
-    //рекламные блоки в списках
-    $('[data-show-banner]').each(function() {
-        var count = $(this).attr('data-show-banner-count'), type = $(this).attr('data-show-banner');
-        var list = $(this);
-        $.get("/local/script/script.php", {label: 'showBanners', type: type, count: count},
-            function(data) {
-                data=$.parseJSON(data);                
-                for (var i = 0; i < data.length; i++) {
-                    $(list).find('a:nth-child('+(count*2 + i*count*2+i)+')').after('<a class="card" href="'+data[i]['href']+'"><img src="'+data[i]['pic']+'" alt=""></a>');
-                }
-            }
-        );
-    });
+    
 
 
     //подгрузка комментов 
@@ -362,143 +291,11 @@ $(document).ready(function () {
     //подгрузка новых комментов
 
 
-    //lk
-    function personalArea() {
-        var request = {};
-
-        //мои авто
-        if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('[name="personal-auto"]').length>0) {
-            $.get("/local/script/lk.php", {label: 'auto'},
-                function(data) {
-                    var html = '';
-                    data=$.parseJSON(data);  
-                    $(document).find('[name="personal-auto"]').html('<option value="0">Выбрать</option>');              
-                    for (var i = 0; i < data.length; i++) {
-                        $(document).find('[name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
-                        html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
-                    }
-                    $(document).find('[data-tab-item="autos"] .personal-area__auto-wrap').html(html);
-                    BX.closeWait();
-                }
-            );
-        }
-
-        //мои ТО
-        if($(document).find('[data-tab-item="ledger"]').length>0) {
-            request.label = 'listTO';
-            $.get("/local/script/lk.php", request,
-                function(data) {
-                    $(document).find('[data-tab-item="ledger"] .ledger').html(data);
-                }
-            );
-        }
-
-        //мои избранные
-        if($(document).find('[data-tab-item="favorite"]').length>0) {
-            request.label = 'material';
-            $.get("/local/script/lk.php", request,
-                function(data) {
-                    $(document).find('[data-tab-item="favorite"]').html(data);
-                }
-            );
-        }
-
-        //мои вопросы
-        if($(document).find('[data-tab-item="questions"]').length>0) {
-            request.label = 'qa';
-            $.get("/local/script/lk.php", request,
-                function(data) {
-                    $(document).find('[data-tab-item="questions"]').html(data);
-                }
-            );
-        }
-        BX.closeWait();
-    }
-
-    personalArea();
-
-    //выбор текущего авто
-    $(document).on('change', '[name="personal-auto"]', function() {
-        BX.showWait();
-        $.get("/local/script/lk.php", {label: 'currentAuto', id: $(this).val()},
-            function(data) {
-                personalArea();
-            }
-        );
-    });
-
-    //пагинаторы в табах ЛК
-    $(document).on('click', '[data-tab-item] .pagination a', function(e) {
-        var request = {};
-        e.preventDefault();
-        BX.showWait();
-        var type = $(this).closest('[data-tab-item]').attr('data-tab-item');
-        $.get($(this).attr('href'), request,
-            function(data) {
-                BX.closeWait();
-                $(document).find('[data-tab-item="'+type+'"]').html(data);
-            }
-        );
-    });
-
-    //удаление вопросов в ЛК
-    $(document).on('click', '[data-del-qa]', function(e) {
-        e.preventDefault();
-        BX.showWait();
-        $(this).parent().remove();
-        $.get("/local/script/lk.php", {label: 'del-qa', id: $(this).attr('data-del-qa')},
-            function(data) {
-                BX.closeWait();
-            }
-        );
-    });
-
-    //удаление избранных статей в ЛК
-    $(document).on('click', '[data-novaf-lk]', function(e) {
-        e.preventDefault();
-        BX.showWait();
-        $(this).parent().remove();
-        $.get("/local/script/script.php", {label: 'likes', type: 'add', id: $(this).attr('data-novaf-lk')},
-            function(data) {
-                BX.closeWait();              
-            }
-        );
-    });
     
-    //удаление авто из ЛК
-    $(document).on('click', '[data-auto-del]', function(e) {
-        e.preventDefault();
-        BX.showWait();
-        $(this).parent().remove();
-        $.get("/local/script/script.php", {label: 'delAuto', id: $(this).attr('data-auto-del')},
-            function(data) {
-                BX.closeWait();              
-            }
-        );
-    });
 
-    //удаление ТО из ЛК
-    $(document).on('click', '[data-to]', function(e) {
-        e.preventDefault();
-        BX.showWait();
-        $(this).closest('.ledger__row').remove();
-        $.get("/local/script/script.php", {label: 'delTO', id: $(this).attr('data-to')},
-            function(data) {
-                BX.closeWait();              
-            }
-        );
-    });
     
-    //добавление ТО - новая строчка
-    $(document).on('click', '[data-copy-tr]', function() {
-        var copy = $(this).prev().clone();
-        $(copy).find('input').val('');
-        var select = $(this).prev().find('.ledger__select select').clone().attr('class', '').removeAttr('data-select2-id');
-        $(select).children().removeAttr('data-select2-id');
-        $(copy).find('.ledger__select').html('').append($(select));
-        $(this).before($(copy));
-        new Select();
-    });
+
+    
 
 
     function headCurrent() {
@@ -518,5 +315,237 @@ $(document).ready(function () {
 
     $("body").on("headCurrent", function(){ headCurrent(); });
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //табы в кабинете при заходе из меню
+    if(location.pathname=='/lk/') {
+        changeTab(location.href);
+    }
+    $('.personal-area-sub-menu').on('click', 'a', function() {
+        changeTab($(this).attr('href'));
+    });
+    function changeTab($href) {
+        var needTab = $href.split('#tab=');
+        if(needTab[1]) {
+            $('[data-tab-menu="'+needTab[1]+'"]').click();
+        }
+    }
+
+    //lk
+    function personalArea() {
+        var request = {};
+        //мои авто
+        if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('[name="personal-auto"]').length>0) {
+            $.get("/local/script/lk.php", {label: 'auto'},
+                function(data) {
+                    var html = '';
+                    data=$.parseJSON(data);  
+                    $(document).find('[name="personal-auto"]').html('<option value="0">Выбрать</option>');              
+                    for (var i = 0; i < data.length; i++) {
+                        $(document).find('[name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
+                        html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
+                    }
+                    $(document).find('[data-tab-item="autos"] .personal-area__auto-wrap').html(html);
+                    BX.closeWait();
+                }
+            );
+        }
+        //мои ТО
+        if($(document).find('[data-tab-item="ledger"]').length>0) {
+            request.label = 'listTO';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="ledger"] .ledger').html(data);
+                }
+            );
+        }
+        //мои избранные
+        if($(document).find('[data-tab-item="favorite"]').length>0) {
+            request.label = 'material';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="favorite"]').html(data);
+                }
+            );
+        }
+        //мои вопросы
+        if($(document).find('[data-tab-item="questions"]').length>0) {
+            request.label = 'qa';
+            $.get("/local/script/lk.php", request,
+                function(data) {
+                    $(document).find('[data-tab-item="questions"]').html(data);
+                }
+            );
+        }
+        BX.closeWait();
+    }
+    personalArea();
+
+    //выбор текущего авто
+    $(document).on('change', '[name="personal-auto"]', function() {
+        BX.showWait();
+        $.get("/local/script/lk.php", {label: 'currentAuto', id: $(this).val()},
+            function(data) {
+                personalArea();
+            }
+        );
+    });
+    //удаление авто из ЛК
+    $(document).on('click', '[data-auto-del]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/script.php", {label: 'delAuto', id: $(this).attr('data-auto-del')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+    //удаление вопросов в ЛК
+    $(document).on('click', '[data-del-qa]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/lk.php", {label: 'del-qa', id: $(this).attr('data-del-qa')},
+            function(data) {
+                BX.closeWait();
+            }
+        );
+    });
+    //удаление избранных статей в ЛК
+    $(document).on('click', '[data-novaf-lk]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).parent().remove();
+        $.get("/local/script/script.php", {label: 'likes', type: 'add', id: $(this).attr('data-novaf-lk')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+    //пагинаторы в табах ЛК
+    $(document).on('click', '[data-tab-item] .pagination a', function(e) {
+        var request = {};
+        e.preventDefault();
+        BX.showWait();
+        var type = $(this).closest('[data-tab-item]').attr('data-tab-item');
+        $.get($(this).attr('href'), request,
+            function(data) {
+                BX.closeWait();
+                $(document).find('[data-tab-item="'+type+'"]').html(data);
+            }
+        );
+    });
+    //удаление ТО из ЛК
+    $(document).on('click', '[data-to]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $(this).closest('.ledger__row').remove();
+        $.get("/local/script/script.php", {label: 'delTO', id: $(this).attr('data-to')},
+            function(data) {
+                BX.closeWait();              
+            }
+        );
+    });
+    //добавление ТО - новая строчка
+    $(document).on('click', '[data-copy-tr]', function() {
+        var copy = $(this).prev().clone();
+        $(copy).find('input').val('');
+        var select = $(this).prev().find('.ledger__select select').clone().attr('class', '').removeAttr('data-select2-id');
+        $(select).children().removeAttr('data-select2-id');
+        $(select).addClass('js-select-gray');
+        $(copy).find('.ledger__select').html('').append($(select));
+        $(this).before($(copy));
+        new Select('.js-select-gray');
+    });
+    //добавление ТО - новая строчка удалить
+    $(document).on('click', '[data-del-emptyto]', function() {
+        if($(this).closest('.ledger__form-inner').prev().length>0) {
+            $(this).closest('.ledger__form-inner').remove();
+        }
+    });
+
+    $('.alphabet a').click(function(e) {
+        e.preventDefault();
+        $('.alphabet a, [data-model]').removeClass('active');
+        $(this).addClass('active');
+        $('.letter').html($(this).text());
+        $('.marks__list.js-marks').html('');
+        for (var i in alphabetMarks[$(this).text()]) {
+            $('.marks__list.js-marks').append('<li class="marks__item" data-mark="'+alphabetMarks[$(this).text()][i][0]+'"><a href="javascript:void(0)">'+alphabetMarks[$(this).text()][i][0]+'</a></li>');
+            if($(document).find('[data-model="'+alphabetMarks[$(this).text()][i][0]+'"]').length==0) {
+                $('.js-models').append('<div class="models__item" data-model="'+alphabetMarks[$(this).text()][i][0]+'">\
+                    <div class="models__head">\
+                        <div class="models__logo"><img src="'+alphabetMarks[$(this).text()][i][2]+'" alt=""></div>\
+                        <div class="models__title">Список моделей</div>\
+                    </div>\
+                    <div class="models__container"></div>\
+                </div>');
+            }
+        }                       
+        new MarksAndModels();
+        $('.marks__list.js-marks li:eq(0)').click();
+    });
+
+    $(document).on('click', '[data-js-getmodel]', function(e) {
+        e.preventDefault();
+        var model = $(this);
+        if($(model).closest('[data-model] .models__container').find('[data-list-generation="'+$(this).attr('data-js-getmodel')+'"]').length==0) {
+            $.get("/local/script/autobaseApi.php", {search: 'material', type: 'generation', model: $(this).attr('data-js-getmodel')},
+                function(data) {
+                    data=$.parseJSON(data);
+                    var count = data.length % 4;
+                    var full = (data.length-count) / 4;
+                    var html = '<div class="models__list" data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
+                    var q = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        q++;
+                        if(q>(full+(count>0?1:0)) ) {
+                            q=1;
+                            count = count--; 
+                            html = html+'</div><div class="models__list"  data-list-generation="'+$(model).attr('data-js-getmodel')+'">';
+                        }
+                        html = html+'<a href="/materials/?mark='+alphabetMarks[$('.alphabet a.active').text()][$(model).closest('[data-model]').attr('data-model')][1]+'&model='+$(model).attr('data-js-getmodel')+'&generation='+data[i]['id_car_generation']+'">'+data[i]['name']+'</a>';
+                    }
+                    html = html+'</div>';
+                    $(model).closest('[data-model] .models__container').append(html);
+                    $(model).closest('.models__container').find('.models__list').hide();
+                    $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
+                }
+            );
+        }
+        else {
+            $(model).closest('.models__container').find('.models__list').hide();
+            $(model).closest('.models__container').find('[data-list-generation="'+$(model).attr('data-js-getmodel')+'"]').css('display', 'inline-block');
+        }
+    });
+
+    //рекламные блоки в списках
+    $('[data-show-banner]').each(function() {
+        var count = $(this).attr('data-show-banner-count'), type = $(this).attr('data-show-banner');
+        var list = $(this);
+        $.get("/local/script/script.php", {label: 'showBanners', type: type, count: count},
+            function(data) {
+                data=$.parseJSON(data);                
+                for (var i = 0; i < data.length; i++) {
+                    $(list).find('a:nth-child('+(count*2 + i*count*2+i)+')').after('<a class="card" href="'+data[i]['href']+'"><img src="'+data[i]['pic']+'" alt=""></a>');
+                }
+            }
+        );
+    });
 
 });

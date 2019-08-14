@@ -28,6 +28,8 @@ export class MarksAndModels {
         const self = this;
         this.marks.on('click', function (e) {
             e.preventDefault();
+            if($(this).hasClass('active'))
+                return false;
             let active = self.marks.filter(function (key, item)  {
                 return $(item).hasClass('active');
             });
@@ -42,7 +44,7 @@ export class MarksAndModels {
             $(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').css('display', '');
             if($(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').length==0) {
                 var markName = $(this).attr('data-mark');
-                $.get("/local/script/autobaseApi.php", {type: 'model', mark: alphabetMarks[$('.alphabet a.active').text()][$(this).attr('data-mark')][1]},
+                $.get("/local/script/autobaseApi.php", {search: 'material', type: 'model', mark: alphabetMarks[$('.alphabet a.active').text()][$(this).attr('data-mark')][1]},
                     function(data) {
                         data=$.parseJSON(data);
                         var count = data.length % 3;
