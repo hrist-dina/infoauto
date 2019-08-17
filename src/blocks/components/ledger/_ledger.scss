@@ -242,4 +242,17 @@
       }
     }
   }
+
+  &__form &__date,
+  &__form &__length,
+  &__form &__select,
+  &__form &__text,
+  &__form &__date,
+  &__form &__remove {
+    position: relative;
+    padding-bottom: 10px;
+    @include md-block {
+      padding-bottom: 8px;
+    }
+  }
 }

@@ -17,6 +17,7 @@
   &__form {
     display: flex;
     justify-content: space-between;
+    margin-bottom: -20px;
     @include md-block {
       flex-wrap: wrap;
     }
@@ -24,9 +25,10 @@
 
   &__item {
     width: #{calc(100% / 4 - 13px)};
+    display: block;
+    padding-bottom: 20px;
     @include md-block {
       width: 100%;
-      margin-bottom: 10px;
     }
 
 

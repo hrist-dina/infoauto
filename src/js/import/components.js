@@ -486,7 +486,7 @@ $(document).ready(function () {
         $(select).addClass('js-select-gray');
         $(copy).find('.ledger__select').html('').append($(select));
         $(this).before($(copy));
-        new Select('.js-select-gray');
+        new Select('.js-select-gray', 'infoauto-gray');
     });
     //добавление ТО - новая строчка удалить
     $(document).on('click', '[data-del-emptyto]', function() {
