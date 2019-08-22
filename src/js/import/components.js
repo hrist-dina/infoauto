@@ -253,11 +253,29 @@ $(document).ready(function () {
     //подгрузка комментов 
     if($('.comments__inner').length>0) {
         var start = $('.comments__inner').attr('data-last')?$('.comments__inner').attr('data-last'):0;
-        $.get("/local/script/script.php", {label: 'getComments', id: $(this).attr('data-article-id'), start: start},
+        $.get("/local/script/script.php", {label: 'getComments', id: $('.comments__inner').attr('data-article-id'), start: start},
             function(data) {
-                data=$.parseJSON(data);                
+                data=$.parseJSON(data);
+                console.log(data);                
+                console.log(data.length);                
+                
+                $('.comments__quantity-text').text(data.length+' комментария').next().after('<ul class="comments__list"></ul>');
+                var ul = $('.comments__inner').find('ul');
                 for (var i = 0; i < data.length; i++) {
-                    //$(list).find('a:nth-child('+(count*2 + i*count*2+i)+')').after('<a class="card" href="'+data[i]['href']+'"><img src="'+data[i]['pic']+'" alt=""></a>');
+                    console.log(data[i]);
+                    if(data[i]['RE']=='null') {
+                        $(ul).append('<li class="comments__item" data-comment="'+data[i]['ID']+'">\
+                                <div class="comments__author"><img src="'+data[i]['pic']+'" alt="">\
+                                  <div class="comments__info">\
+                                    <div class="comments__name"><span>'+data[i]['UF_USER']+'</span>\
+                                    </div>\
+                                    <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
+                                  </div>\
+                                </div>\
+                                <div class="comments__text">'+data[i]['UF_TEXT']+'</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>\
+                              </li>');    
+                    }
+                    
                 }
             }
         );
