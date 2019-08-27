@@ -103,13 +103,16 @@ function reCarSelect($this, step, data) {
         $this.find('[data-numcarselection="'+step+'"]').find('option[value="'+$this.attr('data-cur-'+step)+'"]').prop('selected', true);
         $this.find('[data-numcarselection="'+step+'"]').trigger('change');
         $this.attr('data-cur-'+step, '');
-    }
+    } 
+    else
+        $this.closest('.wating-filter').removeClass('wating-filter');
 
     if(step>2 && $this.is('.car-selection__center')&&data.length==0) {
         $this.children(':not(.car-selection__text):not(.car-selection__choice)').hide();
         $this.children('.car-selection__text:eq(0), .car-selection__choice').show();
         $this.append('<p data-no>По выбранному автомобилю нет подходящих статей</p>');
     }    
+
 }
 
 function CarSelect($this, $select) {
@@ -384,6 +387,7 @@ $(document).ready(function () {
         var request = {};
         //мои авто
         if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('[name="personal-auto"]').length>0) {
+            $(document).find('[data-tab-item="autos"]').addClass('wating-filter');
             $.get("/local/script/lk.php", {label: 'auto'},
                 function(data) {
                     var html = '';
@@ -394,44 +398,48 @@ $(document).ready(function () {
                         html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
                     }
                     $(document).find('[data-tab-item="autos"] .personal-area__auto-wrap').html(html);
-                    BX.closeWait();
+                    $(document).find('[data-tab-item="autos"]').removeClass('wating-filter');
                 }
             );
         }
         //мои ТО
         if($(document).find('[data-tab-item="ledger"]').length>0) {
             request.label = 'listTO';
+            $(document).find('[data-tab-item="ledger"]').addClass('wating-filter');
             $.get("/local/script/lk.php", request,
                 function(data) {
                     $(document).find('[data-tab-item="ledger"] .ledger').html(data);
+                    $(document).find('[data-tab-item="ledger"]').removeClass('wating-filter');
                 }
             );
         }
         //мои избранные
         if($(document).find('[data-tab-item="favorite"]').length>0) {
             request.label = 'material';
+            $(document).find('[data-tab-item="favorite"]').addClass('wating-filter');
             $.get("/local/script/lk.php", request,
                 function(data) {
                     $(document).find('[data-tab-item="favorite"]').html(data);
+                    $(document).find('[data-tab-item="favorite"]').removeClass('wating-filter');
                 }
             );
         }
         //мои вопросы
         if($(document).find('[data-tab-item="questions"]').length>0) {
             request.label = 'qa';
+            $(document).find('[data-tab-item="questions"]').addClass('wating-filter');
             $.get("/local/script/lk.php", request,
                 function(data) {
                     $(document).find('[data-tab-item="questions"]').html(data);
+                    $(document).find('[data-tab-item="questions"]').removeClass('wating-filter');
                 }
             );
         }
-        BX.closeWait();
     }
     personalArea();
 
     //выбор текущего авто
     $(document).on('change', '[name="personal-auto"]', function() {
-        BX.showWait();
         $.get("/local/script/lk.php", {label: 'currentAuto', id: $(this).val()},
             function(data) {
                 personalArea();
@@ -597,5 +605,10 @@ $(document).ready(function () {
             }
         );
     });
+
+    //не найдено в поиске
+    if($('.filter-search').length>0 && $('[data-paginator]').length==0) {
+        $('.filter-search').after('<p>По данным условиям ничего не найдено. Попробуйте <a href="#" onclick="document.querySelector(\'.filter-search__edit.js-filter-search-edit\').click();return false;">изменить параметры поиска</a></p>');
+    }
 
 });
