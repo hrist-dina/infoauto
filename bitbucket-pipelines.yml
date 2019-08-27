@@ -2,6 +2,4 @@ pipelines:
   default:
     - step:
         script:
-          - apt-get update
-          - apt-get -qq install git-ftp
-          - git ftp init -u $FTP_USERNAME -p $FTP_PASSWORDM $FTP_PATH
+          - ssh -T  infoauto@82.146.44.88 "cd ~/www/infoauto.dev.letsrock.pro/local/assets; git pull"
