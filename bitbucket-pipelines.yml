@@ -2,4 +2,4 @@ pipelines:
   default:
     - step:
         script:
-          - ssh -T  infoauto@82.146.44.88 "cd ~/www/infoauto.dev.letsrock.pro/local/assets; git pull"
+          - ssh -T  infoauto@82.146.44.88 "cd ~/www/infoauto.dev.letsrock.pro/local/assets; git remote set-url origin https://iris_1111:$PASSMASTER@bitbucket.org/letsrockproject/infoauto-front.git; git pull; git remote set-url origin https://iris_1111@bitbucket.org/letsrockproject/infoauto-front.git; yarn install; yarn run build"
