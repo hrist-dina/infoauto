@@ -21,7 +21,7 @@ export class AjaxRegister extends Ajax {
         if (res) {
             if(data.reload && data.reload === true ) {
                 location.reload();
-            } else
+            } else {
                 if(data.err) {
                     var failRes = document.createElement('div');
                     failRes.classList.add('validator-error-message');
@@ -35,6 +35,7 @@ export class AjaxRegister extends Ajax {
                     let modal = $(this.element).parents('.js-modal');
                     BaseModal.showSuccessMessage(modal, successMessage);
                 }
+            }
         }
     }
 

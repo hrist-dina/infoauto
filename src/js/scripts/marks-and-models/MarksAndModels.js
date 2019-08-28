@@ -44,7 +44,7 @@ export class MarksAndModels {
             $(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').css('display', '');
             if($(document).find('[data-model="'+$(this).attr('data-mark')+'"] .models__list').length==0) {
                 var markName = $(this).attr('data-mark');
-                $.get("/local/script/autobaseApi.php", {search: 'material', type: 'model', mark: alphabetMarks[$('.alphabet a.active').text()][$(this).attr('data-mark')][1]},
+                $.get("/local/script/autobaseApi.php", {sessid: $(document).find('[name=sessid]').val(), search: 'material', type: 'model', mark: alphabetMarks[$('.alphabet a.active').text()][$(this).attr('data-mark')][1]},
                     function(data) {
                         data=$.parseJSON(data);
                         var count = data.length % 3;

@@ -12,7 +12,6 @@ import {PeronalAreaSubMenu} from "%components%/personal-area-icon/PeronalAreaSub
 import {MarksAndModels} from "../scripts/marks-and-models/MarksAndModels";
 
 window.alphabetMarks = window.alphabetMarks || [];
-
 //переменные для фильтров
 window.carSelects = window.carSelects || [];
 window.carSelectsTitle = window.carSelectsTitle || [];
@@ -73,9 +72,10 @@ function searchAjax(data) {
     }
     $(document).find('[data-search-ajax] .card-list').html(html);    
 }
+
 function reCarSelect($this, step, data) {
     var options ='', title = carSelectsTitle[step];
-    $this.find('[data-no]').remove();
+    //$this.find('[data-no]').remove();
 
     if($this.find('[data-numcarselection="'+step+'"]').length==0) {
         //это фильтр на главной, пошаговый, надо создать селект следующий
@@ -99,7 +99,8 @@ function reCarSelect($this, step, data) {
     $this.find('[data-numcarselection="'+step+'"]').prop('disabled', false).append(options);
     
     new Select();
-    if($this.attr('data-cur-'+step)) {
+
+    if($this.attr('data-cur-'+step) && $this.attr('data-cur-'+step)!='') {
         $this.find('[data-numcarselection="'+step+'"]').find('option[value="'+$this.attr('data-cur-'+step)+'"]').prop('selected', true);
         $this.find('[data-numcarselection="'+step+'"]').trigger('change');
         $this.attr('data-cur-'+step, '');
@@ -110,9 +111,8 @@ function reCarSelect($this, step, data) {
     if(step>2 && $this.is('.car-selection__center')&&data.length==0) {
         $this.children(':not(.car-selection__text):not(.car-selection__choice)').hide();
         $this.children('.car-selection__text:eq(0), .car-selection__choice').show();
-        $this.append('<p data-no>По выбранному автомобилю нет подходящих статей</p>');
-    }    
-
+        //$this.append('<p data-no>По выбранному автомобилю нет подходящих статей</p>');
+    }
 }
 
 function CarSelect($this, $select) {
@@ -151,6 +151,7 @@ function CarSelect($this, $select) {
 
     param.type = carSelects[step];
     param.search = $this.attr('data-typesearch');
+    param.sessid = $(document).find('[name=sessid]').val();
             
     if(step<4) {
         $.get("/local/script/autobaseApi.php", param,
@@ -164,32 +165,35 @@ function CarSelect($this, $select) {
                 reCarSelect($this, step, data);
             }
         );
-    } else 
-        if ($this.is('.car-selection__center')) {
-            //ИСКАТЬ статьи на главной
-            if(!param['generation']) {
-                param['generation'] = $this.find('.car-selection__choice a[data-step="generation"]').attr('data-value');
-            }   
-            if(step<6) {
-                $.get("/local/script/autobaseApi.php", param,
-                    function(data) {
-                        data=$.parseJSON(data);
-                        reCarSelect($this, step, data);
-                    }
-                );
-            } else {
-                if(!param['section']) {
-                    param['section'] = $this.find('.car-selection__choice a[data-step="section"]').attr('data-value');
-                }   
-                $.get("/local/script/autobaseApi.php", param,
-                    function(data) {
-                        data=$.parseJSON(data);
-                        searchAjax(data);
-                    }
-                );
-            }
+    } else {
+        $this.closest('.wating-filter').removeClass('wating-filter');
+    }
+    if ($this.is('.car-selection__center')) {
+        //ИСКАТЬ статьи на главной        
+        if(!param['generation']) {
+            param['generation'] = $this.find('.car-selection__choice a[data-step="generation"]').attr('data-value');
         }
-    
+        if(step<6 && step>3) {
+            $.get("/local/script/autobaseApi.php", param,
+                function(data) {
+                    data=$.parseJSON(data);
+                    reCarSelect($this, step, data);
+                }
+            );
+        }
+        
+        if(!param['section']) {
+            param['section'] = $this.find('.car-selection__choice a[data-step="section"]').attr('data-value');
+        }
+
+        param.type = 'article'; 
+        $.get("/local/script/autobaseApi.php", param,
+            function(data) {
+                data=$.parseJSON(data);
+                searchAjax(data);
+            }
+        );
+    }
 }
 
 function clearIndexFilter($this) {
@@ -215,7 +219,7 @@ function clearIndexFilterPoint($this, step) {
 }
 
 function declOfNum(number, titles) {  
-    cases = [2, 0, 1, 1, 1, 2];  
+    var cases = [2, 0, 1, 1, 1, 2];  
     return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
 }
 
@@ -247,96 +251,7 @@ $(document).ready(function () {
     $('[data-carselection]').each(function() {
         if($(this).closest('.modal').length==0)
             CarSelect($(this), false);
-    });    
-
-
-    
-
-
-    //подгрузка комментов 
-    if($('.comments__inner').length>0) {
-        var start = $('.comments__inner').attr('data-last')?$('.comments__inner').attr('data-last'):0;
-        $.get("/local/script/script.php", {label: 'getComments', id: $('.comments__inner').attr('data-article-id'), start: start},
-            function(data) {
-                data=$.parseJSON(data);
-                console.log(data);                
-                console.log(data.length);                
-                
-                $('.comments__quantity-text').text(data.length+' комментария').next().after('<ul class="comments__list"></ul>');
-                var ul = $('.comments__inner').find('ul');
-                for (var i = 0; i < data.length; i++) {
-                    console.log(data[i]);
-                    if(data[i]['RE']=='null') {
-                        $(ul).append('<li class="comments__item" data-comment="'+data[i]['ID']+'">\
-                                <div class="comments__author"><img src="'+data[i]['pic']+'" alt="">\
-                                  <div class="comments__info">\
-                                    <div class="comments__name"><span>'+data[i]['UF_USER']+'</span>\
-                                    </div>\
-                                    <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
-                                  </div>\
-                                </div>\
-                                <div class="comments__text">'+data[i]['UF_TEXT']+'</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>\
-                              </li>');    
-                    }
-                    
-                }
-            }
-        );
-    }
-    function reComments(data) {
-        var count = ($('.comments__quantity-text').text()==''?0:parseInt($('.comments__quantity-text').text())) + data.length;
-        $('.comments__quantity-text').text(count + declOfNum(count, ['комментарий', 'комментария', 'комментариев']));
-        if($('.comments__inner').find('ul').length==0) {
-            $('.comments__inner').append('<ul class="comments__list"></ul>');
-        }
-        for (var i = 0; i < data.length; i++) {
-            if(data[i]['UF_ID']) {
-
-            }
-            else
-                $('.comments__inner').find('ul').prepend('<li class="comments__item" data-comment="'+data[i]['ID']+'">\
-                    <div class="comments__author">\
-                        <img src="'+data[i]['pic']+'" alt="">\
-                        <div class="comments__info">\
-                            <div class="comments__name"><span>'+data[i]['UF_USER']+'</span></div>\
-                            <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
-                        </div>\
-                    </div>\
-                    <div class="comments__text">'+data[i]['UF_TEXT']+'</div>\
-                    <a class="comments__reply" href="javascript:void(0)">Ответить</a>\
-                </li>');
-        }   
-    }
-
-    //
-    /*
-    <ul class="comments__list">
-                              
-
-                              <li class="comments__item comments__item-answer">
-                                <div class="comments__author"><img src="img/comments.jpg" alt="">
-                                  <div class="comments__info">
-                                    <div class="comments__name"><span>Василий Петров</span><a class="comments__answer" href="javascript:void(0)">Иван Сидоров</a>
-                                    </div>
-                                    <div class="comments__date">03.04.2019</div>
-                                  </div>
-                                </div>
-                                <div class="comments__text">Видел такой сервис... ключевые заголовки на странице меняются под поисковый запрос. Не думал, что это тайна вообще</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>
-                              </li>
-                              
-
-
-            </ul>*/
-
-    //подгрузка новых комментов
-
-
-    
-
-    
-
-    
-
+    });   
 
     function headCurrent($reload = false) {
         $.get("/local/script/script.php", {label: 'getCurrent'},
@@ -352,22 +267,6 @@ $(document).ready(function () {
     }
     $("body").on("headCurrent", function(){ headCurrent(true); });
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //табы в кабинете при заходе из меню
     if(location.pathname=='/lk/') {
         changeTab(location.href);
@@ -381,24 +280,41 @@ $(document).ready(function () {
             $('[data-tab-menu="'+needTab[1]+'"]').click();
         }
     }
-
     //lk
     function personalArea() {
         var request = {};
+        BX.closeWait();
         //мои авто
-        if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('[name="personal-auto"]').length>0) {
+        if($(document).find('[data-tab-item="autos"]').length>0 ||  $(document).find('.personal-area-head__select').length>0) {
             $(document).find('[data-tab-item="autos"]').addClass('wating-filter');
             $.get("/local/script/lk.php", {label: 'auto'},
                 function(data) {
                     var html = '';
                     data=$.parseJSON(data);  
-                    $(document).find('[name="personal-auto"]').html('<option value="0">Выбрать</option>');              
+                    $(document).find('.personal-area-head__select [name="personal-auto"]').html('<option value="0">Выбрать</option>');              
                     for (var i = 0; i < data.length; i++) {
-                        $(document).find('[name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
-                        html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
+                        if(data[i][3]=='') {
+                            $(document).find('.personal-area-head__select [name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
+                            html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
+                        } else {
+                            html = html+'<div class="personal-area__auto trash-auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-undel="'+data[i][2]+'">Восстановить</a></div>';
+                        }
                     }
                     $(document).find('[data-tab-item="autos"] .personal-area__auto-wrap').html(html);
                     $(document).find('[data-tab-item="autos"]').removeClass('wating-filter');
+                }
+            );
+        }
+        //мои авто в шапке
+        if($(document).find('.modal [name="personal-auto"]').length>0) {
+            $.get("/local/script/lk.php", {label: 'auto'},
+                function(data) {
+                    data=$.parseJSON(data);  
+                    $(document).find('.modal [name="personal-auto"]').html('<option value="0">Выбрать</option>');              
+                    for (var i = 0; i < data.length; i++) {
+                        if(data[i][3]=='') 
+                            $(document).find('.modal [name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
+                    }
                 }
             );
         }
@@ -434,15 +350,20 @@ $(document).ready(function () {
                     $(document).find('[data-tab-item="questions"]').removeClass('wating-filter');
                 }
             );
-        }
+        }        
     }
     personalArea();
 
     //выбор текущего авто
     $(document).on('change', '[name="personal-auto"]', function() {
+        var select = $(this);
         $.get("/local/script/lk.php", {label: 'currentAuto', id: $(this).val()},
             function(data) {
-                personalArea();
+                if($(select).closest('.modal').length>0) {
+                    BX.showWait();
+                    $('body').trigger('headCurrent');
+                } 
+                else personalArea();
             }
         );
     });
@@ -454,6 +375,17 @@ $(document).ready(function () {
         $.get("/local/script/script.php", {label: 'delAuto', id: $(this).attr('data-auto-del')},
             function(data) {
                 BX.closeWait();              
+            }
+        );
+    });
+    //восстановление авто из ЛК
+    $(document).on('click', '[data-auto-undel]', function(e) {
+        e.preventDefault();
+        BX.showWait();
+        $.get("/local/script/script.php", {label: 'undelAuto', id: $(this).attr('data-auto-undel')},
+            function(data) {
+                BX.closeWait();   
+                personalArea();           
             }
         );
     });
@@ -521,6 +453,7 @@ $(document).ready(function () {
         }
     });
 
+    //смена буквы на странице всех авто
     $('.alphabet a').click(function(e) {
         e.preventDefault();
         $('.alphabet a, [data-model]').removeClass('active');
@@ -543,11 +476,12 @@ $(document).ready(function () {
         $('.marks__list.js-marks li:eq(0)').click();
     });
 
+    //поколения на странице всех атво
     $(document).on('click', '[data-js-getmodel]', function(e) {
         e.preventDefault();
         var model = $(this);
         if($(model).closest('[data-model] .models__container').find('[data-list-generation="'+$(this).attr('data-js-getmodel')+'"]').length==0) {
-            $.get("/local/script/autobaseApi.php", {search: 'material', type: 'generation', model: $(this).attr('data-js-getmodel')},
+            $.get("/local/script/autobaseApi.php", {sessid: $(document).find('[name=sessid]').val(), search: 'material', type: 'generation', model: $(this).attr('data-js-getmodel')},
                 function(data) {
                     data=$.parseJSON(data);
                     var count = data.length % 4;
@@ -590,7 +524,12 @@ $(document).ready(function () {
                 $(section).remove();
             }
         );
-    });
+    });    
+
+    //не найдено в поиске
+    if($('.filter-search').length>0 && $('[data-paginator]').length==0) {
+        $('.filter-search').parent().append('<p>По данным условиям ничего не найдено. Попробуйте <a href="#" onclick="document.querySelector(\'.filter-search__edit.js-filter-search-edit\').click();return false;">изменить параметры поиска</a></p>');
+    }
 
     //рекламные блоки в списках
     $('[data-show-banner]').each(function() {
@@ -606,9 +545,91 @@ $(document).ready(function () {
         );
     });
 
-    //не найдено в поиске
-    if($('.filter-search').length>0 && $('[data-paginator]').length==0) {
-        $('.filter-search').parent().after('<p>По данным условиям ничего не найдено. Попробуйте <a href="#" onclick="document.querySelector(\'.filter-search__edit.js-filter-search-edit\').click();return false;">изменить параметры поиска</a></p>');
+    //добавление комментов
+    $(document).on('submit', '.comments__form', function() {
+        var text = $(this).find('textarea'); 
+        if($(text).val()=='') {
+            $(this).addClass('validator-error');
+        } else {
+            BX.showWait();
+            $(this).removeClass('validator-error');
+            var re =0;            
+            if($(this).attr('data-re')) {
+                re = $(this).attr('data-re');    
+                $(this).prev().text('Ответить');
+                $(this).remove();                        
+            }
+            $.get("/local/script/script.php", {label: 'addComment', id: $('.comments__inner').attr('data-article-id'), text: $(text).val(), re: re},
+                function(data) {
+                    BX.closeWait();
+                    $(text).val('');
+                    reComments();
+                }
+            );
+        }
+        return false;
+    }); 
+
+    //подгрузка комментов 
+    if($('.comments__inner').length>0) {
+        reComments();
     }
+    function reComments() {
+        var start = $('.comments__inner').attr('data-last')?$('.comments__inner').attr('data-last'):0;
+        $('.comments__inner').addClass('wating-filter');
+        $.get("/local/script/script.php", {label: 'getComments', id: $('.comments__inner').attr('data-article-id'), start: start},
+            function(data) {
+                data=$.parseJSON(data);
+                if($(document).find('.comments__list').length==0)
+                    $('.comments__quantity-text').text(data.length+' '+declOfNum(data.length, ['комментарий', 'комментария', 'комментариев'])).next().after('<ul class="comments__list"></ul>');
+                if(data.length>0) {                    
+                    var ul = $('.comments__inner').find('ul');    
+                    for (var i = 0; i < data.length; i++) {   
+
+                        if(data[i]['RE']==0) {
+                            $(ul).prepend('<li class="'+(start>0?'new-comment ':'')+'comments__item" data-comment="'+data[i]['ID']+'">\
+                                <div class="comments__author"><img src="'+data[i]['pic']+'" alt="">\
+                                <div class="comments__info">\
+                                    <div class="comments__name"><span>'+data[i]['UF_USER']+'</span>\
+                                    </div>\
+                                    <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
+                                </div>\
+                                </div>\
+                                <div class="comments__text">'+data[i]['UF_TEXT']+'</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>\
+                            </li>'); 
+                        }
+                        else {
+                            $(ul).find('[data-comment="'+data[i]['RE']+'"]>a').after('<li class="'+(start>0?'new-comment ':'')+'comments__item comments__item-answer" data-comment="'+data[i]['ID']+'">\
+                                <div class="comments__author"><img src="'+data[i]['pic']+'" alt="">\
+                                <div class="comments__info">\
+                                    <div class="comments__name"><span>'+data[i]['UF_USER']+'</span>\
+                                    </div>\
+                                    <div class="comments__date">'+data[i]['UF_DATA']+'</div>\
+                                </div>\
+                                </div>\
+                                <div class="comments__text">'+data[i]['UF_TEXT']+'</div><a class="comments__reply" href="javascript:void(0)">Ответить</a>\
+                            </li>');
+                        }                        
+                    }
+                    $('.comments__inner').attr('data-last', data[data.length-1]['ID']);
+                    setTimeout("var massiv = document.querySelector('.new-comment');if(massiv) Array.prototype.forEach.call(massiv, function (item) {item.classList.remove('new-comment');} );", 3000);
+                }
+                $('.comments__inner').removeClass('wating-filter');
+            }
+        );
+    }
+
+    $(document).on('click', '.comments__reply', function() {
+        if($(this).next().length>0 && $(this).next().is(':not(li)')) {
+            $(this).next().remove();
+            $(this).text('Ответить');
+        }
+        else {
+            $(this).text('Скрыть');            
+            $(document).find('.comments__form').removeClass('validator-error');
+            $(this).after($('.comments__form').clone());
+            $(this).next().attr('data-re', $(this).closest('li').attr('data-comment'));
+        }        
+    });
 
 });

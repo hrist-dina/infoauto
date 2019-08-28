@@ -45,5 +45,6 @@ export class AjaxAuth extends Ajax {
         failRes.classList.add('no-abosulte');
         failRes.innerHTML = 'Ошибка! Повторите немного позже';
         this.element.children().find('button').parent().before(failRes);
+        BX.closeWait();
     }
 }

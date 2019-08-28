@@ -22,7 +22,16 @@ export class AjaxPersonalAutoTO extends Ajax {
                 failRes.innerHTML = 'Данные обновлены!';
                 this.element.find('.ledger__form-row:eq(0)').siblings('.ledger__form-row').remove();
                 this.element.find('.ledger__form-row input').val('');                
-                $(document).find('[name="personal-auto"]').trigger('change');
+                //обновим список
+                $(document).find('[data-tab-item="ledger"]').addClass('wating-filter');
+                $.get("/local/script/lk.php", {label: 'listTO'},
+                    function(data) {
+                        $(document).find('[data-tab-item="ledger"] .validator-error-message').remove();
+                        $(document).find('[data-tab-item="ledger"] .ledger').html(data);
+                        $(document).find('[data-tab-item="ledger"]').removeClass('wating-filter');
+                    }
+                );
+                BX.closeWait();
             } else {
                 if(data.err)
                     failRes.innerHTML = data.err;
