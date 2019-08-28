@@ -608,7 +608,7 @@ $(document).ready(function () {
 
     //не найдено в поиске
     if($('.filter-search').length>0 && $('[data-paginator]').length==0) {
-        $('.filter-search').after('<p>По данным условиям ничего не найдено. Попробуйте <a href="#" onclick="document.querySelector(\'.filter-search__edit.js-filter-search-edit\').click();return false;">изменить параметры поиска</a></p>');
+        $('.filter-search').parent().after('<p>По данным условиям ничего не найдено. Попробуйте <a href="#" onclick="document.querySelector(\'.filter-search__edit.js-filter-search-edit\').click();return false;">изменить параметры поиска</a></p>');
     }
 
 });
