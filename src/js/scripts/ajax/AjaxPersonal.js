@@ -20,7 +20,8 @@ export class AjaxPersonal extends Ajax {
                 failRes.classList.add('validator-error-message-good');
                 failRes.innerHTML = 'Данные обновлены!';
                 if(data.pic) {
-                    this.element.find('[type=file]').val('').siblings('span').css('background', 'url('+data.pic+') no-repeat center center').text('Сменить фото').parent().removeClass('error').removeClass('active');
+                    this.element.find('[type=file]').val('').siblings('span').text('Сменить фото').parent().removeClass('error').removeClass('active');
+                    this.element.find('.personal-photo-img').css('background', 'url('+data.pic+') no-repeat center center');
                 }
             } else {
                 if(data.err)
