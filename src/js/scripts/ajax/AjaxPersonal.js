@@ -19,6 +19,9 @@ export class AjaxPersonal extends Ajax {
             if(data.up && data.up === true ) {
                 failRes.classList.add('validator-error-message-good');
                 failRes.innerHTML = 'Данные обновлены!';
+                if(data.pic) {
+                    this.element.find('[type=file]').val('').siblings('span').css('background', 'url('+data.pic+') no-repeat center center').text('Сменить фото').parent().removeClass('error').removeClass('active');
+                }
             } else {
                 if(data.err)
                     failRes.innerHTML = data.err;

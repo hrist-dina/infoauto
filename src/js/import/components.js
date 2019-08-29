@@ -632,4 +632,28 @@ $(document).ready(function () {
         }        
     });
 
+    //изменение аватарки
+    $('[name="PERSONAL_PHOTO"]').on('change', function() {
+        addFile($(this).parent());
+    });   
+    
+    function addFile($label) {
+        if($label.find('input').val() == '') {
+            $label.removeClass('active').removeClass('error').find('span').text('Сменить фото');
+            return;
+        }
+        var file = document.querySelector('#'+$label.attr('for')).files[0];
+        var nameFull = file.name;   
+        var name = nameFull.split('.');   
+        var ext = name[name.length-1];
+        
+        if(file>10485760  || name.length==1 || !( ext =='jpeg' || ext =='jpg' || ext =='png' || ext =='gif' ) ) {
+            $label.removeClass('active').addClass('error').find('span').text(file.size>10485760?'Слишком большой размер файла':'Недопустимый формат файла');
+            document.querySelector('#'+$label.attr('for')).value = '';
+        }  else {
+            $label.addClass('active').removeClass('error').find('span').text(nameFull);   
+        }
+    }
+
+
 });

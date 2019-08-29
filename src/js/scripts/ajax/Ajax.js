@@ -47,7 +47,11 @@ export class Ajax {
                 if(this.getAttribute('action')=='/ajax/') {
                     BX.showWait();
                 }
-                self.post();
+                if(this.getAttribute('data-form-file')) {
+                    self.sendAllData();
+                }
+                else 
+                    self.post();
             } else  {
                 console.log('validated - false');
             }
@@ -76,6 +80,20 @@ export class Ajax {
                 dataType: 'json',
                 data: this.data,
 
+            }
+        ).done(data => this.done(data)).fail(error => this.fail(error));
+    }
+
+    sendAllData() {
+        var dataForm = new FormData(document.querySelector('form#'+this.element[0].getAttribute('id')));
+        $.ajax(
+            this.url,
+            {
+                method: 'post',
+                dataType: 'json',
+                data: dataForm,
+                processData: false,
+                contentType: false
             }
         ).done(data => this.done(data)).fail(error => this.fail(error));
     }
