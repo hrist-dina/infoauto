@@ -612,7 +612,6 @@ $(document).ready(function () {
                         }                        
                     }
                     $('.comments__inner').attr('data-last', data[data.length-1]['ID']);
-                    setTimeout("var massiv = document.querySelector('.new-comment');if(massiv) Array.prototype.forEach.call(massiv, function (item) {item.classList.remove('new-comment');} );", 3000);
                 }
                 $('.comments__inner').removeClass('wating-filter');
             }
@@ -627,7 +626,7 @@ $(document).ready(function () {
         else {
             $(this).text('Скрыть');            
             $(document).find('.comments__form').removeClass('validator-error');
-            $(this).after($('.comments__form').clone());
+            $(this).after($('.comments__form:eq(0)').clone());
             $(this).next().attr('data-re', $(this).closest('li').attr('data-comment'));
         }        
     });
@@ -654,6 +653,5 @@ $(document).ready(function () {
             $label.addClass('active').removeClass('error').find('span').text(nameFull);   
         }
     }
-
 
 });
