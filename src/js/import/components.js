@@ -295,7 +295,7 @@ $(document).ready(function () {
                     for (var i = 0; i < data.length; i++) {
                         if(data[i][3]=='') {
                             $(document).find('.personal-area-head__select [name="personal-auto"]').append('<option '+(data[i][1]?'selected':'')+' value="'+data[i][2]+'">'+data[i][0]+'</option>');
-                            html = html+'<div class="personal-area__auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
+                            html = html+'<div class="personal-area__auto"><div class="personal-area__info"><span data-editauto="'+data[i][2]+'">'+data[i][0]+'</span></div><a class="remove personal-area__remove" href="#" data-auto-del="'+data[i][2]+'">Удалить</a></div>';
                         } else {
                             html = html+'<div class="personal-area__auto trash-auto"><div class="personal-area__info">'+data[i][0]+'</div><a class="remove personal-area__remove" href="#" data-auto-undel="'+data[i][2]+'">Восстановить</a></div>';
                         }
@@ -354,6 +354,65 @@ $(document).ready(function () {
     }
     personalArea();
 
+    //редактирование авто
+    $(document).on('submit', '[data-fn="edit-auto"]', function() {
+        var editTh = $(this);    
+        $.get("/local/script/script.php", $(this).serialize(),
+            function(data) {
+                personalArea();
+                $(editTh).prev('h3').remove();
+                $(editTh).remove();
+            }
+        );
+        return false;
+    });
+    $(document).on('click', '[data-editauto]', function() {
+        var num = $(this).attr('data-editauto');    
+        var editTh = $(this);    
+        $(this).toggleClass('active');
+        if($(this).is('.active')) {
+            $(this).closest('.personal-area__auto').addClass('edited').find('[data-auto-del]').hide();
+            $.get("/local/script/script.php", {label: 'getOne', id: num},
+                function(data) {
+                    data=$.parseJSON(data);
+                    $(editTh).closest('.personal-area__auto').after('<div class="edit-block"><h3 class="personal-area__h3">Редактировать</h3><form data-fn="edit-auto" class=" wating-filter" action="/ajax/" method="post">\
+                        <input type="hidden" name="label" value="edit_auto">\
+                        <input type="hidden" name="num" value="'+num+'">\
+                        <div class="modal__select-horisontal"  data-carselection="1" data-cur-1="'+data.o+'" data-cur-2="'+data.t+'" data-cur-3="'+data.f+'">\
+                            <div class="modal__select-item">\
+                            <label>\
+                                <select class="select infoauto-gray" name="mark" data-validator-require="true" data-numcarselection="1">\
+                                <option value="0" hidden>Марка</option>\
+                                </select>\
+                            </label>\
+                            </div>\
+                            <div class="modal__select-item">\
+                            <label>\
+                                <select class="select infoauto-gray" name="model" data-validator-require="true" data-numcarselection="2">\
+                                <option value="0" hidden>Модель</option>\
+                                </select>\
+                            </label>\
+                            </div>\
+                            <div class="modal__select-item">\
+                            <label>\
+                                <select class="select infoauto-gray" name="generation" data-numcarselection="3">\
+                                <option value="0" hidden>Поколение</option>\
+                                </select>\
+                            </label>\
+                            </div>\
+                        </div>\
+                        <button class="button-yellow button__choose">Изменить</button>\
+                    </form>');
+                    new Select('.infoauto-gray');
+                    CarSelect($(document).find('.edit-block [data-carselection]'), false);
+                }
+            );
+            
+        } else {
+            $(this).closest('.personal-area__auto').next('.edit-block').remove();
+            $(this).closest('.personal-area__auto').removeClass('edited').find('[data-auto-del]').show();
+        }
+    });
     //выбор текущего авто
     $(document).on('change', '[name="personal-auto"]', function() {
         var select = $(this);
