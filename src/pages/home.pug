@@ -3,12 +3,13 @@ block variables
 	- var title = "Главная";
 
 block content
+	include ../blocks/components/filter-main/filter-main
 	include ../blocks/components/card/card
 	include ../blocks/components/card-question/card-question
 	include ../blocks/components/banners/banners
 	include ../data/home
 
-	include ../blocks/components/filter-main/filter-main
+	+filter-main()
 	section.section.section-white
 		.container
 			h2.h2 Популярное

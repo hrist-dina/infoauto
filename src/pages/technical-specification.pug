@@ -1,18 +1,18 @@
 extends ../views/layouts/default
 block variables
-	- var title = "Главная";
+	- var title = "Техническая спецификация";
 
 block content
+	include ../blocks/components/filter-main/filter-main
 	include ../blocks/components/card/card
 	include ../blocks/components/card-question/card-question
 	include ../blocks/components/banners/banners
 	include ../data/home
 
-	include ../blocks/components/filter-main/filter-main
-	section.section.section-white
+	+filter-main(false)
+	section.section.section-gray.tab-feature__wrap
 		.container
-			h2.h2 Kia Rio 3 поколение 2019 1.6 6AT (123 л.с.) G4FD Седан 4-дв. Prestige 
-			.section__container
-				include ../blocks/components/tab-feature/tab-feature
+			h1.h1 Kia Rio 3 поколение 2019 1.6 6AT (123 л.с.) G4FD Седан 4-дв. Prestige
+			include ../blocks/components/tab-feature/tab-feature
 
 

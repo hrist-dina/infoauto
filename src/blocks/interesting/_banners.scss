@@ -1,0 +1,32 @@
+.banners {
+  margin-top: 30px;
+  margin-bottom: 35px;
+
+  @include md-block {
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    @include u-row-flex(20px);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    @include u-col(20px);
+    @include u-size(3, 12, 20px);
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: inline-block;
+    @include md-block {
+      @include u-size(6, 12, 20px);
+    }
+    @include to(425px) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    & img {
+      width: 100%;
+    }
+  }
+}

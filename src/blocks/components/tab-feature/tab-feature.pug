@@ -1,34 +1,162 @@
+mixin tab-feature-block(id, title)
+    article.tab-feature-block(id=id)
+        .tab-feature-block__title=title
+        .tab-feature-block__content
+            block
+
+mixin tab-feature-item(title)
+    .tab-feature-item
+        .tab-feature-item__title=title
+        .tab-feature-item__content
+            block
+
+mixin tab-feature-value(title)
+    .tab-feature-value
+        .tab-feature-value__title
+            span !{title}
+        .tab-feature-value__content
+            block
+
+
 section.tab-feature
+    .tab-feature__tag-list
+        // Не ясно что это должно быть, ссылка или нет
+        .tab-feature__tag Информация от производителя
+        a(href='#').tab-feature__tag Информация от производителя
     .tab-feature__nav
-        a.tab-feature__link(href="javascript:void(0)")
+        a.tab-feature__link.js-scroll-to(href="#tab-engine")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/engine.svg", alt="")
-            span Двигатель
-        a.tab-feature__link(href="javascript:void(0)")
+                img(src="img/sprites/intermediate-svg/engine.svg", alt="Двигатель")
+            span.tab-feature__text Двигатель
+        a.tab-feature__link.js-scroll-to(href="#tab-transmission")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/transmission.svg", alt="")
-            span Трансмиссия
-        a.tab-feature__link(href="javascript:void(0)")
+                img(src="img/sprites/intermediate-svg/transmission.svg", alt="Трансмиссия")
+            span.tab-feature__text Трансмиссия
+        a.tab-feature__link.js-scroll-to(href="#tab-body")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/body.svg", alt="")
-            span Кузов
-        a.tab-feature__link(href="javascript:void(0)")
+                img(src="img/sprites/intermediate-svg/body.svg", alt="Кузов")
+            span.tab-feature__text Кузов
+        a.tab-feature__link.js-scroll-to(href="#tab-electronics")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/electronics.svg", alt="")
-            span Электроника
-        a.tab-feature__link(href="javascript:void(0)")
+                img(src="img/sprites/intermediate-svg/electronics.svg", alt="Электроника")
+            span.tab-feature__text Электроника
+        a.tab-feature__link.js-scroll-to(href="#tab-running-system")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/running-system.svg", alt="")
-            span Ходовая система
-        a.tab-feature__link(href="javascript:void(0)")
+                img(src="img/sprites/intermediate-svg/running-system.svg", alt="Ходовая система")
+            span.tab-feature__text Ходовая система
+        a.tab-feature__link.js-scroll-to(href="#tab-brake-system")
             .tab-feature__img
-            img(src="img/sprites/intermediate-svg/brake-system.svg", alt="")
-            span Тормозная система
-
-
-//- data-tab="engine"
-//- data-tab="transmission"
-//- data-tab="body"
-//- data-tab="electronics"
-//- data-tab="running-system"
-//- data-tab="brake-system"
+                img(src="img/sprites/intermediate-svg/brake-system.svg", alt="Тормозная система")
+            span.tab-feature__text Тормозная система
+    .tab-feature-block__list
+        +tab-feature-block('tab-engine', 'Двигатель')
+            +tab-feature-item('Моторное масло')
+                +tab-feature-value('Классификация и стандарты')
+                    p API Service SM, ILSAC GF-4 или выше
+                +tab-feature-value('Вязкость')
+                    p 5W-20, 5W-30
+                +tab-feature-value('Объем масляной системы')
+                    p 3,6 л
+                +tab-feature-value('Интервал замены')
+                    p Каждые 15000 км / раз в 12 мес.
+                    p Периодичность замены моторного масла по регламентному обслуживанию составляет 15 000 км.
+                    p Это расстояние может быть сокращено вплоть до 10 000 км по следующим причинам:
+                    ul
+                        li Большая запыленность трассы;
+                        li Плохое дорожное полотно;
+                        li Движение исключительно в городском трафике;
+                        li Экстремально высокие либо низкие температуры (имеется ввиду особенности региона);
+                        li Другие особенности автомобиля, водителя либо региона эксплуатации."
+            +tab-feature-item('Фильтр масляный')
+                +tab-feature-value('Номер запчасти')
+                    p 2630035503
+            +tab-feature-item('Фильтр воздушный')
+                +tab-feature-value('Номер запчасти')
+                    p 281131R100
+            +tab-feature-item('Фильтр топливный')
+                +tab-feature-value('Номер запчасти')
+                    p 311121R000
+            +tab-feature-item('Жидкость системы охлаждения')
+                +tab-feature-value('Спецификация')
+                    p MS-591-08, Korean KSM 2142 и/или Japan JIS K 2234
+                +tab-feature-value('Интервал замены')
+                    p Первую замену охлаждающей жидкости необходимо провести через 210 тыс. км пробега или 10 лет, в зависимости от того, что наступит раньше. Дальнейшие замены охлаждающей жидкости нужно проводить через 30 тыс. км пробега или через 2 года.
+        include ../interesting/interesting
+        +tab-feature-block('tab-transmission', 'Трансмиссия')
+            +tab-feature-item('Трансмиссионное масло')
+                +tab-feature-value('Стандарт')
+                    p DIAMOND ATF SP-III, SK ATF SP-III
+                +tab-feature-value('Оригинальный номер')
+                    p 450000110
+                +tab-feature-value('Объём масленой системы')
+                    p 6,8 л
+                +tab-feature-value('Интервал замены')
+                    p Требуется через каждые 90 тыс. км
+        +tab-feature-block('tab-body', 'Кузов')
+            +tab-feature-item('Фильтр салона')
+                +tab-feature-value('Номер запчасти')
+                    p 971334L000
+            +tab-feature-item('Дворники')
+                +tab-feature-value('Щетка стеклоочистителя передняя&nbsp;левая')
+                    p 983501R100
+                +tab-feature-value('Щетка стеклоочистителя передняя&nbsp;правая')
+                    p 983601R100
+        +tab-feature-block('tab-electronics', 'Электроника')
+            +tab-feature-item('Свет')
+                +tab-feature-value('Фары (ближний/дальний свет)')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Передние указатели поворота')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Передние габаритные огни')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Повторители указателей поворота')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Передние противотуманные фары')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Стоп-сигналы и задние фонари')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Задние указатели поворота')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Задние противотуманные фонари')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Верхний стоп-сигнал*')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Освещение номерного знака')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Лампа индивидуального освещения')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Плафон освещения салона')
+                    p H4 L/L 55/60 Вт
+                +tab-feature-value('Лампа освещения багажника')
+                    p H4 L/L 55/60 Вт
+            +tab-feature-item('Свечи')
+                +tab-feature-value('Номер запчасти')
+                    p 1882911050
+            +tab-feature-item('Аккумулятор')
+                +tab-feature-value('Номер запчасти')
+                    p CMF60L-BCI
+        +tab-feature-block('tab-running-system', 'Ходовая система')
+            +tab-feature-item('Шины')
+                +tab-feature-value('Размер')
+                    p 185/65 R15 или 195/55 R16
+            +tab-feature-item('Диски')
+                +tab-feature-value('Размер')
+                    p 6.0Jx15 или 6.0Jx16
+        +tab-feature-block('tab-brake-system', 'Тормозная система')
+            +tab-feature-item('Тормозные диски')
+                +tab-feature-value('Передние, Номер запчасти')
+                    p 517120U000
+                +tab-feature-value('Задние, номер запчасти')
+                    p 584110U300
+            +tab-feature-item('Тормозная жидкость')
+                +tab-feature-value('Объем')
+                    p 0,7~0,8 л
+                +tab-feature-value('Стандарт')
+                    p FMVSS116 DOT-3 или DOT-4
+                +tab-feature-value('Номер запчасти')
+                    p 110000110
+            +tab-feature-item('Тормозная жидкость')
+                +tab-feature-value('Передние')
+                    p 581014LA00
+                +tab-feature-value('Задние')
+                    p 583021RA30

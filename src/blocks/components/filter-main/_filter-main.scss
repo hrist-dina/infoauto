@@ -11,6 +11,10 @@
     padding-bottom: 45px;
   }
 
+  &.white-bg {
+    background: #fff;
+  }
+
   &__title {
     font-weight: 500;
     font-size: 42px;
@@ -21,6 +25,10 @@
     @include md-block {
       font-size: 28px;
       line-height: 39px;
+    }
+
+    .white-bg & {
+      color: #333333;
     }
   }
 
@@ -91,7 +99,9 @@
         margin: auto;
         text-align: center;
       }
-
+      .white-bg & {
+        color: #333333;
+      }
     }
 
     &-title {

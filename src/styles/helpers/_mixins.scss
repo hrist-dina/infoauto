@@ -20,6 +20,23 @@
     transition: $time $type $prop;
 }
 
+@mixin inner-content {
+    padding: 40px 108px 64px;
+    box-sizing: border-box;
+
+    @include xl-block {
+        padding: 40px 78px 40px;
+    }
+
+    @include md-block {
+        padding: 32px 48px 32px;
+    }
+
+    @include sm-block {
+        padding: 16px;
+    }
+}
+
 .close {
     position: relative;
     width: 32px;

@@ -144,7 +144,7 @@ export const smartGrid = cb => {
         },
         breakPoints: {
             xs: {
-                width: "320px"
+                width: "360px"
             },
             sm: {
                 width: "680px"

@@ -1,6 +1,14 @@
 include ../search/search
 
-section.filter-main(style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(img/filter-main-bg.jpg);')
+mixin filter-main(needBg = true)
+    if (needBg)
+        section.filter-main(style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(img/filter-main-bg.jpg);')
+            +filter-main-content
+    else
+        section.filter-main.white-bg
+            +filter-main-content
+
+mixin filter-main-content
     .container
         .filter-main__title Найти ответ - быстро и просто!
         .filter-main__content
