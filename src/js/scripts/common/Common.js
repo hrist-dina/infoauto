@@ -15,7 +15,9 @@ export default class Common {
     }
 
     scrollTo(id) {
-        $("html, body").animate({ scrollTop: $(id).offset().top }, 700);
+        const element = $(id);
+        if (!element.length) return;
+        $("html, body").animate({ scrollTop: element.offset().top }, 700);
     }
 
     onClickScrollTo() {
@@ -26,7 +28,8 @@ export default class Common {
     }
 
     onLoadScrollTo() {
-        this.scrollTo(window.location.hash);
+        if (window.location.hash) {
+            this.scrollTo(window.location.hash);
+        }
     }
-
 }
