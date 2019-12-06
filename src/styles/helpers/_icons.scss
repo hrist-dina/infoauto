@@ -1,0 +1,36 @@
+@import "icons-data";
+
+.icon-engine {
+  width: 24px;
+  height: 19px;
+  background: center no-repeat url(icon-engine());
+}
+
+.icon-transmission {
+  width: 24px;
+  height: 24px;
+  background: center no-repeat url(icon-transmission());
+}
+
+.icon-body {
+  width: 27px;
+  height: 12px;
+  background: center no-repeat url(icon-body());
+}
+
+.icon-electronics {
+  width: 24px;
+  height: 24px;
+  background: center no-repeat url(icon-electronics());
+}
+
+.icon-running-system {
+  width: 24px;
+  height: 18px;
+  background: center no-repeat url(icon-running-system());
+}
+.icon-brake-system {
+  width: 24px;
+  height: 24px;
+  background: center no-repeat url(icon-brake-system());
+}

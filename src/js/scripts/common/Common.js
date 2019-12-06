@@ -12,6 +12,7 @@ export default class Common {
     events() {
         this.onClickScrollTo();
         this.onLoadScrollTo();
+        this.onClickAccordion();
     }
 
     scrollTo(id) {
@@ -31,5 +32,16 @@ export default class Common {
         if (window.location.hash) {
             this.scrollTo(window.location.hash);
         }
+    }
+
+    onClickAccordion() {
+        const selector = '.js-accordion';
+        const title = `${selector}-title`;
+        const content = `${selector}-content`;
+
+        $(title).on('click', function () {
+            $(this).toggleClass('active');
+            $(this).parents(selector).find(content).slideToggle();
+        });
     }
 }

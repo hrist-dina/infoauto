@@ -1,7 +1,9 @@
 mixin tab-feature-block(id, title)
-    article.tab-feature-block(id=id)
-        .tab-feature-block__title=title
-        .tab-feature-block__content
+    article.tab-feature-block.js-accordion(id=`tab-${id}`)
+        .tab-feature-block__title.js-accordion-title
+            .tab-feature-block__icon(class=`icon-${id}`)
+            span=title
+        .tab-feature-block__content.js-accordion-content
             block
 
 mixin tab-feature-item(title)
@@ -25,31 +27,25 @@ section.tab-feature
         a(href='#').tab-feature__tag Информация от производителя
     .tab-feature__nav
         a.tab-feature__link.js-scroll-to(href="#tab-engine")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/engine.svg", alt="Двигатель")
+            .tab-feature__img.icon-engine
             span.tab-feature__text Двигатель
         a.tab-feature__link.js-scroll-to(href="#tab-transmission")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/transmission.svg", alt="Трансмиссия")
+            .tab-feature__img.icon-transmission
             span.tab-feature__text Трансмиссия
         a.tab-feature__link.js-scroll-to(href="#tab-body")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/body.svg", alt="Кузов")
+            .tab-feature__img.icon-body
             span.tab-feature__text Кузов
         a.tab-feature__link.js-scroll-to(href="#tab-electronics")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/electronics.svg", alt="Электроника")
+            .tab-feature__img.icon-electronics
             span.tab-feature__text Электроника
         a.tab-feature__link.js-scroll-to(href="#tab-running-system")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/running-system.svg", alt="Ходовая система")
+            .tab-feature__img.icon-running-system
             span.tab-feature__text Ходовая система
         a.tab-feature__link.js-scroll-to(href="#tab-brake-system")
-            .tab-feature__img
-                img(src="img/sprites/intermediate-svg/brake-system.svg", alt="Тормозная система")
+            .tab-feature__img.icon-brake-system
             span.tab-feature__text Тормозная система
     .tab-feature-block__list
-        +tab-feature-block('tab-engine', 'Двигатель')
+        +tab-feature-block('engine', 'Двигатель')
             +tab-feature-item('Моторное масло')
                 +tab-feature-value('Классификация и стандарты')
                     p API Service SM, ILSAC GF-4 или выше
@@ -82,7 +78,7 @@ section.tab-feature
                 +tab-feature-value('Интервал замены')
                     p Первую замену охлаждающей жидкости необходимо провести через 210 тыс. км пробега или 10 лет, в зависимости от того, что наступит раньше. Дальнейшие замены охлаждающей жидкости нужно проводить через 30 тыс. км пробега или через 2 года.
         include ../interesting/interesting
-        +tab-feature-block('tab-transmission', 'Трансмиссия')
+        +tab-feature-block('transmission', 'Трансмиссия')
             +tab-feature-item('Трансмиссионное масло')
                 +tab-feature-value('Стандарт')
                     p DIAMOND ATF SP-III, SK ATF SP-III
@@ -92,7 +88,7 @@ section.tab-feature
                     p 6,8 л
                 +tab-feature-value('Интервал замены')
                     p Требуется через каждые 90 тыс. км
-        +tab-feature-block('tab-body', 'Кузов')
+        +tab-feature-block('body', 'Кузов')
             +tab-feature-item('Фильтр салона')
                 +tab-feature-value('Номер запчасти')
                     p 971334L000
@@ -101,7 +97,7 @@ section.tab-feature
                     p 983501R100
                 +tab-feature-value('Щетка стеклоочистителя передняя&nbsp;правая')
                     p 983601R100
-        +tab-feature-block('tab-electronics', 'Электроника')
+        +tab-feature-block('electronics', 'Электроника')
             +tab-feature-item('Свет')
                 +tab-feature-value('Фары (ближний/дальний свет)')
                     p H4 L/L 55/60 Вт
@@ -135,14 +131,14 @@ section.tab-feature
             +tab-feature-item('Аккумулятор')
                 +tab-feature-value('Номер запчасти')
                     p CMF60L-BCI
-        +tab-feature-block('tab-running-system', 'Ходовая система')
+        +tab-feature-block('running-system', 'Ходовая система')
             +tab-feature-item('Шины')
                 +tab-feature-value('Размер')
                     p 185/65 R15 или 195/55 R16
             +tab-feature-item('Диски')
                 +tab-feature-value('Размер')
                     p 6.0Jx15 или 6.0Jx16
-        +tab-feature-block('tab-brake-system', 'Тормозная система')
+        +tab-feature-block('brake-system', 'Тормозная система')
             +tab-feature-item('Тормозные диски')
                 +tab-feature-value('Передние, Номер запчасти')
                     p 517120U000

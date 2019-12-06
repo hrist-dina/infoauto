@@ -1,6 +1,10 @@
 .interesting {
   background: #FFD223;
 
+  @include md-block {
+    margin-top: 4px;
+  }
+
   &__content {
     @include inner-content();
     padding: 55px 108px 76px;
