@@ -2,6 +2,7 @@ import $ from "jquery";
 
 export default class Common {
     constructor() {
+        this.isMobile = false;
         this.init();
     }
 
@@ -10,6 +11,7 @@ export default class Common {
     }
 
     events() {
+        this.checkIsMobile();
         this.onClickScrollTo();
         this.onLoadScrollTo();
         this.onClickAccordion();
@@ -34,14 +36,24 @@ export default class Common {
         }
     }
 
+    checkIsMobile() {
+        const self = this;
+        $(window).resize(function () {
+            self.isMobile = $(this).width() < 768;
+        }).resize();
+    }
+
     onClickAccordion() {
+        const self = this;
         const selector = '.js-accordion';
         const title = `${selector}-title`;
         const content = `${selector}-content`;
 
-        $(title).on('click', function () {
-            $(this).toggleClass('active');
-            $(this).parents(selector).find(content).slideToggle();
+        $(document).on('click', title, function () {
+            if (self.isMobile) {
+                $(this).toggleClass('active');
+                $(this).parents(selector).find(content).slideToggle();
+            }
         });
     }
 }
