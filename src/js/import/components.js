@@ -21,34 +21,46 @@ window.valueByStep = window.valueByStep || [];
 carSelects.push('types');
 carSelects.push('mark');
 carSelects.push('model');
+carSelects.push('year');
+carSelects.push('engine');
 carSelects.push('generation');
-carSelects.push('section');
-carSelects.push('property');
 carSelects.push('article');
 
 carSelectsTitle.push('Выберите тип авто');
 carSelectsTitle.push('Выберите марку авто');
 carSelectsTitle.push('Выберите модель авто');
+carSelectsTitle.push('Выберите год выпуска');
+carSelectsTitle.push('Выберите тип двигателя');
 carSelectsTitle.push('Выберите поколение авто');
-carSelectsTitle.push('Выберите область');
-carSelectsTitle.push('Выберите часть автомобиля');
 
 carSelectsOption.push('Тип авто');
 carSelectsOption.push('Марка');
 carSelectsOption.push('Модель');
+carSelectsOption.push('Год');
+carSelectsOption.push('Двигатель');
 carSelectsOption.push('Поколение');
-carSelectsOption.push('Область');
-carSelectsOption.push('Часть автомобиля');
 
 valueByStep.push('id_car_type');
 valueByStep.push('id_car_mark');
 valueByStep.push('id_car_model');
+valueByStep.push('id_car_year');
+valueByStep.push('id_car_engine');
 valueByStep.push('id_car_generation');
-valueByStep.push('section');
-valueByStep.push('property');
 
 function searchAjax(data) {
-    if($(document).find('[data-search-ajax]').length==0) {
+    window.dataArticle = data;
+    $(document).find('[data-auto-tech]').remove();
+    if(data.name) $(document).find('.filter-main').after('<section data-auto-tech class="section section-white"><div class="container"><h2 class="h2">'+data['name']+'</h2>\
+            <div class="section__container">\
+                <div class="card-list">\
+                    '+(data['auto']?'<a class="card" data-ajax-tab="auto"><div class="card__img" style=""></div><div class="card__title">Расходные материалы</div></a>':'')+'\
+                    '+(data['instruction']?'<a class="card" data-ajax-tab="instruction"><div class="card__img" style=""></div><div class="card__title">Инструкции по замене</div></a>':'')+'\
+                    '+(data['errors']?'<a class="card" data-ajax-tab="errors"><div class="card__img" style=""></div><div class="card__title">Неисправности</div></a>':'')+'\
+                </div>\
+            </div>\
+    </div></section>');
+
+    /*if($(document).find('[data-search-ajax]').length==0) {
         $('.filter-main').after('<section class="section section-white" data-search-ajax>\
             <div class="container">\
                 <h2 class="h2">Подходящие публикации</h2>\
@@ -70,15 +82,15 @@ function searchAjax(data) {
             <div class="card__mark-list">'+types+'</div>\
         </a>';
     }
-    $(document).find('[data-search-ajax] .card-list').html(html);    
+    $(document).find('[data-search-ajax] .card-list').html(html);    */
 }
 
 function reCarSelect($this, step, data) {
     var options ='', title = carSelectsTitle[step];
-    //$this.find('[data-no]').remove();
 
     if($this.find('[data-numcarselection="'+step+'"]').length==0) {
         //это фильтр на главной, пошаговый, надо создать селект следующий
+        
         if(step>1) {
             //если уже был селект, т.е. данные есть
             $this.find('.car-selection__text:eq(0)').text('Вы выбрали');
@@ -86,6 +98,7 @@ function reCarSelect($this, step, data) {
                 $this.find('.car-selection__text:eq(0)').after('<ul class="car-selection__choice"></ul>');                    
             }
             $this.find('.car-selection__choice').append('<li>'+$this.find('option:selected').text()+'<a class="close" data-value="'+$this.find('option:selected').val()+'" data-step="'+$this.find('select').attr('name')+'" href="javascript:void(0)"></a></li>');
+            if(step>5) return;            
             $this.find('select, .select2').remove();
         }
         $this.find('.car-selection__text:eq(1)').text(title).after('<select class="select js-select" name="'+carSelects[step]+'" data-numcarselection="'+step+'"></select>');
@@ -111,7 +124,6 @@ function reCarSelect($this, step, data) {
     if(step>2 && $this.is('.car-selection__center')&&data.length==0) {
         $this.children(':not(.car-selection__text):not(.car-selection__choice)').hide();
         $this.children('.car-selection__text:eq(0), .car-selection__choice').show();
-        //$this.append('<p data-no>По выбранному автомобилю нет подходящих статей</p>');
     }
 }
 
@@ -153,7 +165,7 @@ function CarSelect($this, $select) {
     param.search = $this.attr('data-typesearch');
     param.sessid = $(document).find('[name=sessid]').val();
             
-    if(step<4) {
+    if(step<6) {
         $.get("/local/script/autobaseApi.php", param,
             function(data) {
                 data=$.parseJSON(data);                
@@ -173,7 +185,8 @@ function CarSelect($this, $select) {
         if(!param['generation']) {
             param['generation'] = $this.find('.car-selection__choice a[data-step="generation"]').attr('data-value');
         }
-        if(step<6 && step>3) {
+        
+        if(step<7 && step>3) {
             $.get("/local/script/autobaseApi.php", param,
                 function(data) {
                     data=$.parseJSON(data);
@@ -245,6 +258,7 @@ $(document).ready(function () {
     });
 
     $(document).on('change', '[data-numcarselection]', function() {
+        $(document).find('.car-selection__choice [data-step='+$(this).attr('name')+']').closest('li').remove();
         CarSelect($(this).closest('[data-carselection]'), $(this));
     });
 
@@ -712,5 +726,11 @@ $(document).ready(function () {
             $label.addClass('active').removeClass('error').find('span').text(nameFull);   
         }
     }
+
+    $(document).on('click', '[data-ajax-tab]', function() {
+        let data = dataArticle[$(this).attr('data-ajax-tab')];
+        $(document).find('[data-auto-tech]').remove();
+        $(document).find('.filter-main').after(data);
+    });    
 
 });
