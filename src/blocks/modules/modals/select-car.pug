@@ -16,7 +16,6 @@ include ../../components/select/select
         'Mazda'
     ];
 
--
     var optionsModel = [
         'Модель',
         'Camry',
@@ -24,7 +23,20 @@ include ../../components/select/select
         '323'
     ];
 
--
+    var optionsYear = [
+        'Год',
+        '2006',
+        '2007',
+        '2008'
+    ];
+
+    var optionsEngine= [
+        'Двигатель',
+        '1',
+        '2',
+        '3'
+    ];
+
     var optionsGeneration = [
         'Поколение',
         '2018',
@@ -60,6 +72,18 @@ include ../../components/select/select
                             +select(optionsModel, 'model', ['js-modal-select', 'js-ajax-select-car'], {
                                 "validator-require": "true",
                                 action: `${jsonServer}/models`
+                            })
+                    .modal__select-item
+                        label
+                            +select(optionsYear, 'year', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/years`
+                            })
+                    .modal__select-item
+                        label
+                            +select(optionsEngine, 'engine', ['js-modal-select', 'js-ajax-select-car'], {
+                                "validator-require": "true",
+                                action: `${jsonServer}/engine`
                             })
                     .modal__select-item
                         label

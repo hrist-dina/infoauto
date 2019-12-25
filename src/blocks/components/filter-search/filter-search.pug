@@ -8,7 +8,6 @@ include ../personal-auto/personal-auto
         'Mazda'
     ];
 
--
     var optionsModel = [
         'Модель',
         'Camry',
@@ -16,7 +15,20 @@ include ../personal-auto/personal-auto
         '323'
     ];
 
--
+    var optionsYear = [
+        'Год',
+        '2006',
+        '2007',
+        '2008'
+    ];
+
+    var optionsEngine = [
+        'Двигатель',
+        '1',
+        '2',
+        '3'
+    ];
+
     var optionsGeneration = [
         'Поколение',
         '2018',
@@ -47,6 +59,10 @@ include ../personal-auto/personal-auto
                     +select(optionsMark, 'mark')
                 .filter-search__item
                     +select(optionsModel, 'model')
+                .filter-search__item
+                    +select(optionsYear, 'year')
+                .filter-search__item
+                    +select(optionsEngine, 'engine')
                 .filter-search__item
                     +select(optionsGeneration, 'generation')
         .filter-search__form-bottom

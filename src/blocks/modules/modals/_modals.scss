@@ -343,19 +343,31 @@
     &__select {
         &-item {
             width: #{calc(100% / 3 - 20px)};
-            margin-bottom: 0;
+            margin: 10px;
 
             @include md-block {
                 width: 100%;
-                margin-bottom: 20px;
+                margin: 0 0 20px 0;
+            }
+
+            & label {
+                padding-bottom: 0;
+            }
+
+            &:last-child {
+                @include md-block {
+                    margin-bottom: 0;
+                }
             }
         }
 
         &-horisontal {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: -10px;
     
             @include md-block {
+                margin: auto;
                 flex-direction: column;
             }
         }
