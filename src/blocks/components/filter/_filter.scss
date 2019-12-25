@@ -15,28 +15,36 @@
   }
 
   &__form {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: -20px;
+    margin: -8px;
+    flex-wrap: wrap;
+    padding-right: #{calc(100% / 4)};
+
     @include md-block {
-      flex-wrap: wrap;
+      padding-right: 0;
     }
   }
 
   &__item {
-    width: #{calc(100% / 4 - 13px)};
+    width: #{calc(100% / 3 - 16px)};
+    margin: 8px;
     display: block;
-    padding-bottom: 20px;
     @include md-block {
       width: 100%;
     }
 
 
     &:last-child {
-      width: #{calc(100% / 4 - 9px)};
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: #{calc(100% / 4 - 20px)};
       @include md-block {
         width: 100%;
-        margin-bottom: 0;
+        position: relative;
+        right: auto;
+        top: auto;
       }
     }
   }

@@ -15,6 +15,20 @@ include ../select/select
         'Vesta',
         '323'
     ];
+-
+    var optionsYear = [
+        'Год',
+        '2005',
+        '2006',
+        '2007'
+    ];
+-
+    var optionsEngine = [
+        'Двигатель',
+        '1',
+        '2',
+        '3'
+    ];
 
 -
     var optionsGeneration = [
@@ -31,6 +45,10 @@ include ../select/select
             +select(optionsMark)
         .filter__item
             +select(optionsModel)
+        .filter__item
+            +select(optionsYear)
+        .filter__item
+            +select(optionsEngine)
         .filter__item
             // Поколение
             +select(optionsGeneration)
