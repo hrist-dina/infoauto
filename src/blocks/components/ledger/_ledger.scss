@@ -22,16 +22,20 @@
   }
 
   &__body {
-    display: table-row-group;
     @include lg-block {
       display: block;
     }
   }
 
   &__row {
-    display: table-row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
     margin-bottom: 10px;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
 
     @include lg-block {
       display: flex;
@@ -66,7 +70,7 @@
 
       & input,
       & .select2 {
-        width: #{calc(100% - 12px)};
+        width: 100%;
         height: 42px;
         @include lg-block {
           width: 100%;
@@ -91,15 +95,16 @@
   }
 
   &__item {
-    display: table-cell;
+    display: flex;
     padding: 18px 15px;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
-    width: auto;
+    width: 100%;
+    max-width: 270px;
+    box-sizing: border-box;
 
     @include lg-block {
       display: block;
       width: 100%;
+      max-width: inherit;
       border: none;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -126,24 +131,12 @@
       padding: 10px 12px;
     }
 
-    &:first-child {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-      border-left: 1px solid #e0e0e0;
-    }
-
-    &:last-child {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-      border-right: 1px solid #e0e0e0;
-    }
   }
 
   &__head &__row,
   &__head &__item {
     border: none;
   }
-
 
   &__head &__item {
     font-weight: normal;
@@ -160,7 +153,8 @@
   }
 
   &__select {
-    padding-right: 15px;
+    max-width: 270px;
+    width: 100%;
     @include lg-block {
       display: block;
       width: 100%;
@@ -172,10 +166,14 @@
 
   }
 
-
   &__date,
   &__length {
-    width: 15%;
+    max-width: 170px;
+    box-sizing: border-box;
+
+    @include xl-block {
+      max-width: 120px;
+    }
 
     @include lg-block {
       display: block;
@@ -186,8 +184,11 @@
     }
   }
 
+  &__date {
+    ::-webkit-inner-spin-button { display: none; }
+  }
+
   &__text {
-    width: 25%;
     @include lg-block {
       display: block;
       width: 100%;
@@ -196,13 +197,7 @@
   }
 
    &__remove {
-    @include xl-block {
-      width: 10%;
-    }
-  }
-
-   &__remove {
-    width: 7%;
+    max-width: 120px;
     padding: 12px 15px;
     text-align: right;
     font-weight: normal;
@@ -214,9 +209,10 @@
       width: 100%;
       box-sizing: border-box;
       padding-top: 0;
+      max-width: inherit;
     }
 
-    @include md-block {
+    @include sm-block {
       position: relative;
       padding: 5px;
 
@@ -247,12 +243,12 @@
   &__form &__length,
   &__form &__select,
   &__form &__text,
-  &__form &__date,
-  &__form &__remove {
+  &__form &__date {
     position: relative;
-    padding-bottom: 10px;
+    margin-right: 12px;
     @include md-block {
       padding-bottom: 8px;
+      margin-right: 0;
     }
   }
 }
