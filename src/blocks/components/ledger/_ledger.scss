@@ -11,7 +11,7 @@
   }
 
   &__head {
-    display: table-header-group;
+    display: block;
     font-weight: normal;
     font-size: 15px;
     color: #919191;
@@ -144,6 +144,10 @@
     color: #919191;
     padding-top: 0;
     padding-bottom: 5px;
+
+    &:last-child {
+      max-width: 120px;
+    }
   }
 
   &__body &__item {
@@ -230,7 +234,7 @@
       padding-right: 0;
     }
 
-    @include md-block {
+    @include sm-block {
       & .remove {
         position: absolute;
         bottom: -13px;
@@ -250,5 +254,9 @@
       padding-bottom: 8px;
       margin-right: 0;
     }
+  }
+
+  &__form &__remove {
+    position: relative;
   }
 }
