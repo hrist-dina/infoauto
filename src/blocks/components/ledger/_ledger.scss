@@ -98,8 +98,13 @@
     display: flex;
     padding: 18px 15px;
     width: 100%;
-    max-width: 270px;
+    max-width: 250px;
     box-sizing: border-box;
+    margin-right: 12px;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     @include lg-block {
       display: block;
@@ -109,6 +114,7 @@
       padding-top: 10px;
       padding-bottom: 10px;
       box-sizing: border-box;
+      margin-right: 0;
 
       &:before {
         content: attr(data-th);
@@ -157,7 +163,7 @@
   }
 
   &__select {
-    max-width: 270px;
+    max-width: 250px;
     width: 100%;
     @include lg-block {
       display: block;
@@ -193,6 +199,9 @@
   }
 
   &__text {
+    max-width: 250px;
+    width: 100%;
+
     @include lg-block {
       display: block;
       width: 100%;
